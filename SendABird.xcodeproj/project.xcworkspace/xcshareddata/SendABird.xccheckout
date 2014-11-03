@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1944DEBB-BA05-4018-BA5E-9A67FA91B382</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SendABird</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3455FC93F250814AD349A9C7FB00DE8987E0137D</key>
+		<string>github.com:olyfaunt/SendABird.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SendABird.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3455FC93F250814AD349A9C7FB00DE8987E0137D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:olyfaunt/SendABird.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3455FC93F250814AD349A9C7FB00DE8987E0137D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3455FC93F250814AD349A9C7FB00DE8987E0137D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SendABird</string>
+		</dict>
+	</array>
+</dict>
+</plist>
