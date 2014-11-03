@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4B1A08086C00935D41 /* SentViewController.m */; };
 		9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */; };
-		9082A3CD1A0832EE00488DE8 /* FacebookSDK in Resources */ = {isa = PBXBuildFile; fileRef = 9082A3CC1A0832EE00488DE8 /* FacebookSDK */; };
 		9082A3CF1A08332A00488DE8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9082A3CE1A08332A00488DE8 /* FacebookSDK.framework */; };
 		9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = 9082A3D11A08338B00488DE8 /* BirdCarrier.m */; };
 		9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9082A3D31A08338B00488DE8 /* CommsLogin.m */; };
@@ -59,7 +58,6 @@
 		9060BC4B1A08086C00935D41 /* SentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentViewController.m; sourceTree = "<group>"; };
 		9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAndListMessageView.h; sourceTree = "<group>"; };
 		9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAndListMessageView.m; sourceTree = "<group>"; };
-		9082A3CC1A0832EE00488DE8 /* FacebookSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FacebookSDK; path = ../../../SendABird/SendABird/FacebookSDK; sourceTree = "<group>"; };
 		9082A3CE1A08332A00488DE8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../SendABird/SendABird/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		9082A3D01A08338B00488DE8 /* BirdCarrier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdCarrier.h; sourceTree = "<group>"; };
 		9082A3D11A08338B00488DE8 /* BirdCarrier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdCarrier.m; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				9082A3CE1A08332A00488DE8 /* FacebookSDK.framework */,
-				9082A3CC1A0832EE00488DE8 /* FacebookSDK */,
 				99986D7A1A071C43001AA353 /* AudioToolbox.framework */,
 				99986D901A071CCD001AA353 /* UIKit.framework */,
 				99986D8E1A071CBF001AA353 /* Foundation.framework */,
@@ -339,7 +336,6 @@
 				99986D551A06F16C001AA353 /* Main.storyboard in Resources */,
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,
 				99986D571A06F16C001AA353 /* Images.xcassets in Resources */,
-				9082A3CD1A0832EE00488DE8 /* FacebookSDK in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
