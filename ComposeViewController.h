@@ -16,12 +16,19 @@
 
 @end
 
-@interface ComposeViewController : UITableViewController <UITableViewDelegate, SetBirdProtocol, UITextViewDelegate>
+@protocol SetRecieverProtocol <NSObject>
+
+-(void)fetchMessageReciever:(PFUser *)reciever;
+
+@end
+
+@interface ComposeViewController : UITableViewController <UITableViewDelegate, SetBirdProtocol, UITextViewDelegate, SetRecieverProtocol>
 - (IBAction)goBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *senderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImageView;
 @property (weak, nonatomic) IBOutlet UILabel *typeOfBirdLabel;
 @property (strong, nonatomic) BirdCarrier *bird;
+@property (strong, nonatomic) PFUser *reciever;
 
 @end
