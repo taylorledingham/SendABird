@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface AddFriendViewController : UITableViewController<UISearchBarDelegate>
 
@@ -14,5 +15,6 @@
 
 @property (nonatomic, strong) NSArray *allUsers;
 @property (nonatomic, strong) NSArray *visibleUsers;
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end
