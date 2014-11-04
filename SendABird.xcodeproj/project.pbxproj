@@ -43,6 +43,14 @@
 		99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C564FB1A08513B0082549E /* FriendsViewController.m */; };
 		99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C564FD1A08534C0082549E /* FacebookSDK.framework */; };
 		99C565011A085AFD0082549E /* SABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565001A085AFD0082549E /* SABTabBarController.m */; };
+		99C565031A0872920082549E /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565021A0872920082549E /* IndexStoryboard.storyboard */; };
+		99C565051A08729F0082549E /* FriendsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565041A08729F0082549E /* FriendsStoryboard.storyboard */; };
+		99C565091A0872B10082549E /* SentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565081A0872B10082549E /* SentStoryboard.storyboard */; };
+		99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */; };
+		99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C5650E1A0873EC0082549E /* LoadStoryboardProfileViewController.m */; };
+		99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565111A087B6C0082549E /* LoadStoryboardIndexViewController.m */; };
+		99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */; };
+		99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +118,18 @@
 		99C564FD1A08534C0082549E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		99C564FF1A085AFD0082549E /* SABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SABTabBarController.h; path = ../SABTabBarController.h; sourceTree = "<group>"; };
 		99C565001A085AFD0082549E /* SABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SABTabBarController.m; path = ../SABTabBarController.m; sourceTree = "<group>"; };
+		99C565021A0872920082549E /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexStoryboard.storyboard; path = ../IndexStoryboard.storyboard; sourceTree = "<group>"; };
+		99C565041A08729F0082549E /* FriendsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendsStoryboard.storyboard; path = ../FriendsStoryboard.storyboard; sourceTree = "<group>"; };
+		99C565081A0872B10082549E /* SentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SentStoryboard.storyboard; path = ../SentStoryboard.storyboard; sourceTree = "<group>"; };
+		99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileStoryboard.storyboard; path = ../ProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		99C5650D1A0873EC0082549E /* LoadStoryboardProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadStoryboardProfileViewController.h; path = ../LoadStoryboardProfileViewController.h; sourceTree = "<group>"; };
+		99C5650E1A0873EC0082549E /* LoadStoryboardProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardProfileViewController.m; path = ../LoadStoryboardProfileViewController.m; sourceTree = "<group>"; };
+		99C565101A087B6C0082549E /* LoadStoryboardIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadStoryboardIndexViewController.h; sourceTree = "<group>"; };
+		99C565111A087B6C0082549E /* LoadStoryboardIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadStoryboardIndexViewController.m; sourceTree = "<group>"; };
+		99C565131A08814F0082549E /* LoadStoryboardSentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadStoryboardSentViewController.h; path = ../LoadStoryboardSentViewController.h; sourceTree = "<group>"; };
+		99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardSentViewController.m; path = ../LoadStoryboardSentViewController.m; sourceTree = "<group>"; };
+		99C565161A08828C0082549E /* LoadStoryboardFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadStoryboardFriendsViewController.h; path = ../LoadStoryboardFriendsViewController.h; sourceTree = "<group>"; };
+		99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardFriendsViewController.m; path = ../LoadStoryboardFriendsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				99986D531A06F16C001AA353 /* Main.storyboard */,
+				99C5650C1A0872C50082549E /* Storyboards */,
 				9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */,
 				9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */,
 				9060BC4A1A08086C00935D41 /* SentViewController.h */,
@@ -263,6 +284,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		99C5650C1A0872C50082549E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */,
+				99C565081A0872B10082549E /* SentStoryboard.storyboard */,
+				99C565041A08729F0082549E /* FriendsStoryboard.storyboard */,
+				99C565021A0872920082549E /* IndexStoryboard.storyboard */,
+				99C5650D1A0873EC0082549E /* LoadStoryboardProfileViewController.h */,
+				99C5650E1A0873EC0082549E /* LoadStoryboardProfileViewController.m */,
+				99C565101A087B6C0082549E /* LoadStoryboardIndexViewController.h */,
+				99C565111A087B6C0082549E /* LoadStoryboardIndexViewController.m */,
+				99C565131A08814F0082549E /* LoadStoryboardSentViewController.h */,
+				99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */,
+				99C565161A08828C0082549E /* LoadStoryboardFriendsViewController.h */,
+				99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -345,6 +385,10 @@
 			files = (
 				99986D551A06F16C001AA353 /* Main.storyboard in Resources */,
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,
+				99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */,
+				99C565051A08729F0082549E /* FriendsStoryboard.storyboard in Resources */,
+				99C565091A0872B10082549E /* SentStoryboard.storyboard in Resources */,
+				99C565031A0872920082549E /* IndexStoryboard.storyboard in Resources */,
 				99986D571A06F16C001AA353 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,11 +413,15 @@
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
 				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,
+				99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */,
 				9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */,
 				99986D9F1A07558B001AA353 /* AddFriendViewController.m in Sources */,
+				99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */,
 				9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */,
+				99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */,
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
+				99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */,
 				99986D4F1A06F16C001AA353 /* AppDelegate.m in Sources */,
 				99986D4C1A06F16C001AA353 /* main.m in Sources */,
 				99986D711A0707E2001AA353 /* InboxViewController.m in Sources */,

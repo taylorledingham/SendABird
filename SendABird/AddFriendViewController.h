@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface AddFriendViewController : UITableViewController<UISearchBarDelegate>
+@interface AddFriendViewController : UITableViewController<UISearchBarDelegate, UISearchControllerDelegate>
 
 //@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 

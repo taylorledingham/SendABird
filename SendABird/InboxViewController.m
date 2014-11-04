@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationItem setHidesBackButton:YES];
+    
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
     //no one is logged in, go to login page

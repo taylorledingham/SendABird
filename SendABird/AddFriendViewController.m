@@ -22,13 +22,21 @@
     [super viewDidLoad];
     
     self.currentUser = [PFUser currentUser];
+ 
+    //
+    
+    self.definesPresentationContext = YES;
+    //
     
     self.visibleUsers = nil;
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
+    self.searchController.delegate = self;
     [self.searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.dimsBackgroundDuringPresentation = NO;
+    
+    
     
 }
 
@@ -55,6 +63,12 @@
     }];
 
 }
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    
+//    [self.searchController.searchBar resignFirstResponder];
+//    [self.searchController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
