@@ -40,8 +40,8 @@
 		99986D9F1A07558B001AA353 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D9E1A07558B001AA353 /* AddFriendViewController.m */; };
 		99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA41A07680E001AA353 /* SearchFriendCell.m */; };
 		99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA71A07F00B001AA353 /* ComposeViewController.m */; };
-		99C564F71A084FDA0082549E /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C564F61A084FDA0082549E /* FriendsViewController.m */; };
-		99C564F91A084FFF0082549E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C564F81A084FFF0082549E /* FacebookSDK.framework */; };
+		99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C564FB1A08513B0082549E /* FriendsViewController.m */; };
+		99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C564FD1A08534C0082549E /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,9 +104,9 @@
 		99986DA41A07680E001AA353 /* SearchFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchFriendCell.m; path = ../SearchFriendCell.m; sourceTree = "<group>"; };
 		99986DA61A07F00B001AA353 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeViewController.h; path = ../ComposeViewController.h; sourceTree = "<group>"; };
 		99986DA71A07F00B001AA353 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeViewController.m; path = ../ComposeViewController.m; sourceTree = "<group>"; };
-		99C564F51A084FDA0082549E /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
-		99C564F61A084FDA0082549E /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
-		99C564F81A084FFF0082549E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		99C564FA1A08513B0082549E /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		99C564FB1A08513B0082549E /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		99C564FD1A08534C0082549E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99C564F91A084FFF0082549E /* FacebookSDK.framework in Frameworks */,
+				99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */,
 				99986D931A071D5B001AA353 /* libz.dylib in Frameworks */,
 				99986D7F1A071C51001AA353 /* CoreGraphics.framework in Frameworks */,
 				99986D911A071CCD001AA353 /* UIKit.framework in Frameworks */,
@@ -212,8 +212,8 @@
 		99986D721A0707EA001AA353 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				99C564F51A084FDA0082549E /* FriendsViewController.h */,
-				99C564F61A084FDA0082549E /* FriendsViewController.m */,
+				99C564FA1A08513B0082549E /* FriendsViewController.h */,
+				99C564FB1A08513B0082549E /* FriendsViewController.m */,
 				9082A3D01A08338B00488DE8 /* BirdCarrier.h */,
 				9082A3D11A08338B00488DE8 /* BirdCarrier.m */,
 				9082A3D21A08338B00488DE8 /* CommsLogin.h */,
@@ -237,7 +237,6 @@
 		99986D791A071C0F001AA353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99C564F81A084FFF0082549E /* FacebookSDK.framework */,
 				99986D7A1A071C43001AA353 /* AudioToolbox.framework */,
 				99986D901A071CCD001AA353 /* UIKit.framework */,
 				99986D8E1A071CBF001AA353 /* Foundation.framework */,
@@ -252,6 +251,7 @@
 				99986D801A071C57001AA353 /* CoreLocation.framework */,
 				99986D7E1A071C51001AA353 /* CoreGraphics.framework */,
 				99986D7C1A071C4A001AA353 /* CFNetwork.framework */,
+				99C564FD1A08534C0082549E /* FacebookSDK.framework */,
 				99986D741A071C04001AA353 /* Parse.framework */,
 				99986D751A071C04001AA353 /* ParseFacebookUtils.framework */,
 			);
@@ -360,7 +360,7 @@
 			files = (
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
 				99986D991A071F70001AA353 /* SignupViewController.m in Sources */,
-				99C564F71A084FDA0082549E /* FriendsViewController.m in Sources */,
+				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
 				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,
 				9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */,
@@ -496,7 +496,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SendABird",
-					/Users/taylorledingham/Desktop/SendABird/SendABird/FacebookSDK,
 					"$(PROJECT_DIR)/SendABird/FacebookSDK",
 				);
 				INFOPLIST_FILE = SendABird/Info.plist;
@@ -512,7 +511,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SendABird",
-					/Users/taylorledingham/Desktop/SendABird/SendABird/FacebookSDK,
 					"$(PROJECT_DIR)/SendABird/FacebookSDK",
 				);
 				INFOPLIST_FILE = SendABird/Info.plist;
