@@ -44,7 +44,6 @@
 		99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C564FB1A08513B0082549E /* FriendsViewController.m */; };
 		99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C564FD1A08534C0082549E /* FacebookSDK.framework */; };
 		99C565011A085AFD0082549E /* SABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565001A085AFD0082549E /* SABTabBarController.m */; };
-		99C565031A0872920082549E /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565021A0872920082549E /* IndexStoryboard.storyboard */; };
 		99C565051A08729F0082549E /* FriendsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565041A08729F0082549E /* FriendsStoryboard.storyboard */; };
 		99C565091A0872B10082549E /* SentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C565081A0872B10082549E /* SentStoryboard.storyboard */; };
 		99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */; };
@@ -55,6 +54,7 @@
 		99C5651C1A08A0B70082549E /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C5651B1A08A0B70082549E /* FriendCell.m */; };
 		99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA55291A096B2A00A66769 /* AddressBook.framework */; };
 		99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA552A1A096B2A00A66769 /* AddressBookUI.framework */; };
+		99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +124,6 @@
 		99C564FD1A08534C0082549E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		99C564FF1A085AFD0082549E /* SABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SABTabBarController.h; path = ../SABTabBarController.h; sourceTree = "<group>"; };
 		99C565001A085AFD0082549E /* SABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SABTabBarController.m; path = ../SABTabBarController.m; sourceTree = "<group>"; };
-		99C565021A0872920082549E /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexStoryboard.storyboard; path = ../IndexStoryboard.storyboard; sourceTree = "<group>"; };
 		99C565041A08729F0082549E /* FriendsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendsStoryboard.storyboard; path = ../FriendsStoryboard.storyboard; sourceTree = "<group>"; };
 		99C565081A0872B10082549E /* SentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SentStoryboard.storyboard; path = ../SentStoryboard.storyboard; sourceTree = "<group>"; };
 		99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileStoryboard.storyboard; path = ../ProfileStoryboard.storyboard; sourceTree = "<group>"; };
@@ -140,6 +139,7 @@
 		99C5651B1A08A0B70082549E /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		99EA55291A096B2A00A66769 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		99EA552A1A096B2A00A66769 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IndexStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,8 +182,6 @@
 		99986D3D1A06F16C001AA353 = {
 			isa = PBXGroup;
 			children = (
-				99EA55291A096B2A00A66769 /* AddressBook.framework */,
-				99EA552A1A096B2A00A66769 /* AddressBookUI.framework */,
 				99986D481A06F16C001AA353 /* SendABird */,
 				99986D621A06F16C001AA353 /* SendABirdTests */,
 				99986D471A06F16C001AA353 /* Products */,
@@ -281,6 +279,8 @@
 		99986D791A071C0F001AA353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99EA55291A096B2A00A66769 /* AddressBook.framework */,
+				99EA552A1A096B2A00A66769 /* AddressBookUI.framework */,
 				99986D7A1A071C43001AA353 /* AudioToolbox.framework */,
 				99986D901A071CCD001AA353 /* UIKit.framework */,
 				99986D8E1A071CBF001AA353 /* Foundation.framework */,
@@ -305,10 +305,10 @@
 		99C5650C1A0872C50082549E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */,
 				99C5650A1A0872B90082549E /* ProfileStoryboard.storyboard */,
 				99C565081A0872B10082549E /* SentStoryboard.storyboard */,
 				99C565041A08729F0082549E /* FriendsStoryboard.storyboard */,
-				99C565021A0872920082549E /* IndexStoryboard.storyboard */,
 				99C5650D1A0873EC0082549E /* LoadStoryboardProfileViewController.h */,
 				99C5650E1A0873EC0082549E /* LoadStoryboardProfileViewController.m */,
 				99C565101A087B6C0082549E /* LoadStoryboardIndexViewController.h */,
@@ -405,8 +405,8 @@
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,
 				99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */,
 				99C565051A08729F0082549E /* FriendsStoryboard.storyboard in Resources */,
+				99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */,
 				99C565091A0872B10082549E /* SentStoryboard.storyboard in Resources */,
-				99C565031A0872920082549E /* IndexStoryboard.storyboard in Resources */,
 				99986D571A06F16C001AA353 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

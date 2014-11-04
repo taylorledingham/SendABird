@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "AppDelegate.h"
 
 @interface EditProfileViewController ()
 
@@ -112,7 +113,11 @@
     [PFUser logOut];
     PFUser *currentUser = [PFUser currentUser]; // this will now be nil
     NSLog(@"Current logged out user: %@", currentUser.username);
-    [self.tabBarController setSelectedIndex:0];
+    
+    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+    
+    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
 }
 - (void)dismissSelf {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -68,7 +69,11 @@
                                             if (user) {
                                                 // Do stuff after successful login.
                                                 // Go back to inbox page.
-                                                [self.navigationController popToRootViewControllerAnimated:YES];
+//                                                [self.navigationController popToRootViewControllerAnimated:YES];
+                                                
+                                                AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                                                
+                                                appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
                                                 
                                             } else {
                                                 // The login failed. Check error to see why.

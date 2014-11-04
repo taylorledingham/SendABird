@@ -31,14 +31,14 @@
 
     
     PFUser *currentUser = [PFUser currentUser];
-    if (currentUser==nil) {
-    //no one is logged in, go to login page
-        [self performSegueWithIdentifier:@"showLogin" sender:self];
-    }
-//    } else {
-//    //if CurrentUser is logged in
-//        NSLog(@"Current user: %@", currentUser.username);
+//    if (currentUser==nil) {
+//    //no one is logged in, go to login page
+//        [self performSegueWithIdentifier:@"showLogin" sender:self];
 //    }
+////    } else {
+////    //if CurrentUser is logged in
+////        NSLog(@"Current user: %@", currentUser.username);
+////    }
     
 }
 
