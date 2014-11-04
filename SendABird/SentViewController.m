@@ -34,6 +34,8 @@
     annotationStart.coordinate = toronto.coordinate;
     [self.mapView addAnnotation:annotationStart];
     
+    
+    
 
 }
 
@@ -75,5 +77,14 @@
 */
 
 - (IBAction)segmentViewChanged:(UISegmentedControl *)sender {
+    if(sender.selectedSegmentIndex == 0){
+        self.tableView.hidden = NO;
+        self.mapView.hidden = YES;
+        
+    }
+    else {
+        self.tableView.hidden = YES;
+        self.mapView.hidden = NO;
+    }
 }
 @end

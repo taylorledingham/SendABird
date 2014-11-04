@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901739031A09408B00741F55 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901739021A09408B00741F55 /* BirdTableViewController.m */; };
 		9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4B1A08086C00935D41 /* SentViewController.m */; };
 		9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */; };
 		9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = 9082A3D11A08338B00488DE8 /* BirdCarrier.m */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		901739011A09408B00741F55 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
+		901739021A09408B00741F55 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
 		9060BC4A1A08086C00935D41 /* SentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentViewController.h; sourceTree = "<group>"; };
 		9060BC4B1A08086C00935D41 /* SentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentViewController.m; sourceTree = "<group>"; };
 		9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAndListMessageView.h; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				99986D9E1A07558B001AA353 /* AddFriendViewController.m */,
 				99986DA61A07F00B001AA353 /* ComposeViewController.h */,
 				99986DA71A07F00B001AA353 /* ComposeViewController.m */,
+				901739011A09408B00741F55 /* BirdTableViewController.h */,
+				901739021A09408B00741F55 /* BirdTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901739031A09408B00741F55 /* BirdTableViewController.m in Sources */,
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
 				99986D991A071F70001AA353 /* SignupViewController.m in Sources */,
 				99C565011A085AFD0082549E /* SABTabBarController.m in Sources */,

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *viewSegmentControl;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)segmentViewChanged:(UISegmentedControl *)sender;
 
 @end
