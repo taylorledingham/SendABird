@@ -11,25 +11,53 @@
 
 @interface InboxViewController ()
 
+@property (strong, nonatomic) NSMutableArray *messageArray;
+@property (strong, nonatomic) NSMutableArray *recievedMessagesArray;
+
 @end
 
-@implementation InboxViewController
+@implementation InboxViewController {
+    NSDateFormatter *dateFormatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
+    self.messageArray = [[NSMutableArray alloc]init];
+    self.recievedMessagesArray = [[NSMutableArray alloc]init];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
+
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
     //no one is logged in, go to login page
         [self performSegueWithIdentifier:@"showLogin" sender:self];
-        
-    } else {
-    //if CurrentUser is logged in
-        NSLog(@"Current user: %@", currentUser.username);
     }
+//    } else {
+//    //if CurrentUser is logged in
+//        NSLog(@"Current user: %@", currentUser.username);
+//    }
     
+}
+
+-(void)loadMessageArray {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (error){
+            
+            NSLog(@"%@", error);
+        }
+        else {
+            
+            self.messageArray = [objects mutableCopy];
+            
+        }
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -40,14 +68,45 @@
         
     } else {
         //if CurrentUser is logged in
-        NSLog(@"Current user: %@", currentUser.username);
+       // NSLog(@"Current user: %@", currentUser.username);
+        [self loadMessageArray];
+        [self checkForNewMessages];
     }
+
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)checkForNewMessages {
+    
+    NSDate *date = [NSDate date];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    NSDate *date2 = [dateFormatter dateFromString:dateString];
+    
+    NSPredicate *messageDatePredicate = [NSPredicate predicateWithFormat:
+                              @"dateRecieved <= %@", date2];
+    PFQuery *query = [PFQuery queryWithClassName:@"Message" predicate:messageDatePredicate];
+    [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (error){
+            
+            NSLog(@"%@", error);
+        }
+        else {
+            
+            self.recievedMessagesArray = [objects mutableCopy];
+            [self.tableView reloadData];
+            
+        }
+    }];
+
+    
+    
 }
 
 
@@ -61,26 +120,35 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.recievedMessagesArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
+    PFUser *sender = (PFUser *)message[@"sender"];
+//    if(reciever[@"username"]!=nil){
+//    cell.textLabel.text = reciever[@"username"];
+//    }
+    cell.textLabel.text = message[@"message"];
     
     return cell;
 }
-*/
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    [self checkForNewMessages];
+
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

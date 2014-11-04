@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 @interface SentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *viewSegmentControl;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)segmentViewChanged:(UISegmentedControl *)sender;
 
 @end

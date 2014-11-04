@@ -11,6 +11,7 @@
 @interface SentViewController ()
 
 @property (nonatomic, strong) NSMutableArray *locations;
+@property (nonatomic, strong) NSMutableArray *sentMessagesArray;
 
 @end
 
@@ -22,6 +23,7 @@
     self.mapView.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.viewSegmentControl.selectedSegmentIndex = 0;
     
     self.tableView.hidden = YES;
     
@@ -34,6 +36,14 @@
     annotationStart.coordinate = toronto.coordinate;
     [self.mapView addAnnotation:annotationStart];
     
+    [self loadSentMessages];
+    
+
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self loadSentMessages];
+    self.viewSegmentControl.selectedSegmentIndex = 0;
 
 }
 
@@ -42,12 +52,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loadSentMessages {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"sender" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (error){
+            
+            NSLog(@"%@", error);
+        }
+        else {
+            
+            self.sentMessagesArray = [objects mutableCopy];
+            
+        }
+    }];
+
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.locations.count;
+    return self.sentMessagesArray.count;
     
 }
 
@@ -55,9 +86,9 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    
-    NSString *loc = [self.locations objectAtIndex:indexPath.row];
-    cell.textLabel.text =  loc;
+    PFObject *message = [self.sentMessagesArray objectAtIndex:indexPath.row];
+    //NSString *sender = message[@"sender"][@"username"];
+    cell.textLabel.text =  message[@"message"];
     
     return cell;
     
@@ -74,6 +105,17 @@
 }
 */
 
+
+
 - (IBAction)segmentViewChanged:(UISegmentedControl *)sender {
+    if(sender.selectedSegmentIndex == 0){
+        self.tableView.hidden = NO;
+        self.mapView.hidden = YES;
+        
+    }
+    else {
+        self.tableView.hidden = YES;
+        self.mapView.hidden = NO;
+    }
 }
 @end

@@ -30,6 +30,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    if ([PFUser currentUser] && // Check if user is cached
+        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) { // Check if user is linked to Facebook
+        // Present the next view controller without animation
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+
+}
+
 /*
 #pragma mark - Navigation
 
