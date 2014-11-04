@@ -42,6 +42,7 @@
 		99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA71A07F00B001AA353 /* ComposeViewController.m */; };
 		99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C564FB1A08513B0082549E /* FriendsViewController.m */; };
 		99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C564FD1A08534C0082549E /* FacebookSDK.framework */; };
+		99C565011A085AFD0082549E /* SABTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565001A085AFD0082549E /* SABTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		99C564FA1A08513B0082549E /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		99C564FB1A08513B0082549E /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		99C564FD1A08534C0082549E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		99C564FF1A085AFD0082549E /* SABTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SABTabBarController.h; path = ../SABTabBarController.h; sourceTree = "<group>"; };
+		99C565001A085AFD0082549E /* SABTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SABTabBarController.m; path = ../SABTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 		99986D721A0707EA001AA353 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99C564FF1A085AFD0082549E /* SABTabBarController.h */,
+				99C565001A085AFD0082549E /* SABTabBarController.m */,
 				99C564FA1A08513B0082549E /* FriendsViewController.h */,
 				99C564FB1A08513B0082549E /* FriendsViewController.m */,
 				9082A3D01A08338B00488DE8 /* BirdCarrier.h */,
@@ -360,6 +365,7 @@
 			files = (
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
 				99986D991A071F70001AA353 /* SignupViewController.m in Sources */,
+				99C565011A085AFD0082549E /* SABTabBarController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
 				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,

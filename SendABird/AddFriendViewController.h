@@ -11,7 +11,7 @@
 
 @interface AddFriendViewController : UITableViewController<UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, strong) NSArray *allUsers;
 @property (nonatomic, strong) NSArray *visibleUsers;

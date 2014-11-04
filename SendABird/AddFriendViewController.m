@@ -132,6 +132,8 @@
     }];
 }
 
+//when switch tab, exit out of search controller
+
 /*
  #pragma mark - Property Overrides
  
