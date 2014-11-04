@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface AddFriendViewController : UITableViewController<UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, strong) NSArray *allUsers;
 @property (nonatomic, strong) NSArray *visibleUsers;
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end

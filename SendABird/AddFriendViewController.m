@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.currentUser = [PFUser currentUser];
+    
     self.visibleUsers = nil;
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -113,10 +115,24 @@
 }
 
 #pragma mark - Table View Delegate
+
+//ikon
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+    //get user tapped on:
+    PFUser *user = [self.visibleUsers objectAtIndex:indexPath.row];
+    [friendsRelation addObject:user];
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@, %@", error, [error userInfo]);
+        }
+    }];
 }
+
+//when switch tab, exit out of search controller
 
 /*
  #pragma mark - Property Overrides

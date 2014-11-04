@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Ra3-wT-3kE">
             <objects>
-                <tabBarController id="qSn-FA-8uk" sceneMemberID="viewController">
+                <tabBarController id="qSn-FA-8uk" customClass="SABTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Wdd-Pp-hIy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
