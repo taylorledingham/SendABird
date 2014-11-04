@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "FriendCell.h"
 
 @interface FriendsViewController : UITableViewController
 
 @property (nonatomic, strong) PFRelation *friendsRelation;
 @property (nonatomic, strong) NSArray *friendsArray;
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end

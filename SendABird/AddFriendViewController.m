@@ -23,10 +23,8 @@
     
     self.currentUser = [PFUser currentUser];
  
-    //
-    
+    //fixes search bar issue:
     self.definesPresentationContext = YES;
-    //
     
     self.visibleUsers = nil;
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
@@ -36,13 +34,12 @@
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     
-    
-    
 }
 
 //called whenever open view
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:NO];
     PFQuery *query = [PFUser query];
     [query orderByAscending:@"username"];
     [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
@@ -125,8 +122,16 @@
         cell.friendLabel.text = user.username;
         NSLog(@"Username: %@", user.username);
     
+    ///// STRETCH GOAL: this will be inadequate if you have MANY users to go through.
+    if ([self isFriend:user]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
+
 
 #pragma mark - Table View Delegate
 
@@ -134,16 +139,51 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+    PFUser *friend = [self.visibleUsers objectAtIndex:indexPath.row]; //friend tapped on
     PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
-    //get user tapped on:
-    PFUser *user = [self.visibleUsers objectAtIndex:indexPath.row];
-    [friendsRelation addObject:user];
+    
+    if ([self isFriend:friend]) {  //delete them
+        //1 remove checkmark
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        //2 remove from array of friends
+        for (PFUser *eachFriend in self.friends) {
+            if ([eachFriend.objectId isEqualToString:friend.objectId]) {
+                [self.friends removeObject:eachFriend];
+                break;
+            }
+        }
+        //3 remove from the backend
+        [friendsRelation removeObject:friend];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //then add them to our arrays
+        [self.friends addObject:friend];
+        //add them:
+        [friendsRelation addObject:friend];
+        
+    }
+    
+    //save this info
     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"Error %@, %@", error, [error userInfo]);
         }
     }];
+
+}
+
+#pragma mark - Helper Methods
+
+//called through each time a cell is loaded in our Table View. want to loop thorugh our list of friends, if match is found, return TRUE
+//list of users all found on back end.
+-(BOOL)isFriend:(PFUser*)user {
+    for (PFUser *friend in self.friends) {
+        if ([friend.objectId isEqualToString:user.objectId]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 //when switch tab, exit out of search controller

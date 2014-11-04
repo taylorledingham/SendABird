@@ -24,9 +24,15 @@
 {
     self.delegate = self;
 
-    if (self.selectedViewController == self.viewControllers[0] || self.selectedViewController == self.viewControllers[2] || self.selectedViewController == self.viewControllers[3])
-    {
-        self.viewControllers[1];
+}
+
+//Goes back to Friends view controller not AddFriends view controller if click on Friends tab.
+//STRETCH GOAL: figure out how to change UISearchBar not to be in nav, because if cursor is selected in UISearchBar while navigate to diff page, when come back to Friends tab, nav is gone.
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController  {
+    if (tabBarController.selectedIndex == 1) {
+        //YOUR_TAB_INDEX is the index of the tab bar item for which you want to show the rootView controller
+        UINavigationController *navController = (UINavigationController*)viewController;
+        [navController popToRootViewControllerAnimated:YES];
     }
 }
 
