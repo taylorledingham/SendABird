@@ -20,12 +20,8 @@
 //called only once when loaded from storyboard
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.currentUser = [PFUser currentUser];
- 
-    //fixes search bar issue:
-    self.definesPresentationContext = YES;
-    
+    self.definesPresentationContext = YES; // fixes search bar issue
     self.visibleUsers = nil;
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -33,7 +29,6 @@
     [self.searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.dimsBackgroundDuringPresentation = NO;
-    
 }
 
 //called whenever open view
@@ -120,7 +115,6 @@
 
         PFUser *user = [self.visibleUsers objectAtIndex:indexPath.row];
         cell.friendLabel.text = user.username;
-        NSLog(@"Username: %@", user.username);
     
     ///// STRETCH GOAL: this will be inadequate if you have MANY users to go through.
     if ([self isFriend:user]) {

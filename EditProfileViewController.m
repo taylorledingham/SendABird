@@ -8,6 +8,8 @@
 
 #import "EditProfileViewController.h"
 #import <Parse/Parse.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface EditProfileViewController ()
 
@@ -22,20 +24,89 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    //*****have to add any changes to viewWillAppear - viewDidLoad never gets called if you log out and log in as a different person.
+    //also have to reset currentUser within viewWillAppear, otherwise self.currentUser will be the previously logged out user.
+    self.currentUser = [PFUser currentUser];
+    NSLog(@"Current user in Profile: %@", self.currentUser.username);
+    
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    self.emailField.delegate = self;
+    
+    PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+    [self reverseGeocodeLocation:myGeopoint];
+    
+    if (self.currentUser !=nil) {
+        self.usernameField.text = self.currentUser.username;
+        self.passwordField.text = self.currentUser.password;
+        self.emailField.text = self.currentUser.email;
+        NSLog(@"my address: %@", self.myAddress);
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (void)reverseGeocodeLocation:(PFGeoPoint *)geopoint {
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:geopoint.latitude longitude:geopoint.longitude];
+    [geoCoder reverseGeocodeLocation:myLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if (placemarks) {
+            for (CLPlacemark * placemark in placemarks) {
+                self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+                self.locationText.text = self.myAddress;
+            }
+        }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    }];
 }
-*/
+    
+- (IBAction)save:(id)sender {
+    
+    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *email = [self.emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([username length]==0 || [password length]==0 || [email length]==0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Make sure you enter a valid username, password and email!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alertView show];
+    } else {
+        
+        self.currentUser.username = username;
+        self.currentUser.password = password;
+        self.currentUser.email = email;
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                NSLog(@"New Email: %@", self.currentUser.email);
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Saved" message:@"Your profile has been updated!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                
+                [alertView show];
+                
+            } else {
+                NSString *errorString = [error userInfo][@"error"];
+                // Show the errorString somewhere and let the user try again.
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" message:errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                
+                [alertView show];
+            }
+        }];
+    }
+}
 
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
@@ -43,4 +114,8 @@
     NSLog(@"Current user: %@", currentUser.username);
     [self.tabBarController setSelectedIndex:0];
 }
+- (void)dismissSelf {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+    
 @end

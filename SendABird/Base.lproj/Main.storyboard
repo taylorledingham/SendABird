@@ -34,6 +34,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Tu8-fz-KG9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K0v-Ra-HAt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -52,6 +53,7 @@
                         <viewControllerLayoutGuide type="bottom" id="c1B-7h-qeR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m6t-bc-IwZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -70,6 +72,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pwb-Vt-kly"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zLm-TI-uF2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -88,6 +91,7 @@
                         <viewControllerLayoutGuide type="bottom" id="p4y-vs-4sW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MKK-pX-tOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
