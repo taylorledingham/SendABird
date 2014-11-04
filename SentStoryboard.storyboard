@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="1242" y="831"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Send To Friend Table View Controller-->
         <scene sceneID="Ed0-ye-pDb">
             <objects>
-                <tableViewController id="Hgl-w4-DcQ" sceneMemberID="viewController">
+                <tableViewController id="Hgl-w4-DcQ" customClass="SendToFriendTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="030-AM-QOn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,16 +270,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rd8-VC-lDK">
-                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
-                                <segments>
-                                    <segment title="View List"/>
-                                    <segment title="View Map"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentViewChanged:" destination="J5K-FK-3ec" eventType="valueChanged" id="igL-UB-d86"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFc-WA-PgM" customClass="MapAndListMessageView">
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I1Q-TV-767"/>
@@ -339,45 +329,55 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rd8-VC-lDK">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="View List"/>
+                                    <segment title="View Map"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentViewChanged:" destination="J5K-FK-3ec" eventType="valueChanged" id="igL-UB-d86"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rd8-VC-lDK" firstAttribute="leading" secondItem="fbG-9V-dcJ" secondAttribute="leadingMargin" constant="111" id="5K9-Uv-2Iw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rd8-VC-lDK" secondAttribute="trailing" constant="110" id="7NN-KP-u7L"/>
-                            <constraint firstItem="rd8-VC-lDK" firstAttribute="top" secondItem="7Jm-NX-WA7" secondAttribute="bottom" constant="8" id="BLQ-2A-cP2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rd8-VC-lDK" secondAttribute="trailing" constant="64" id="34o-7r-Sna"/>
+                            <constraint firstItem="eFc-WA-PgM" firstAttribute="top" secondItem="rd8-VC-lDK" secondAttribute="bottom" constant="27" id="6XO-r0-gvc"/>
+                            <constraint firstItem="rd8-VC-lDK" firstAttribute="top" secondItem="7Jm-NX-WA7" secondAttribute="bottom" constant="8" id="MY2-ix-fWu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="eFc-WA-PgM" secondAttribute="bottom" id="MqZ-n5-oyY"/>
+                            <constraint firstItem="rd8-VC-lDK" firstAttribute="leading" secondItem="fbG-9V-dcJ" secondAttribute="leadingMargin" constant="64" id="Y1x-w9-VEk"/>
                             <constraint firstItem="eFc-WA-PgM" firstAttribute="leading" secondItem="fbG-9V-dcJ" secondAttribute="leadingMargin" id="YaI-gR-YdQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eFc-WA-PgM" secondAttribute="trailing" id="kQA-zO-9wd"/>
-                            <constraint firstItem="eFc-WA-PgM" firstAttribute="top" secondItem="rd8-VC-lDK" secondAttribute="bottom" constant="27" id="w7p-vu-TVv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="rd8-VC-lDK"/>
                                 <exclude reference="eFc-WA-PgM"/>
+                                <exclude reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="34o-7r-Sna"/>
+                                <exclude reference="MY2-ix-fWu"/>
+                                <exclude reference="Y1x-w9-VEk"/>
+                                <exclude reference="6XO-r0-gvc"/>
                                 <exclude reference="MqZ-n5-oyY"/>
                                 <exclude reference="YaI-gR-YdQ"/>
                                 <exclude reference="kQA-zO-9wd"/>
-                                <exclude reference="w7p-vu-TVv"/>
-                                <exclude reference="5K9-Uv-2Iw"/>
-                                <exclude reference="7NN-KP-u7L"/>
-                                <exclude reference="BLQ-2A-cP2"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="rd8-VC-lDK"/>
                                 <include reference="eFc-WA-PgM"/>
+                                <include reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="34o-7r-Sna"/>
+                                <include reference="MY2-ix-fWu"/>
+                                <include reference="Y1x-w9-VEk"/>
+                                <include reference="6XO-r0-gvc"/>
                                 <include reference="MqZ-n5-oyY"/>
                                 <include reference="YaI-gR-YdQ"/>
                                 <include reference="kQA-zO-9wd"/>
-                                <include reference="w7p-vu-TVv"/>
-                                <include reference="5K9-Uv-2Iw"/>
-                                <include reference="7NN-KP-u7L"/>
-                                <include reference="BLQ-2A-cP2"/>
                             </mask>
                         </variation>
                     </view>

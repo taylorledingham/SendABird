@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "BirdTableViewController.h"
+#import "SendToFriendTableViewController.h"
 
 @interface ComposeViewController ()
 
@@ -33,20 +34,17 @@
 
 -(void)doneSendMessage {
     
-        PFUser *currentUser = [PFUser currentUser];
-//        NSString *user2 = @"Bobby";
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:
-//                                  @"email = 'bobby@mail.com'"];
-        PFQuery *query = [PFUser query];
-        //PFQuery *query = [PFQuery queryWithClassName:@"User" predicate:predicate];
-        //PFQuery *query = [PFQuery queryWithClassName:@"User"];
-        [query whereKey:@"username" equalTo:@"Bobby"];
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                 @"objectId == %@", self.reciever.objectId];
+   // PFQuery *query = [PF]
+        PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
+    
+    
+    
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!object) {
                 NSLog(@"The getFirstObject request failed.");
-                // The find succeeded.
-               // NSLog(@"Successfully retrieved %d scores.", objects.count);
-                // Do something with the found objects
     
             } else {
                 // The find succeeded.
@@ -74,6 +72,7 @@
                 NSDate *myDate = [NSDate date];
                     message[@"dateSent"] = myDate;
                 [message saveInBackground];
+                    [self.navigationController popViewControllerAnimated:YES];
 
 
                 }
@@ -83,7 +82,6 @@
         }];
     
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 
 
     
@@ -162,7 +160,22 @@
         
     }
     
+    else if ([segue.identifier isEqualToString:@"showFriendsToSendTo"]){
+        
+        SendToFriendTableViewController *sendFriendTVC = segue.destinationViewController;
+        sendFriendTVC.delegate = self;
+        sendFriendTVC.currentUser = self.reciever;
+        
+    }
     
+    
+}
+
+-(void)fetchMessageReciever:(PFUser *)reciever {
+    self.reciever = reciever;
+    NSString *username = reciever[@"username"];
+    self.senderLabel.text = username;
+    [self.tableView reloadData];
 }
 
 
