@@ -51,6 +51,9 @@
 		99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565111A087B6C0082549E /* LoadStoryboardIndexViewController.m */; };
 		99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */; };
 		99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */; };
+		99C5651C1A08A0B70082549E /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C5651B1A08A0B70082549E /* FriendCell.m */; };
+		99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA55291A096B2A00A66769 /* AddressBook.framework */; };
+		99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA552A1A096B2A00A66769 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,10 @@
 		99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardSentViewController.m; path = ../LoadStoryboardSentViewController.m; sourceTree = "<group>"; };
 		99C565161A08828C0082549E /* LoadStoryboardFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadStoryboardFriendsViewController.h; path = ../LoadStoryboardFriendsViewController.h; sourceTree = "<group>"; };
 		99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardFriendsViewController.m; path = ../LoadStoryboardFriendsViewController.m; sourceTree = "<group>"; };
+		99C5651A1A08A0B70082549E /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		99C5651B1A08A0B70082549E /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		99EA55291A096B2A00A66769 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		99EA552A1A096B2A00A66769 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */,
+				99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */,
 				99C564FE1A08534C0082549E /* FacebookSDK.framework in Frameworks */,
 				99986D931A071D5B001AA353 /* libz.dylib in Frameworks */,
 				99986D7F1A071C51001AA353 /* CoreGraphics.framework in Frameworks */,
@@ -170,6 +179,8 @@
 		99986D3D1A06F16C001AA353 = {
 			isa = PBXGroup;
 			children = (
+				99EA55291A096B2A00A66769 /* AddressBook.framework */,
+				99EA552A1A096B2A00A66769 /* AddressBookUI.framework */,
 				99986D481A06F16C001AA353 /* SendABird */,
 				99986D621A06F16C001AA353 /* SendABirdTests */,
 				99986D471A06F16C001AA353 /* Products */,
@@ -200,6 +211,8 @@
 				99986D561A06F16C001AA353 /* Images.xcassets */,
 				99986DA31A07680E001AA353 /* SearchFriendCell.h */,
 				99986DA41A07680E001AA353 /* SearchFriendCell.m */,
+				99C5651A1A08A0B70082549E /* FriendCell.h */,
+				99C5651B1A08A0B70082549E /* FriendCell.m */,
 				99986D581A06F16C001AA353 /* LaunchScreen.xib */,
 				99986D791A071C0F001AA353 /* Frameworks */,
 				99986D491A06F16C001AA353 /* Supporting Files */,
@@ -240,6 +253,8 @@
 				99C565001A085AFD0082549E /* SABTabBarController.m */,
 				99C564FA1A08513B0082549E /* FriendsViewController.h */,
 				99C564FB1A08513B0082549E /* FriendsViewController.m */,
+				99986D9D1A07558B001AA353 /* AddFriendViewController.h */,
+				99986D9E1A07558B001AA353 /* AddFriendViewController.m */,
 				9082A3D01A08338B00488DE8 /* BirdCarrier.h */,
 				9082A3D11A08338B00488DE8 /* BirdCarrier.m */,
 				9082A3D21A08338B00488DE8 /* CommsLogin.h */,
@@ -252,8 +267,6 @@
 				99986D981A071F70001AA353 /* SignupViewController.m */,
 				99986D9A1A0731D5001AA353 /* EditProfileViewController.h */,
 				99986D9B1A0731D5001AA353 /* EditProfileViewController.m */,
-				99986D9D1A07558B001AA353 /* AddFriendViewController.h */,
-				99986D9E1A07558B001AA353 /* AddFriendViewController.m */,
 				99986DA61A07F00B001AA353 /* ComposeViewController.h */,
 				99986DA71A07F00B001AA353 /* ComposeViewController.m */,
 			);
@@ -414,6 +427,7 @@
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
 				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,
 				99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */,
+				99C5651C1A08A0B70082549E /* FriendCell.m in Sources */,
 				9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */,
 				99986D9F1A07558B001AA353 /* AddFriendViewController.m in Sources */,
 				99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */,

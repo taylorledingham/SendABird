@@ -104,7 +104,6 @@
         
     } else {
         
-        
         [[[UIAlertView alloc] initWithTitle:@"Login Failed"
                                     message:@"Facebook Login failed. Please try again"
                                    delegate:nil

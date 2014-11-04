@@ -7,6 +7,7 @@
 //
 
 #import "FriendsViewController.h"
+#import "AddFriendViewController.h"
 
 @interface FriendsViewController ()
 
@@ -16,11 +17,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //view did load never gets called after logging out and logging back in
     
-    self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
+    NSLog(@"Current user in FriendsView: %@", self.currentUser.username);
+    
+    self.friendsArray = nil;
+    
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    //*****have to add any changes to viewWillAppear - viewDidLoad never gets called if you log out and log in as a different person.
+    //also have to reset currentUser within viewWillAppear, otherwise self.currentUser will be the previously logged out user.
+    self.currentUser = [PFUser currentUser];
+    NSLog(@"Current user in FriendsView-ViewWillAppear: %@", self.currentUser.username);
+    
+    [self.tableView reloadData];
+    self.friendsRelation = [self.currentUser objectForKey:@"friendsRelation"];
     
     //need to make a call to the backend to get the data for the relation
     PFQuery *query = [self.friendsRelation query];
+    query.cachePolicy = kPFCachePolicyNetworkOnly;
     [query orderByAscending:@"username"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -29,15 +52,24 @@
         else {
             self.friendsArray = objects;
             //don't you have to put this back in the main queue???????
-            [self.tableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+
+            });
+
         }
     }];
+
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showAddFriends"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddFriendViewController *addFriendViewController = (AddFriendViewController*)[navigationController topViewController];
+        addFriendViewController.friends = [NSMutableArray arrayWithArray:self.friendsArray];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,22 +85,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.friendsArray count];
 }
 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *CellIdentifier = @"FriendCell";
-//    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    PFUser *user = [self.friendsArray objectAtIndex:indexPath.row];
-//    cell.textLabel.text = user.username;
-//    
-//    return cell;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"FriendCell";
+    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    PFUser *friend = [self.friendsArray objectAtIndex:indexPath.row];
+    cell.friendLabel.text = friend.username;
+    
+    return cell;
+}
 
 
 /*
