@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 @interface SentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
 

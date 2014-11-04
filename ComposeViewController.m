@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
    // self.tableView.delegate = self;
     
-    
+    self.messageTextView.delegate = self;
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
     self.navigationItem.rightBarButtonItem = sendButton;
     
@@ -74,13 +74,18 @@
                 NSDate *myDate = [NSDate date];
                     message[@"dateSent"] = myDate;
                 [message saveInBackground];
+
+
                 }
                 }];
     
             }
         }];
+    
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 
-    [self dismissSelf];
+
     
 }
 
@@ -135,13 +140,6 @@
     
 }
 
-
--(void) textFieldDidEndEditing:(UITextField *)textField {
-    
-    
-    [textField resignFirstResponder];
-    
-}
 
 -(void)didTapAnywhere: (UITapGestureRecognizer*) recognizer {
     [self.messageTextView resignFirstResponder];

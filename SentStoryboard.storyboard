@@ -9,7 +9,6 @@
         <!--Compose View Controller-->
         <scene sceneID="gsn-sU-XG5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rEI-92-a7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="wKt-Lj-R9h" customClass="ComposeViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NeV-MD-4O5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -28,9 +27,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="22" y="8" width="286" height="63"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -206,6 +202,7 @@
                         <outlet property="typeOfBirdLabel" destination="Tos-Ju-DnL" id="PM4-x0-zlK"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rEI-92-a7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="283.5" y="495"/>
         </scene>
@@ -214,6 +211,7 @@
             <objects>
                 <tableViewController id="4DT-NM-SNX" customClass="BirdTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kT7-0e-iaP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>

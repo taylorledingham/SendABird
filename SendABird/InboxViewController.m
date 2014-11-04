@@ -16,7 +16,9 @@
 
 @end
 
-@implementation InboxViewController
+@implementation InboxViewController {
+    NSDateFormatter *dateFormatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,17 +26,19 @@
     [self.navigationItem setHidesBackButton:YES];
     self.messageArray = [[NSMutableArray alloc]init];
     self.recievedMessagesArray = [[NSMutableArray alloc]init];
-    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
+
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
     //no one is logged in, go to login page
         [self performSegueWithIdentifier:@"showLogin" sender:self];
-        
-    } else {
-    //if CurrentUser is logged in
-        NSLog(@"Current user: %@", currentUser.username);
     }
+//    } else {
+//    //if CurrentUser is logged in
+//        NSLog(@"Current user: %@", currentUser.username);
+//    }
     
 }
 
@@ -64,8 +68,11 @@
         
     } else {
         //if CurrentUser is logged in
-        NSLog(@"Current user: %@", currentUser.username);
+       // NSLog(@"Current user: %@", currentUser.username);
+        [self loadMessageArray];
+        [self checkForNewMessages];
     }
+
 
 }
 
@@ -76,8 +83,12 @@
 
 -(void)checkForNewMessages {
     
+    NSDate *date = [NSDate date];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    NSDate *date2 = [dateFormatter dateFromString:dateString];
+    
     NSPredicate *messageDatePredicate = [NSPredicate predicateWithFormat:
-                              @"dateRecieved <= '%@'", [NSDate date]];
+                              @"dateRecieved <= %@", date2];
     PFQuery *query = [PFQuery queryWithClassName:@"Message" predicate:messageDatePredicate];
     [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -123,9 +134,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
-    PFObject *reciever = message[@"reciever"];
-    cell.textLabel.text = reciever[@"name"];
-    
+    PFUser *sender = (PFUser *)message[@"sender"];
+//    if(reciever[@"username"]!=nil){
+//    cell.textLabel.text = reciever[@"username"];
+//    }
+    cell.textLabel.text = message[@"message"];
     
     return cell;
 }

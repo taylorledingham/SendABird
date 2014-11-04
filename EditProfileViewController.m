@@ -40,7 +40,7 @@
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
     PFUser *currentUser = [PFUser currentUser]; // this will now be nil
-    NSLog(@"Current user: %@", currentUser.username);
+    NSLog(@"Current logged out user: %@", currentUser.username);
     [self.tabBarController setSelectedIndex:0];
 }
 @end
