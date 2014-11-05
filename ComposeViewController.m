@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     // self.tableView.delegate = self;
     
+    
     self.messageTextView.delegate = self;
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
     self.navigationItem.rightBarButtonItem = sendButton;
@@ -33,10 +34,11 @@
 }
 
 -(void)doneSendMessage {
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
                               @"objectId == %@", self.reciever.objectId];
     PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
-
+    
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!object) {
             NSLog(@"The getFirstObject request failed.");
@@ -180,6 +182,20 @@
     self.typeOfBirdLabel.text = self.bird.name;
     [self.tableView reloadData];
 }
+
+- (IBAction)takePicture:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera] == YES){
+        // Create image picker controller
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.allowsEditing = NO;
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+        
+        // Show image picker
+        [self presentViewController:self.imagePicker animated:NO completion:nil];
+    }}
 
 - (IBAction)goBack:(id)sender {
     [self dismissSelf];
