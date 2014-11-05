@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "BirdCarrier.h"
+#include <stdlib.h>
 
 @protocol SetBirdProtocol <NSObject>
 
@@ -22,8 +23,12 @@
 
 @end
 
-@interface ComposeViewController : UITableViewController <UITableViewDelegate, SetBirdProtocol, UITextViewDelegate, SetRecieverProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate> //**
+@interface ComposeViewController : UITableViewController <UITableViewDelegate, SetBirdProtocol, UITextViewDelegate, SetRecieverProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    NSMutableArray *allImages;
+}
 
+- (IBAction)takePicture:(id)sender;
 - (IBAction)goBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *senderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;

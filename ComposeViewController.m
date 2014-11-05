@@ -23,11 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    // self.tableView.delegate = self;
-    self.imagePicker = [[UIImagePickerController alloc] init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.allowsEditing = NO;
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+
     
     self.messageTextView.delegate = self;
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
@@ -39,12 +35,9 @@
 
 -(void)doneSendMessage {
     
-
         NSPredicate *predicate = [NSPredicate predicateWithFormat:
                                  @"objectId == %@", self.reciever.objectId];
         PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
-    
-    
     
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!object) {
@@ -76,7 +69,7 @@
                 NSDate *myDate = [NSDate date];
                     message[@"dateSent"] = myDate;
                 [message saveInBackground];
-                    [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
 
 
                 }
@@ -189,6 +182,20 @@
     self.typeOfBirdLabel.text = self.bird.name;
     [self.tableView reloadData];
 }
+
+- (IBAction)takePicture:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera] == YES){
+        // Create image picker controller
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.allowsEditing = NO;
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+        
+        // Show image picker
+        [self presentViewController:self.imagePicker animated:NO completion:nil];
+    }}
 
 - (IBAction)goBack:(id)sender {
     [self dismissSelf];

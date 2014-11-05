@@ -166,32 +166,41 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDq-dH-1H5" id="LRd-p2-6Tp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Sh-0M-dBB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="14" y="16" width="150" height="150"/>
-                                                    </variation>
-                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V91-be-A84">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="Button">
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Attach Picture">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="222" y="49" width="46" height="30"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="23" y="23" width="125" height="30"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="takePicture:" destination="wKt-Lj-R9h" eventType="touchUpInside" id="wUP-FC-BEq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V91-be-A84" firstAttribute="leading" secondItem="LRd-p2-6Tp" secondAttribute="leadingMargin" constant="15" id="XB5-e6-XMZ"/>
+                                                <constraint firstItem="V91-be-A84" firstAttribute="top" secondItem="LRd-p2-6Tp" secondAttribute="topMargin" constant="15" id="uff-3R-kRf"/>
+                                            </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="9Sh-0M-dBB"/>
                                                     <exclude reference="V91-be-A84"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="XB5-e6-XMZ"/>
+                                                    <exclude reference="uff-3R-kRf"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="9Sh-0M-dBB"/>
                                                     <include reference="V91-be-A84"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="XB5-e6-XMZ"/>
+                                                    <include reference="uff-3R-kRf"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -207,7 +216,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="messageImageView" destination="9Sh-0M-dBB" id="LhR-Ra-deB"/>
                         <outlet property="messageTextView" destination="BBF-2j-IDD" id="MhC-da-hoe"/>
                         <outlet property="senderLabel" destination="FmB-Te-mbB" id="QW6-30-dQG"/>
                         <outlet property="typeOfBirdLabel" destination="Tos-Ju-DnL" id="PM4-x0-zlK"/>
