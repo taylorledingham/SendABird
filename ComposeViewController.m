@@ -183,7 +183,14 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)takePicture:(id)sender {
+#pragma mark - Picture Actions
+
+
+
+- (IBAction)refresh:(id)sender {
+    
+}
+- (IBAction)cameraButtonTapped:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera] == YES){
         // Create image picker controller
@@ -191,11 +198,49 @@
         self.imagePicker.delegate = self;
         self.imagePicker.allowsEditing = NO;
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
         
-        // Show image picker
-        [self presentViewController:self.imagePicker animated:NO completion:nil];
-    }}
+        
+    } else {
+        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+    // Show image picker
+    [self presentViewController:self.imagePicker animated:NO completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    // Access the uncropped image from info dictionary
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    // Dismiss controller
+//    [self.imagePicker dismissModalViewControllerAnimated:YES];
+    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
+    
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [image drawInRect: CGRectMake(0, 0, 640, 960)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Upload image
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
+    [self uploadImage:imageData];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)uploadImage:(NSData *)imageData {
+    
+}
+- (void)setUpImages:(NSArray *)images {
+    
+}
+- (void)buttonTouched:(id)sender {
+    
+}
 
 - (IBAction)goBack:(id)sender {
     [self dismissSelf];

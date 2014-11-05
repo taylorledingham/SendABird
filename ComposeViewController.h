@@ -28,8 +28,14 @@
     NSMutableArray *allImages;
 }
 
-- (IBAction)takePicture:(id)sender;
 - (IBAction)goBack:(id)sender;
+
+- (IBAction)refresh:(id)sender;
+- (IBAction)cameraButtonTapped:(id)sender;
+- (void)uploadImage:(NSData *)imageData;
+- (void)setUpImages:(NSArray *)images;
+- (void)buttonTouched:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *senderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImageView;

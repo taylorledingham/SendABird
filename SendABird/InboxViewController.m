@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *messageArray;
 @property (strong, nonatomic) NSMutableArray *recievedMessagesArray;
+@property (strong, nonatomic) NSMutableArray *orderedMessagesArray;
 
 @end
 
@@ -90,11 +91,16 @@
         else {
             
             self.recievedMessagesArray = [objects mutableCopy];
+//            self.orderedMessagesArray = [self.recievedMessagesArray sortedArrayUsingSelector:@selector(compare:(PFObject*)message[@"dateRecieved"])];
             [self.tableView reloadData];
             
         }
     }];
 }
+//
+//- (NSComparisonResult)compare:(PFObject *)message {
+//    return [self[@[@"dateRecieved"]] compare:message[@"dateRecieved"]];
+//}
 
 
 #pragma mark - Table view data source
@@ -132,6 +138,13 @@
     cell.dateSentLabel.text = stringFromSentDate;
     cell.dateRecievedLabel.text = stringFromRecDate;
     
+    if (message[@"isRead"]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+
+    
     return cell;
 }
 
@@ -141,6 +154,29 @@
 
     
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row]; //msg tapped
+    
+    if (message[@"isRead"]) {  //delete them
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        message[@"isRead"]=[NSNumber numberWithBool:YES];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
+    //save this info
+    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@, %@", error, [error userInfo]);
+        }
+    }];
+    
+}
+
 
 #pragma mark - Segues
 

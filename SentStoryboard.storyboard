@@ -166,41 +166,53 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDq-dH-1H5" id="LRd-p2-6Tp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V91-be-A84">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gn-Tp-oaO">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Attach Picture">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="125" id="kF4-6M-GK9"/>
+                                                        <constraint firstAttribute="height" constant="125" id="qof-xQ-9Ha"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="cam.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="kF4-6M-GK9"/>
+                                                            <exclude reference="qof-xQ-9Ha"/>
+                                                        </mask>
+                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="23" y="23" width="125" height="30"/>
+                                                        <rect key="frame" x="18" y="8" width="125" height="125"/>
+                                                        <mask key="constraints">
+                                                            <include reference="kF4-6M-GK9"/>
+                                                            <include reference="qof-xQ-9Ha"/>
+                                                        </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="takePicture:" destination="wKt-Lj-R9h" eventType="touchUpInside" id="wUP-FC-BEq"/>
+                                                        <action selector="cameraButtonTapped:" destination="wKt-Lj-R9h" eventType="touchUpInside" id="dxD-2J-qUk"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="V91-be-A84" firstAttribute="leading" secondItem="LRd-p2-6Tp" secondAttribute="leadingMargin" constant="15" id="XB5-e6-XMZ"/>
-                                                <constraint firstItem="V91-be-A84" firstAttribute="top" secondItem="LRd-p2-6Tp" secondAttribute="topMargin" constant="15" id="uff-3R-kRf"/>
+                                                <constraint firstItem="6Gn-Tp-oaO" firstAttribute="top" secondItem="LRd-p2-6Tp" secondAttribute="topMargin" constant="15" id="ItN-lh-rcB"/>
+                                                <constraint firstItem="6Gn-Tp-oaO" firstAttribute="leading" secondItem="LRd-p2-6Tp" secondAttribute="leadingMargin" constant="10" id="mBr-JO-1uA"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="V91-be-A84"/>
+                                                    <exclude reference="6Gn-Tp-oaO"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="XB5-e6-XMZ"/>
-                                                    <exclude reference="uff-3R-kRf"/>
+                                                    <exclude reference="ItN-lh-rcB"/>
+                                                    <exclude reference="mBr-JO-1uA"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="V91-be-A84"/>
+                                                    <include reference="6Gn-Tp-oaO"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="XB5-e6-XMZ"/>
-                                                    <include reference="uff-3R-kRf"/>
+                                                    <include reference="ItN-lh-rcB"/>
+                                                    <include reference="mBr-JO-1uA"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -438,4 +450,7 @@
             <point key="canvasLocation" x="-1462.5" y="466.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cam.png" width="256" height="256"/>
+    </resources>
 </document>
