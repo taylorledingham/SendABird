@@ -65,10 +65,36 @@
         BirdCarrier *myBird = [[BirdCarrier alloc]init];
         myBird.name = bird[@"name"];
         myBird.speed = [bird[@"speed"] doubleValue];
+        myBird.birdImage = [self getImageforBirdName:myBird.name];
         [self.birdArray addObject:myBird];
         
     }
     
+}
+
+-(UIImage *)getImageforBirdName:(NSString *)birdName {
+    
+    UIImage *pinImage;
+    if ([birdName isEqual:@"Raven"]){
+        pinImage = [UIImage imageNamed:@"ravenIcon"];
+    }
+    else if ([birdName isEqual:@"Pigeon"]){
+        pinImage = [UIImage imageNamed:@"pigeonIcon"];
+    }
+    else if ([birdName isEqual:@"Goose"]){
+        pinImage = [UIImage imageNamed:@"gooseIcon"];
+    }
+    else if ([birdName isEqual:@"Falcon"]){
+        pinImage = [UIImage imageNamed:@"falconIcon"];
+    }
+    else {
+        
+        pinImage = [UIImage imageNamed:@"owlIcon"];
+        
+    }
+    
+    
+    return pinImage;
 }
 
 - (void)didReceiveMemoryWarning {

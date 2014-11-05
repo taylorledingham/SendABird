@@ -356,13 +356,13 @@
                                 <exclude reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="34o-7r-Sna"/>
-                                <exclude reference="MY2-ix-fWu"/>
-                                <exclude reference="Y1x-w9-VEk"/>
                                 <exclude reference="6XO-r0-gvc"/>
                                 <exclude reference="MqZ-n5-oyY"/>
                                 <exclude reference="YaI-gR-YdQ"/>
                                 <exclude reference="kQA-zO-9wd"/>
+                                <exclude reference="34o-7r-Sna"/>
+                                <exclude reference="MY2-ix-fWu"/>
+                                <exclude reference="Y1x-w9-VEk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -371,13 +371,13 @@
                                 <include reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="34o-7r-Sna"/>
-                                <include reference="MY2-ix-fWu"/>
-                                <include reference="Y1x-w9-VEk"/>
                                 <include reference="6XO-r0-gvc"/>
                                 <include reference="MqZ-n5-oyY"/>
                                 <include reference="YaI-gR-YdQ"/>
                                 <include reference="kQA-zO-9wd"/>
+                                <include reference="34o-7r-Sna"/>
+                                <include reference="MY2-ix-fWu"/>
+                                <include reference="Y1x-w9-VEk"/>
                             </mask>
                         </variation>
                     </view>

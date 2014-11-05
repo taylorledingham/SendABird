@@ -112,6 +112,10 @@
                 [[PFUser currentUser] setEmail:userData[@"email"]];
                 [[PFUser currentUser] saveEventually];
                 
+                AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                
+                appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+                
                 
             }
         }];

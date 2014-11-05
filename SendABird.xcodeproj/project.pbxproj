@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 90053CA71A0991610059A7BF /* MessageMapPin.m */; };
 		901739031A09408B00741F55 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901739021A09408B00741F55 /* BirdTableViewController.m */; };
 		9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4B1A08086C00935D41 /* SentViewController.m */; };
 		9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90053CA61A0991610059A7BF /* MessageMapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageMapPin.h; sourceTree = "<group>"; };
+		90053CA71A0991610059A7BF /* MessageMapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageMapPin.m; sourceTree = "<group>"; };
 		901739011A09408B00741F55 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
 		901739021A09408B00741F55 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
 		9060BC4A1A08086C00935D41 /* SentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentViewController.h; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */,
 				9060BC4A1A08086C00935D41 /* SentViewController.h */,
 				9060BC4B1A08086C00935D41 /* SentViewController.m */,
+				90053CA61A0991610059A7BF /* MessageMapPin.h */,
+				90053CA71A0991610059A7BF /* MessageMapPin.m */,
 				99986D4D1A06F16C001AA353 /* AppDelegate.h */,
 				99986D4E1A06F16C001AA353 /* AppDelegate.m */,
 				99986D721A0707EA001AA353 /* View Controllers */,
@@ -447,6 +452,7 @@
 				99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */,
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
+				90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */,
 				99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */,
 				99986D4F1A06F16C001AA353 /* AppDelegate.m in Sources */,
 				99986D4C1A06F16C001AA353 /* main.m in Sources */,
