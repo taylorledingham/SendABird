@@ -54,6 +54,8 @@
 		99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565141A08814F0082549E /* LoadStoryboardSentViewController.m */; };
 		99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */; };
 		99C5651C1A08A0B70082549E /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C5651B1A08A0B70082549E /* FriendCell.m */; };
+		99D2A8211A09913200CC2E32 /* InboxMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D2A8201A09913200CC2E32 /* InboxMessageCell.m */; };
+		99D2A8241A09AF1B00CC2E32 /* InboxDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */; };
 		99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA55291A096B2A00A66769 /* AddressBook.framework */; };
 		99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA552A1A096B2A00A66769 /* AddressBookUI.framework */; };
 		99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */; };
@@ -143,6 +145,10 @@
 		99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadStoryboardFriendsViewController.m; path = ../LoadStoryboardFriendsViewController.m; sourceTree = "<group>"; };
 		99C5651A1A08A0B70082549E /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
 		99C5651B1A08A0B70082549E /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		99D2A81F1A09913200CC2E32 /* InboxMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxMessageCell.h; path = ../InboxMessageCell.h; sourceTree = "<group>"; };
+		99D2A8201A09913200CC2E32 /* InboxMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxMessageCell.m; path = ../InboxMessageCell.m; sourceTree = "<group>"; };
+		99D2A8221A09AF1B00CC2E32 /* InboxDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxDetailViewController.h; sourceTree = "<group>"; };
+		99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxDetailViewController.m; sourceTree = "<group>"; };
 		99EA55291A096B2A00A66769 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		99EA552A1A096B2A00A66769 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IndexStoryboard.storyboard; sourceTree = "<group>"; };
@@ -222,6 +228,8 @@
 				99986DA41A07680E001AA353 /* SearchFriendCell.m */,
 				99C5651A1A08A0B70082549E /* FriendCell.h */,
 				99C5651B1A08A0B70082549E /* FriendCell.m */,
+				99D2A81F1A09913200CC2E32 /* InboxMessageCell.h */,
+				99D2A8201A09913200CC2E32 /* InboxMessageCell.m */,
 				99986D581A06F16C001AA353 /* LaunchScreen.xib */,
 				99986D791A071C0F001AA353 /* Frameworks */,
 				99986D491A06F16C001AA353 /* Supporting Files */,
@@ -258,8 +266,6 @@
 		99986D721A0707EA001AA353 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */,
-				909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */,
 				99C564FF1A085AFD0082549E /* SABTabBarController.h */,
 				99C565001A085AFD0082549E /* SABTabBarController.m */,
 				99C564FA1A08513B0082549E /* FriendsViewController.h */,
@@ -272,6 +278,8 @@
 				9082A3D31A08338B00488DE8 /* CommsLogin.m */,
 				99986D6F1A0707E2001AA353 /* InboxViewController.h */,
 				99986D701A0707E2001AA353 /* InboxViewController.m */,
+				99D2A8221A09AF1B00CC2E32 /* InboxDetailViewController.h */,
+				99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */,
 				99986D941A071F56001AA353 /* LoginViewController.h */,
 				99986D951A071F56001AA353 /* LoginViewController.m */,
 				99986D971A071F70001AA353 /* SignupViewController.h */,
@@ -282,6 +290,8 @@
 				99986DA71A07F00B001AA353 /* ComposeViewController.m */,
 				901739011A09408B00741F55 /* BirdTableViewController.h */,
 				901739021A09408B00741F55 /* BirdTableViewController.m */,
+				909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */,
+				909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -442,6 +452,7 @@
 				909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
+				99D2A8211A09913200CC2E32 /* InboxMessageCell.m in Sources */,
 				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,
 				99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */,
 				99C5651C1A08A0B70082549E /* FriendCell.m in Sources */,
@@ -450,6 +461,7 @@
 				99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */,
 				9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */,
 				99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */,
+				99D2A8241A09AF1B00CC2E32 /* InboxDetailViewController.m in Sources */,
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
 				90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */,

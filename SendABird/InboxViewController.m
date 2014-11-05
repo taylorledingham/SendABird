@@ -8,6 +8,10 @@
 
 #import "InboxViewController.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
+#import "InboxMessageCell.h"
+#import "BirdCarrier.h"
+#import "InboxDetailViewController.h"
 
 @interface InboxViewController ()
 
@@ -29,17 +33,7 @@
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
 
-    
-    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser==nil) {
-//    //no one is logged in, go to login page
-//        [self performSegueWithIdentifier:@"showLogin" sender:self];
-//    }
-////    } else {
-////    //if CurrentUser is logged in
-////        NSLog(@"Current user: %@", currentUser.username);
-////    }
-    
+//    PFUser *currentUser = [PFUser currentUser];
 }
 
 -(void)loadMessageArray {
@@ -49,13 +43,10 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (error){
-            
             NSLog(@"%@", error);
         }
         else {
-            
             self.messageArray = [objects mutableCopy];
-            
         }
     }];
 }
@@ -64,7 +55,8 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
         //no one is logged in, go to login page
-        [self performSegueWithIdentifier:@"showLogin" sender:self];
+        AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+        appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
         
     } else {
         //if CurrentUser is logged in
@@ -72,8 +64,6 @@
         [self loadMessageArray];
         [self checkForNewMessages];
     }
-
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,7 +72,6 @@
 }
 
 -(void)checkForNewMessages {
-    
     NSDate *date = [NSDate date];
     NSString *dateString = [dateFormatter stringFromDate:date];
     NSDate *date2 = [dateFormatter dateFromString:dateString];
@@ -91,8 +80,9 @@
                               @"dateRecieved <= %@", date2];
     PFQuery *query = [PFQuery queryWithClassName:@"Message" predicate:messageDatePredicate];
     [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
+    [query includeKey:@"sender"];
+    [query includeKey:@"typeOfSender"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         if (error){
             
             NSLog(@"%@", error);
@@ -104,18 +94,8 @@
             
         }
     }];
-
-    
-    
 }
 
-
-//if go to login page, don't want tabs to be accessible
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showLogin"]) {
-        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-    }
-}
 
 #pragma mark - Table view data source
 
@@ -131,14 +111,26 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    InboxMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InboxMessageCell" forIndexPath:indexPath];
     PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
-    PFUser *sender = (PFUser *)message[@"sender"];
-//    if(reciever[@"username"]!=nil){
-//    cell.textLabel.text = reciever[@"username"];
-//    }
-    cell.textLabel.text = message[@"message"];
+    NSDate *mySentDate = message[@"dateSent"];
+    NSDate *myRecDate = message[@"dateRecieved"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM.dd.yyyy (HH:mm:ss ZZZZZZ)"];
+        [formatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSString *stringFromSentDate = [formatter stringFromDate:mySentDate];
+    NSString *stringFromRecDate = [formatter stringFromDate:myRecDate];
+    
+    PFUser *sender = message[@"sender"];
+    NSString *senderName = sender[@"username"];
+    PFObject *bird = message[@"typeOfSender"];
+    NSString *birdName = bird[@"name"];
+    
+    cell.senderLabel.text = senderName;
+    cell.typeOfSenderLabel.text = birdName;
+    cell.messageLabel.text = message[@"message"];
+    cell.dateSentLabel.text = stringFromSentDate;
+    cell.dateRecievedLabel.text = stringFromRecDate;
     
     return cell;
 }
@@ -149,6 +141,25 @@
 
     
 }
+
+#pragma mark - Segues
+
+//if go to login page, don't want tabs to be accessible
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //    if ([segue.identifier isEqualToString:@"showLogin"]) {
+    //        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    //    }
+    
+    if ([[segue identifier] isEqualToString:@"messageDetail"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        UINavigationController *navigationController = segue.destinationViewController;
+        InboxDetailViewController *tableViewController = (InboxDetailViewController *)[navigationController topViewController];
+        tableViewController.message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
+    }
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.
