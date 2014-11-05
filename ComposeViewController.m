@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "BirdTableViewController.h"
 #import "SendToFriendTableViewController.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface ComposeViewController ()
 
@@ -68,20 +69,21 @@
                     message[@"recieverLocation"] = reciever[@"lastLocation"];
                     NSDate *myDate = [NSDate date];
                     message[@"dateSent"] = myDate;
+                    
+                    if (self.image) {
+                        NSData *imageData = UIImagePNGRepresentation(self.image);
+                        NSString *imageName = @"image.png";
+                        PFFile *fileImage = [PFFile fileWithName:imageName data:imageData];
+                        message[@"pic"] = fileImage;
+                    }
                     [message saveInBackground];
                     [self.navigationController popViewControllerAnimated:YES];
-                    
                     
                 }
             }];
             
         }
     }];
-    
-    
-    
-    
-    
 }
 
 
@@ -113,9 +115,11 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)dismissSelf {
@@ -123,9 +127,6 @@
 }
 
 #pragma mark - text field delegates
-
-
-
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -197,6 +198,7 @@
         self.imagePicker = [[UIImagePickerController alloc] init];
         self.imagePicker.delegate = self;
         self.imagePicker.allowsEditing = NO;
+        self.imagePicker.videoMaximumDuration = 0;
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         
@@ -208,29 +210,37 @@
     [self presentViewController:self.imagePicker animated:NO completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    // Access the uncropped image from info dictionary
-    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
-    // Dismiss controller
-//    [self.imagePicker dismissModalViewControllerAnimated:YES];
-    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
-    
-    // Resize image
-    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
-    [image drawInRect: CGRectMake(0, 0, 640, 960)];
-    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Upload image
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
-    [self uploadImage:imageData];
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.tabBarController setSelectedIndex:0];
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self.imagePicker dismissViewControllerAnimated:NO completion:nil];
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        // A photo was taken/selected!
+        self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+            // Save the image!
+            UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
+        }
+    }
+    else {
+        NSLog(@"You cannot take a video.");
+        // A video was taken/selected!
+//        self.videoFilePath = [[info objectForKey:UIImagePickerControllerMediaURL] path];
+//        if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+//            // Save the video!
+//            if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.videoFilePath)) {
+//                UISaveVideoAtPathToSavedPhotosAlbum(self.videoFilePath, nil, nil, nil);
+//            }
+//        }
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (void)uploadImage:(NSData *)imageData {
     

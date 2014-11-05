@@ -36,6 +36,8 @@
 - (void)setUpImages:(NSArray *)images;
 - (void)buttonTouched:(id)sender;
 
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString *videoFilePath;
 @property (weak, nonatomic) IBOutlet UILabel *senderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImageView;
