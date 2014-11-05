@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *messageArray;
 @property (strong, nonatomic) NSMutableArray *recievedMessagesArray;
-@property (strong, nonatomic) NSMutableArray *orderedMessagesArray;
+@property (strong, nonatomic) NSArray *orderedMessagesArray;
 
 @end
 
@@ -33,8 +33,8 @@
     self.recievedMessagesArray = [[NSMutableArray alloc]init];
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
-
-//    PFUser *currentUser = [PFUser currentUser];
+    
+    //    PFUser *currentUser = [PFUser currentUser];
 }
 
 -(void)loadMessageArray {
@@ -61,7 +61,7 @@
         
     } else {
         //if CurrentUser is logged in
-       // NSLog(@"Current user: %@", currentUser.username);
+        // NSLog(@"Current user: %@", currentUser.username);
         [self loadMessageArray];
         [self checkForNewMessages];
     }
@@ -78,7 +78,7 @@
     NSDate *date2 = [dateFormatter dateFromString:dateString];
     
     NSPredicate *messageDatePredicate = [NSPredicate predicateWithFormat:
-                              @"dateRecieved <= %@", date2];
+                                         @"dateRecieved <= %@", date2];
     PFQuery *query = [PFQuery queryWithClassName:@"Message" predicate:messageDatePredicate];
     [query whereKey:@"reciever" equalTo:[PFUser currentUser]];
     [query includeKey:@"sender"];
@@ -91,7 +91,9 @@
         else {
             
             self.recievedMessagesArray = [objects mutableCopy];
-//            self.orderedMessagesArray = [self.recievedMessagesArray sortedArrayUsingSelector:@selector(compare:(PFObject*)message[@"dateRecieved"])];
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateRecieved" ascending:NO];
+            NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
+            self.orderedMessagesArray = [self.recievedMessagesArray sortedArrayUsingDescriptors:sortDescriptors];
             [self.tableView reloadData];
             
         }
@@ -112,18 +114,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.recievedMessagesArray.count;
+    return self.orderedMessagesArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InboxMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InboxMessageCell" forIndexPath:indexPath];
-    PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
+    PFObject *message = [self.orderedMessagesArray objectAtIndex:indexPath.row];
     NSDate *mySentDate = message[@"dateSent"];
     NSDate *myRecDate = message[@"dateRecieved"];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM.dd.yyyy (HH:mm:ss ZZZZZZ)"];
-        [formatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM.dd.yyyy (HH:mm:ss ZZZZZZ)"];
+    [formatter setTimeZone:[NSTimeZone systemTimeZone]];
     NSString *stringFromSentDate = [formatter stringFromDate:mySentDate];
     NSString *stringFromRecDate = [formatter stringFromDate:myRecDate];
     
@@ -143,7 +145,7 @@
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-
+    
     
     return cell;
 }
@@ -151,7 +153,7 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
     [self checkForNewMessages];
-
+    
     
 }
 
@@ -159,7 +161,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    PFObject *message = [self.recievedMessagesArray objectAtIndex:indexPath.row]; //msg tapped
+    PFObject *message = [self.orderedMessagesArray objectAtIndex:indexPath.row]; //msg tapped
     
     if (message[@"isRead"]) {  //delete them
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -191,54 +193,54 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         UINavigationController *navigationController = segue.destinationViewController;
         InboxDetailViewController *tableViewController = (InboxDetailViewController *)[navigationController topViewController];
-        tableViewController.message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
+        tableViewController.message = [self.orderedMessagesArray objectAtIndex:indexPath.row];
     }
 }
 
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

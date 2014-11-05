@@ -391,7 +391,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Message" id="vAx-FM-jU3">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="399" id="vDg-bj-MhY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="292" id="vDg-bj-MhY">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDg-bj-MhY" id="kCa-PB-ZHI">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -411,25 +411,30 @@
                                                             <exclude reference="rU6-dI-KiF"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="18" width="364" height="254"/>
                                                         <mask key="constraints">
-                                                            <include reference="RV0-Co-FgT"/>
+                                                            <exclude reference="RV0-Co-FgT"/>
                                                             <include reference="rU6-dI-KiF"/>
                                                         </mask>
                                                     </variation>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="top" secondItem="kCa-PB-ZHI" secondAttribute="topMargin" constant="10" id="pLm-2H-ms5"/>
-                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="leading" secondItem="kCa-PB-ZHI" secondAttribute="leadingMargin" constant="10" id="xJO-8c-aZy"/>
+                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="top" secondItem="kCa-PB-ZHI" secondAttribute="topMargin" constant="10" id="712-57-8UE"/>
+                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="leading" secondItem="kCa-PB-ZHI" secondAttribute="leadingMargin" constant="10" id="L8W-qJ-FD1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CeQ-o1-SVC" secondAttribute="bottom" constant="10" id="WVg-aT-reO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CeQ-o1-SVC" secondAttribute="trailing" constant="10" id="yv5-gi-vGK"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="CeQ-o1-SVC"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="pLm-2H-ms5"/>
-                                                    <exclude reference="xJO-8c-aZy"/>
+                                                    <exclude reference="712-57-8UE"/>
+                                                    <exclude reference="L8W-qJ-FD1"/>
+                                                    <exclude reference="WVg-aT-reO"/>
+                                                    <exclude reference="yv5-gi-vGK"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -437,8 +442,10 @@
                                                     <include reference="CeQ-o1-SVC"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="pLm-2H-ms5"/>
-                                                    <include reference="xJO-8c-aZy"/>
+                                                    <include reference="712-57-8UE"/>
+                                                    <include reference="L8W-qJ-FD1"/>
+                                                    <include reference="WVg-aT-reO"/>
+                                                    <include reference="yv5-gi-vGK"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
