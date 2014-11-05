@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   // self.tableView.delegate = self;
-
+    // self.tableView.delegate = self;
+    
     
     self.messageTextView.delegate = self;
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
@@ -35,52 +35,52 @@
 
 -(void)doneSendMessage {
     
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                                 @"objectId == %@", self.reciever.objectId];
-        PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"objectId == %@", self.reciever.objectId];
+    PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
     
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            if (!object) {
-                NSLog(@"The getFirstObject request failed.");
-    
-            } else {
-                // The find succeeded.
-                NSLog(@"Successfully retrieved the object.");
-                PFObject *message = [PFObject objectWithClassName:@"Message"];
-                PFUser *reciever =  (PFUser *)object;
-                PFQuery *birdQuery = [PFQuery queryWithClassName:@"Bird"];
-                [birdQuery whereKey:@"name" equalTo:self.bird.name];
-                [birdQuery getFirstObjectInBackgroundWithBlock:^(PFObject *bird, NSError *error) {
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!object) {
+            NSLog(@"The getFirstObject request failed.");
+            
+        } else {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved the object.");
+            PFObject *message = [PFObject objectWithClassName:@"Message"];
+            PFUser *reciever =  (PFUser *)object;
+            PFQuery *birdQuery = [PFQuery queryWithClassName:@"Bird"];
+            [birdQuery whereKey:@"name" equalTo:self.bird.name];
+            [birdQuery getFirstObjectInBackgroundWithBlock:^(PFObject *bird, NSError *error) {
                 if(error){
                     NSLog(@"The get bird request failed.");
-
+                    
                 }
                 else {
-                message[@"typeOfSender"] = bird;
-                double distance = [self calculateDistanceBetweenSenderAndReciever:reciever];
+                    message[@"typeOfSender"] = bird;
+                    double distance = [self calculateDistanceBetweenSenderAndReciever:reciever];
                     
-                NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
+                    NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
                     message[@"dateRecieved"] = recievedDate;
-                message[@"message"] = self.messageTextView.text;
-                [message setObject:[PFUser currentUser] forKey:@"sender"];
-                [message setObject: reciever forKey:@"reciever"];
-                message[@"senderLocation"] = [PFUser currentUser][@"lastLocation"];
-                message[@"recieverLocation"] = reciever[@"lastLocation"];
-                NSDate *myDate = [NSDate date];
+                    message[@"message"] = self.messageTextView.text;
+                    [message setObject:[PFUser currentUser] forKey:@"sender"];
+                    [message setObject: reciever forKey:@"reciever"];
+                    message[@"senderLocation"] = [PFUser currentUser][@"lastLocation"];
+                    message[@"recieverLocation"] = reciever[@"lastLocation"];
+                    NSDate *myDate = [NSDate date];
                     message[@"dateSent"] = myDate;
-                [message saveInBackground];
-                [self.navigationController popViewControllerAnimated:YES];
-
-
+                    [message saveInBackground];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                    
                 }
-                }];
+            }];
+            
+        }
+    }];
     
-            }
-        }];
     
     
-
-
+    
     
 }
 
@@ -92,7 +92,7 @@
     PFGeoPoint *recieverLoc = reciever[@"lastLocation"];
     
     CLLocation *senderLocation = [[CLLocation alloc]initWithLatitude:senderLoc.latitude longitude:senderLoc.longitude];
-     CLLocation *recieverLocation = [[CLLocation alloc]initWithLatitude:recieverLoc.latitude longitude:recieverLoc.longitude];
+    CLLocation *recieverLocation = [[CLLocation alloc]initWithLatitude:recieverLoc.latitude longitude:recieverLoc.longitude];
     
     double distanceInKm = [senderLocation distanceFromLocation:recieverLocation]/1000;
     
@@ -106,7 +106,7 @@
     
     double timeInHours = distance / speed;
     
-   NSTimeInterval secondsInHours = timeInHours * 60 * 60;
+    NSTimeInterval secondsInHours = timeInHours * 60 * 60;
     NSDate *dateHoursAhead = [today dateByAddingTimeInterval:secondsInHours];
     
     return dateHoursAhead;
@@ -200,4 +200,5 @@
 - (IBAction)goBack:(id)sender {
     [self dismissSelf];
 }
+
 @end
