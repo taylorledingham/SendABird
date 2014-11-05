@@ -19,6 +19,6 @@
 
 -(MKAnnotationView *)annotationView;
 
-
+//New line
 
 @end
