@@ -37,7 +37,6 @@
 
         NSPredicate *predicate = [NSPredicate predicateWithFormat:
                                  @"objectId == %@", self.reciever.objectId];
-   // PFQuery *query = [PF]
         PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
     
     
