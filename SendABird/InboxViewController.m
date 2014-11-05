@@ -52,6 +52,15 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+//    PFQuery *pushQuery = [PFInstallation query];
+//    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+//    
+//    // Send push notification to query
+//    [PFPush sendPushMessageToQueryInBackground:pushQuery
+//                                   withMessage:@"Hello World!"];
+    
+    
+    
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
         //no one is logged in, go to login page
