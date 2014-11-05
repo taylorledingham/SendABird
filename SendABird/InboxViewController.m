@@ -99,11 +99,6 @@
         }
     }];
 }
-//
-//- (NSComparisonResult)compare:(PFObject *)message {
-//    return [self[@[@"dateRecieved"]] compare:message[@"dateRecieved"]];
-//}
-
 
 #pragma mark - Table view data source
 
