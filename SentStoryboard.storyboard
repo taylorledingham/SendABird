@@ -169,18 +169,29 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Sh-0M-dBB">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="16" width="150" height="150"/>
+                                                        <rect key="frame" x="14" y="16" width="150" height="150"/>
                                                     </variation>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V91-be-A84">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="222" y="49" width="46" height="30"/>
+                                                    </variation>
+                                                </button>
                                             </subviews>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="9Sh-0M-dBB"/>
+                                                    <exclude reference="V91-be-A84"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="9Sh-0M-dBB"/>
+                                                    <include reference="V91-be-A84"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -204,7 +215,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEI-92-a7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283.5" y="495"/>
+            <point key="canvasLocation" x="205.5" y="466.5"/>
         </scene>
         <!--Bird Table View Controller-->
         <scene sceneID="MOq-6m-5i4">
@@ -356,13 +367,13 @@
                                 <exclude reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="34o-7r-Sna"/>
-                                <exclude reference="MY2-ix-fWu"/>
-                                <exclude reference="Y1x-w9-VEk"/>
                                 <exclude reference="6XO-r0-gvc"/>
                                 <exclude reference="MqZ-n5-oyY"/>
                                 <exclude reference="YaI-gR-YdQ"/>
                                 <exclude reference="kQA-zO-9wd"/>
+                                <exclude reference="34o-7r-Sna"/>
+                                <exclude reference="MY2-ix-fWu"/>
+                                <exclude reference="Y1x-w9-VEk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -371,13 +382,13 @@
                                 <include reference="rd8-VC-lDK"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="34o-7r-Sna"/>
-                                <include reference="MY2-ix-fWu"/>
-                                <include reference="Y1x-w9-VEk"/>
                                 <include reference="6XO-r0-gvc"/>
                                 <include reference="MqZ-n5-oyY"/>
                                 <include reference="YaI-gR-YdQ"/>
                                 <include reference="kQA-zO-9wd"/>
+                                <include reference="34o-7r-Sna"/>
+                                <include reference="MY2-ix-fWu"/>
+                                <include reference="Y1x-w9-VEk"/>
                             </mask>
                         </variation>
                     </view>

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "InboxMessageCell.h"
 #import "BirdCarrier.h"
+#import "InboxDetailViewController.h"
 
 @interface InboxViewController ()
 
@@ -96,13 +97,6 @@
 }
 
 
-//if go to login page, don't want tabs to be accessible
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showLogin"]) {
-        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-    }
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -147,6 +141,25 @@
 
     
 }
+
+#pragma mark - Segues
+
+//if go to login page, don't want tabs to be accessible
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //    if ([segue.identifier isEqualToString:@"showLogin"]) {
+    //        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    //    }
+    
+    if ([[segue identifier] isEqualToString:@"messageDetail"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        UINavigationController *navigationController = segue.destinationViewController;
+        InboxDetailViewController *tableViewController = (InboxDetailViewController *)[navigationController topViewController];
+        tableViewController.message = [self.recievedMessagesArray objectAtIndex:indexPath.row];
+    }
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.

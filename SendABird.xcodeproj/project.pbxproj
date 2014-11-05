@@ -54,6 +54,7 @@
 		99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C565171A08828C0082549E /* LoadStoryboardFriendsViewController.m */; };
 		99C5651C1A08A0B70082549E /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C5651B1A08A0B70082549E /* FriendCell.m */; };
 		99D2A8211A09913200CC2E32 /* InboxMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D2A8201A09913200CC2E32 /* InboxMessageCell.m */; };
+		99D2A8241A09AF1B00CC2E32 /* InboxDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */; };
 		99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA55291A096B2A00A66769 /* AddressBook.framework */; };
 		99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA552A1A096B2A00A66769 /* AddressBookUI.framework */; };
 		99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */; };
@@ -143,6 +144,8 @@
 		99C5651B1A08A0B70082549E /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		99D2A81F1A09913200CC2E32 /* InboxMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxMessageCell.h; path = ../InboxMessageCell.h; sourceTree = "<group>"; };
 		99D2A8201A09913200CC2E32 /* InboxMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxMessageCell.m; path = ../InboxMessageCell.m; sourceTree = "<group>"; };
+		99D2A8221A09AF1B00CC2E32 /* InboxDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxDetailViewController.h; sourceTree = "<group>"; };
+		99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxDetailViewController.m; sourceTree = "<group>"; };
 		99EA55291A096B2A00A66769 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		99EA552A1A096B2A00A66769 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IndexStoryboard.storyboard; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				9082A3D31A08338B00488DE8 /* CommsLogin.m */,
 				99986D6F1A0707E2001AA353 /* InboxViewController.h */,
 				99986D701A0707E2001AA353 /* InboxViewController.m */,
+				99D2A8221A09AF1B00CC2E32 /* InboxDetailViewController.h */,
+				99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */,
 				99986D941A071F56001AA353 /* LoginViewController.h */,
 				99986D951A071F56001AA353 /* LoginViewController.m */,
 				99986D971A071F70001AA353 /* SignupViewController.h */,
@@ -451,6 +456,7 @@
 				99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */,
 				9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */,
 				99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */,
+				99D2A8241A09AF1B00CC2E32 /* InboxDetailViewController.m in Sources */,
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
 				99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */,
