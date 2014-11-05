@@ -192,19 +192,17 @@
     
 }
 - (IBAction)cameraButtonTapped:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera] == YES){
-        // Create image picker controller
-        self.imagePicker = [[UIImagePickerController alloc] init];
-        self.imagePicker.delegate = self;
-        self.imagePicker.allowsEditing = NO;
-        self.imagePicker.videoMaximumDuration = 0;
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        
-    } else {
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
+    self.imagePicker = [[UIImagePickerController alloc] init];
+    self.imagePicker.delegate = self;
+    self.imagePicker.allowsEditing = NO;
+    self.imagePicker.videoMaximumDuration = 0;
+    
+    self.imagePicker.sourceType =
+    ([UIImagePickerController isSourceTypeAvailable:
+      UIImagePickerControllerSourceTypeCamera]) ?
+    UIImagePickerControllerSourceTypeCamera :
+    UIImagePickerControllerSourceTypePhotoLibrary;
+    
     self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
     // Show image picker
     [self presentViewController:self.imagePicker animated:NO completion:nil];
@@ -221,6 +219,11 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         // A photo was taken/selected!
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIGraphicsBeginImageContext(CGSizeMake(320, 480));
+        [self.image drawInRect: CGRectMake(0, 0, 320, 480)];
+        self.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
         if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
             // Save the image!
             UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
