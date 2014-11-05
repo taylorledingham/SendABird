@@ -33,14 +33,10 @@
 }
 
 -(void)doneSendMessage {
-    
-    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
                               @"objectId == %@", self.reciever.objectId];
     PFQuery *query = [PFQuery queryWithClassName:@"_User" predicate:predicate];
-    
-    
-    
+
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!object) {
             NSLog(@"The getFirstObject request failed.");
