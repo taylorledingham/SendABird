@@ -62,7 +62,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9n-gt-TSf">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9n-gt-TSf">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -93,6 +93,7 @@
                                         <constraint firstItem="iRD-iz-Xbe" firstAttribute="top" secondItem="iau-Q3-kbG" secondAttribute="bottom" constant="5" id="8aL-Kq-sUD"/>
                                         <constraint firstItem="J9n-gt-TSf" firstAttribute="top" secondItem="iRD-iz-Xbe" secondAttribute="bottom" constant="5" id="F2N-9J-p2u"/>
                                         <constraint firstItem="R64-YU-Fg1" firstAttribute="top" secondItem="MW0-u6-K0n" secondAttribute="bottom" constant="5" id="FSi-TE-oei"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="J9n-gt-TSf" secondAttribute="trailing" constant="10" id="Ghe-yp-alv"/>
                                         <constraint firstItem="GXj-o8-9no" firstAttribute="top" secondItem="Phx-j5-wDR" secondAttribute="bottom" constant="5" id="Mx5-vo-nVo"/>
                                         <constraint firstItem="iau-Q3-kbG" firstAttribute="top" secondItem="5Hu-WO-rno" secondAttribute="topMargin" constant="5" id="R4K-1L-mMp"/>
                                         <constraint firstItem="Ncb-oC-EAB" firstAttribute="leading" secondItem="5Hu-WO-rno" secondAttribute="leadingMargin" constant="5" id="VKZ-i4-lGd"/>
@@ -127,6 +128,7 @@
                                             <exclude reference="g80-1d-3u8"/>
                                             <exclude reference="5MX-zx-ugw"/>
                                             <exclude reference="F2N-9J-p2u"/>
+                                            <exclude reference="Ghe-yp-alv"/>
                                             <exclude reference="82j-8G-283"/>
                                             <exclude reference="d1O-Av-rYQ"/>
                                             <exclude reference="4Zn-9F-BfK"/>
@@ -167,6 +169,7 @@
                                             <include reference="g80-1d-3u8"/>
                                             <include reference="5MX-zx-ugw"/>
                                             <include reference="F2N-9J-p2u"/>
+                                            <include reference="Ghe-yp-alv"/>
                                             <include reference="82j-8G-283"/>
                                             <include reference="d1O-Av-rYQ"/>
                                             <exclude reference="4Zn-9F-BfK"/>
@@ -391,7 +394,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Message" id="vAx-FM-jU3">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="399" id="vDg-bj-MhY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="vDg-bj-MhY">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDg-bj-MhY" id="kCa-PB-ZHI">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -411,25 +414,30 @@
                                                             <exclude reference="rU6-dI-KiF"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="18" width="364" height="255"/>
                                                         <mask key="constraints">
-                                                            <include reference="RV0-Co-FgT"/>
+                                                            <exclude reference="RV0-Co-FgT"/>
                                                             <include reference="rU6-dI-KiF"/>
                                                         </mask>
                                                     </variation>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="top" secondItem="kCa-PB-ZHI" secondAttribute="topMargin" constant="10" id="pLm-2H-ms5"/>
-                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="leading" secondItem="kCa-PB-ZHI" secondAttribute="leadingMargin" constant="10" id="xJO-8c-aZy"/>
+                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="top" secondItem="kCa-PB-ZHI" secondAttribute="topMargin" constant="10" id="712-57-8UE"/>
+                                                <constraint firstItem="CeQ-o1-SVC" firstAttribute="leading" secondItem="kCa-PB-ZHI" secondAttribute="leadingMargin" constant="10" id="L8W-qJ-FD1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CeQ-o1-SVC" secondAttribute="bottom" constant="10" id="WVg-aT-reO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CeQ-o1-SVC" secondAttribute="trailing" constant="10" id="yv5-gi-vGK"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="CeQ-o1-SVC"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="pLm-2H-ms5"/>
-                                                    <exclude reference="xJO-8c-aZy"/>
+                                                    <exclude reference="712-57-8UE"/>
+                                                    <exclude reference="L8W-qJ-FD1"/>
+                                                    <exclude reference="WVg-aT-reO"/>
+                                                    <exclude reference="yv5-gi-vGK"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -437,10 +445,22 @@
                                                     <include reference="CeQ-o1-SVC"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="pLm-2H-ms5"/>
-                                                    <include reference="xJO-8c-aZy"/>
+                                                    <include reference="712-57-8UE"/>
+                                                    <include reference="L8W-qJ-FD1"/>
+                                                    <include reference="WVg-aT-reO"/>
+                                                    <include reference="yv5-gi-vGK"/>
                                                 </mask>
                                             </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Message Picture" id="7wG-Df-rrF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="agO-2D-cBK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agO-2D-cBK" id="8mn-WB-3vq">
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
