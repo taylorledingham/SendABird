@@ -322,7 +322,7 @@
                         <viewControllerLayoutGuide type="top" id="0r5-39-WJE"/>
                         <viewControllerLayoutGuide type="bottom" id="xYJ-CK-jNL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b2N-XK-yUo" customClass="Signup">
+                    <view key="view" contentMode="scaleToFill" id="b2N-XK-yUo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

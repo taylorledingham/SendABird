@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, strong) NSMutableArray *sentMessagesArray;
+@property (nonatomic, strong) NSDictionary *birdIconDictionary;
 
 @end
 
@@ -34,6 +35,7 @@
     self.viewSegmentControl.selectedSegmentIndex = 0;
     
     self.tableView.hidden = YES;
+    [self loadBirdImageDictionary];
     
     messageDateFormatter = [[NSDateFormatter alloc] init];
     [messageDateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
@@ -43,6 +45,8 @@
 -(void)viewDidAppear:(BOOL)animated {
     [self loadSentMessages];
     self.viewSegmentControl.selectedSegmentIndex = 1;
+    self.tableView.hidden = YES;
+    self.mapView.hidden = NO;
 
 }
 
@@ -51,6 +55,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loadBirdImageDictionary {
+    
+    self.birdIconDictionary = [[NSDictionary alloc]init];
+    UIImage *gooseImage = [UIImage imageNamed:@"gooseIcon"];
+    UIImage *falconImage = [UIImage imageNamed:@"falconIcon"];
+    UIImage *owlImage = [UIImage imageNamed:@"owlIcon"];
+    UIImage *pigeonImage = [UIImage imageNamed:@"pigeonIcon"];
+    UIImage *ravenImage = [UIImage imageNamed:@"ravenIcon"];
+    self.birdIconDictionary = @{@"bCLOH6DO6h" : gooseImage, @"9gpFa5bhyD" : falconImage, @"sZVXw55X0V" : owlImage, @"sdhHT1Wq8M" : pigeonImage , @"sZ55OUsVQB" : ravenImage};
+    
+}
 -(void)loadSentMessages {
     
     NSDate *date = [NSDate date];
@@ -102,23 +117,38 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    SentMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     PFObject *message = [self.sentMessagesArray objectAtIndex:indexPath.row];
     PFUser *reciever = message[@"reciever"];
+    PFObject *birdID = message[@"typeOfSender"];
     
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:reciever.objectId block:^(PFObject *reciever, NSError *error) {
-        if(error){
-            NSLog(@"user error: %@", error);
-            
-        }
-        
-        cell.textLabel.text =  reciever[@"username"];
-        cell.detailTextLabel.text = message[@"message"];
-        
-    }];
+    PFQuery *query = [PFQuery queryWithClassName:@"Bird"];
+    [query getObjectInBackgroundWithId:birdID.objectId block:^(PFObject *bird, NSError *error) {
+        // Do something with the returned PFObject in the gameScore variable.
+            if(error){
+                NSLog(@"user error: %@", error);
+                
+            }
+        PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+        [userQuery getObjectInBackgroundWithId:reciever.objectId block:^(PFObject *object, NSError *error) {
+            if(error){
+                NSLog(@"bird error: %@", error);
+            }
 
+            NSString *birdName = bird[@"name"];
+            UIImage *birdImage = [self.birdIconDictionary objectForKey:birdID.objectId];
+            double timeRemaining = [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.receiverLabel.text = [NSString stringWithFormat:@"To: %@", object[@"username"]];
+                cell.receivedTimeLabel.text =  [NSString stringWithFormat:@"Time till delivered: %.04f", timeRemaining];
+                [cell.birdImageView setImage:birdImage];
+                
+            });
+
+        }];
+    }];
     
     return cell;
     

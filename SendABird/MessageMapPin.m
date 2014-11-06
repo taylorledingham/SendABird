@@ -31,7 +31,6 @@
     MKAnnotationView *annotationView = [[MKAnnotationView alloc]initWithAnnotation:self reuseIdentifier:@"BirdAnnotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
     annotationView.calloutOffset = CGPointMake(-5, 5);
     [annotationView setImage:self.pinImage];
     
