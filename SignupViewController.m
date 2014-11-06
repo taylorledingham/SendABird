@@ -50,15 +50,16 @@
         newUser.username = username;
         newUser.password = password;
         newUser.email = email;
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        currentInstallation[@"userId"] = newUser.objectId;
-        [currentInstallation saveInBackground];
+
         
         //create a new user and save it in the backend
         //in block so sign up is done asynchronously - parse background operation
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 // Hooray! Let them use the app now - go back to Inbox Page
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                currentInstallation[@"userId"] = newUser.objectId;
+                [currentInstallation saveInBackground];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 
             } else {

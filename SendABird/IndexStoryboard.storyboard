@@ -296,9 +296,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="123" y="84" width="250" height="17"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -337,28 +334,28 @@
                                                     <exclude reference="NQ7-Go-d4S"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="04c-5j-ihm"/>
-                                                    <exclude reference="NUC-B8-eX6"/>
-                                                    <exclude reference="USg-ub-twz"/>
-                                                    <exclude reference="cLx-Pm-lo5"/>
                                                     <exclude reference="YYM-BF-7d8"/>
                                                     <exclude reference="fPv-PR-ZTc"/>
-                                                    <exclude reference="M2W-Dh-ium"/>
-                                                    <exclude reference="wY7-N0-cgh"/>
-                                                    <exclude reference="JqB-FN-leQ"/>
-                                                    <exclude reference="X7x-JF-wDc"/>
-                                                    <exclude reference="iSC-S2-NAp"/>
-                                                    <exclude reference="uSc-L2-fKh"/>
-                                                    <exclude reference="eoO-AL-I19"/>
-                                                    <exclude reference="gns-pE-lcr"/>
-                                                    <exclude reference="CqH-4u-bCS"/>
-                                                    <exclude reference="hEf-o9-P2e"/>
                                                     <exclude reference="AJr-gp-ddL"/>
                                                     <exclude reference="lA7-Ew-fLH"/>
                                                     <exclude reference="EK7-xC-0Ph"/>
                                                     <exclude reference="QPe-i0-GXY"/>
                                                     <exclude reference="SIU-S4-laz"/>
                                                     <exclude reference="gje-5u-WsS"/>
+                                                    <exclude reference="JqB-FN-leQ"/>
+                                                    <exclude reference="X7x-JF-wDc"/>
+                                                    <exclude reference="iSC-S2-NAp"/>
+                                                    <exclude reference="uSc-L2-fKh"/>
+                                                    <exclude reference="eoO-AL-I19"/>
+                                                    <exclude reference="gns-pE-lcr"/>
+                                                    <exclude reference="M2W-Dh-ium"/>
+                                                    <exclude reference="wY7-N0-cgh"/>
+                                                    <exclude reference="04c-5j-ihm"/>
+                                                    <exclude reference="NUC-B8-eX6"/>
+                                                    <exclude reference="USg-ub-twz"/>
+                                                    <exclude reference="cLx-Pm-lo5"/>
+                                                    <exclude reference="CqH-4u-bCS"/>
+                                                    <exclude reference="hEf-o9-P2e"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -373,28 +370,28 @@
                                                     <include reference="NQ7-Go-d4S"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="04c-5j-ihm"/>
-                                                    <include reference="NUC-B8-eX6"/>
-                                                    <include reference="USg-ub-twz"/>
-                                                    <include reference="cLx-Pm-lo5"/>
                                                     <include reference="YYM-BF-7d8"/>
                                                     <include reference="fPv-PR-ZTc"/>
-                                                    <include reference="M2W-Dh-ium"/>
-                                                    <include reference="wY7-N0-cgh"/>
-                                                    <include reference="JqB-FN-leQ"/>
-                                                    <include reference="X7x-JF-wDc"/>
-                                                    <include reference="iSC-S2-NAp"/>
-                                                    <include reference="uSc-L2-fKh"/>
-                                                    <include reference="eoO-AL-I19"/>
-                                                    <include reference="gns-pE-lcr"/>
-                                                    <include reference="CqH-4u-bCS"/>
-                                                    <include reference="hEf-o9-P2e"/>
                                                     <include reference="AJr-gp-ddL"/>
                                                     <include reference="lA7-Ew-fLH"/>
                                                     <include reference="EK7-xC-0Ph"/>
                                                     <exclude reference="QPe-i0-GXY"/>
                                                     <include reference="SIU-S4-laz"/>
                                                     <exclude reference="gje-5u-WsS"/>
+                                                    <include reference="JqB-FN-leQ"/>
+                                                    <include reference="X7x-JF-wDc"/>
+                                                    <include reference="iSC-S2-NAp"/>
+                                                    <include reference="uSc-L2-fKh"/>
+                                                    <include reference="eoO-AL-I19"/>
+                                                    <include reference="gns-pE-lcr"/>
+                                                    <include reference="M2W-Dh-ium"/>
+                                                    <include reference="wY7-N0-cgh"/>
+                                                    <include reference="04c-5j-ihm"/>
+                                                    <include reference="NUC-B8-eX6"/>
+                                                    <include reference="USg-ub-twz"/>
+                                                    <include reference="cLx-Pm-lo5"/>
+                                                    <include reference="CqH-4u-bCS"/>
+                                                    <include reference="hEf-o9-P2e"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
