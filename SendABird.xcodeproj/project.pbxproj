@@ -10,6 +10,7 @@
 		55050A8F662C47629541D5EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE4F4D75D23F321C268B6AF /* libPods.a */; };
 		90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 90053CA71A0991610059A7BF /* MessageMapPin.m */; };
 		901739031A09408B00741F55 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901739021A09408B00741F55 /* BirdTableViewController.m */; };
+		90549CB31A0C04B400FCFB53 /* SentMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */; };
 		9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4B1A08086C00935D41 /* SentViewController.m */; };
 		9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */; };
 		9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = 9082A3D11A08338B00488DE8 /* BirdCarrier.m */; };
@@ -84,6 +85,8 @@
 		90053CA71A0991610059A7BF /* MessageMapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageMapPin.m; sourceTree = "<group>"; };
 		901739011A09408B00741F55 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
 		901739021A09408B00741F55 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
+		90549CB11A0C04B400FCFB53 /* SentMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentMessageTableViewCell.h; sourceTree = "<group>"; };
+		90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentMessageTableViewCell.m; sourceTree = "<group>"; };
 		9060BC4A1A08086C00935D41 /* SentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentViewController.h; sourceTree = "<group>"; };
 		9060BC4B1A08086C00935D41 /* SentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentViewController.m; sourceTree = "<group>"; };
 		9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAndListMessageView.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				99986D9B1A0731D5001AA353 /* EditProfileViewController.m */,
 				99986DA61A07F00B001AA353 /* ComposeViewController.h */,
 				99986DA71A07F00B001AA353 /* ComposeViewController.m */,
+				90549CB11A0C04B400FCFB53 /* SentMessageTableViewCell.h */,
+				90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */,
 				901739011A09408B00741F55 /* BirdTableViewController.h */,
 				901739021A09408B00741F55 /* BirdTableViewController.m */,
 				909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */,
@@ -555,6 +560,7 @@
 				99C565011A085AFD0082549E /* SABTabBarController.m in Sources */,
 				909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
+				90549CB31A0C04B400FCFB53 /* SentMessageTableViewCell.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
 				998C18811A0B0DEA00A6ED2D /* EditProfileViewController.m in Sources */,
 				99D2A8211A09913200CC2E32 /* InboxMessageCell.m in Sources */,
@@ -711,7 +717,7 @@
 				INFOPLIST_FILE = SendABird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "208345a8-b711-4a90-b3e1-7153dc95cde5";
 			};
 			name = Debug;
 		};
@@ -730,7 +736,7 @@
 				INFOPLIST_FILE = SendABird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "208345a8-b711-4a90-b3e1-7153dc95cde5";
 			};
 			name = Release;
 		};

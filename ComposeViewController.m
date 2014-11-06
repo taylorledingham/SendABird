@@ -63,8 +63,8 @@
                     
                     NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
                     message[@"dateRecieved"] = recievedDate;
-                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate];
                     message[@"message"] = self.messageTextView.text;
+                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate andMessage:message];
                     [message setObject:[PFUser currentUser] forKey:@"sender"];
                     [message setObject: reciever forKey:@"reciever"];
                     message[@"senderLocation"] = [PFUser currentUser][@"lastLocation"];
@@ -88,7 +88,7 @@
     }];
 }
 
--(void)schedulePushNotifcationWithUser:(PFUser *)user AndDate:(NSDate*)myDate {
+-(void)schedulePushNotifcationWithUser:(PFUser *)user AndDate:(NSDate*)myDate andMessage:(PFObject *)message {
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -109,16 +109,27 @@
     //dateStr = [dateFormatter stringFromDate:myDate];
     dateStr = [NSString stringWithFormat:@"%@", myDate];
     
+    NSLog(@"date to send: %@", dateStr);
+    
     AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
     [serializer setValue:@"DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj" forHTTPHeaderField:@"X-Parse-Application-Id"];
     [serializer setValue:@"mObK8jJXxchROdulj5z2Re972hYknXJIrcUGzD7u" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
     
+    NSString *fullString = message[@"message"];
+    NSString *shoretenedString = [[NSString alloc]init];
+    
+    if ([fullString length] >= 20)
+        shoretenedString = [fullString substringToIndex:20];
+    else
+        shoretenedString = fullString;
     
     NSString *userID = [PFUser currentUser].objectId;
-    userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
-    [requestParams setObject:@{@"userId": @{@"$in" : userID }} forKey:@"where"];
+    userID = user.objectId;
+   // userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
+    //[requestParams setObject:@{@"userId": @{@"$in" : @[userID] }} forKey:@"where"];
+    [requestParams setObject:@{@"userId": userID} forKey:@"where"];
     [requestParams setObject: iso8601String forKey:@"push_time"];
-    [requestParams setObject:@{@"alert":[NSString stringWithFormat:@"%@  push!",[PFUser currentUser].username]} forKey:@"data"];
+    [requestParams setObject:@{@"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] } forKey:@"data"];
     //[req setValuesForKeysWithDictionary:requestParams];
     manager.requestSerializer = serializer;
     //
@@ -188,6 +199,7 @@
 #pragma mark - text field delegates
 
 -(void)textViewDidBeginEditing:(UITextView *)textView {
+    self.messageTextView.text = @"";
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                             action:@selector(didTapAnywhere:)];
     [self.view addGestureRecognizer:tapRecognizer];
