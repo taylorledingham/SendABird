@@ -79,7 +79,8 @@
 
                 
             });
-            
+            [self.mapView removeAnnotations:self.mapView.annotations];
+
             [self addBirdAnnoations];
 
             
@@ -197,7 +198,8 @@
                     NSString *recieverName = [NSString stringWithFormat:@"Receiver: %@",reciever[@"username"]];
                     UIImage *image = [UIImage imageNamed:@"birdIcon"];
                     NSString *timeRemaining = [NSString stringWithFormat:@"Time till delivery: %.4f hours", [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird]];
-                    
+                    NSLog(@" message id : %@", message.objectId);
+                    NSLog(@" bird name : %@", bird[@"name"]);
                 MessageMapPin *myAnnotation = [[MessageMapPin alloc]initWithCoordinates:birdLoc placeName:recieverName subtitle:timeRemaining andPinImage:image];
 
                 dispatch_async(dispatch_get_main_queue(), ^{

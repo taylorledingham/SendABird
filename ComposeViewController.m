@@ -160,8 +160,16 @@
     double timeInHours = distance / speed;
     
     NSTimeInterval secondsInHours = timeInHours * 60 * 60;
-    NSDate *dateHoursAhead = [today dateByAddingTimeInterval:secondsInHours];
-    
+    NSDate *dateHoursAhead;
+    if(today ==  dateHoursAhead){
+        
+        secondsInHours = secondsInHours + 0.02;
+        //add a minute so its not instantaneous
+        return dateHoursAhead = [today dateByAddingTimeInterval:secondsInHours];
+        
+    }
+
+   dateHoursAhead = [today dateByAddingTimeInterval:secondsInHours];
     return dateHoursAhead;
     
 }
