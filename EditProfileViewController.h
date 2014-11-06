@@ -16,6 +16,7 @@
 
 - (IBAction)logout:(id)sender;
 - (IBAction)save:(id)sender;
+- (IBAction)updateLocation:(id)sender;
 
 @property (nonatomic, strong) PFUser *currentUser;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;

@@ -24,9 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
-    //
 
     [self.navigationItem setHidesBackButton:YES];
     // Do any additional setup after loading the view.
@@ -49,27 +46,6 @@
         self.emailField.text = self.currentUser.email;
     }
     
-//    if (![self.currentUser objectForKey:@"lastLocation"]) {
-//        _locationManager = [[CLLocationManager alloc] init];
-//        [_locationManager requestWhenInUseAuthorization];
-//        _locationManager.delegate = self;
-//        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//        [_locationManager startUpdatingLocation];
-//        
-//    } else {
-//        PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
-//        [self reverseGeocodeLocation:myGeopoint];
-//    }
-    
-        _locationManager = [[CLLocationManager alloc] init];
-        [_locationManager requestWhenInUseAuthorization];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        [_locationManager startUpdatingLocation];
-        
-        PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
-        [self reverseGeocodeLocation:myGeopoint];
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -78,10 +54,7 @@
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Location Services
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     currentLocation = [locations firstObject];
@@ -96,6 +69,8 @@
         if (!error) {
             
             NSLog(@"Your location has been updated!");
+            PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+            [self reverseGeocodeLocation:myGeopoint];
             
         } else {
             NSString *errorString = [error userInfo][@"error"];
@@ -123,9 +98,10 @@
         }
     }];
 }
+
+#pragma mark - IBActions
     
 - (IBAction)save:(id)sender {
-    
     NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *email = [self.emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -156,6 +132,15 @@
             }
         }];
     }
+}
+
+- (IBAction)updateLocation:(id)sender {
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager requestWhenInUseAuthorization];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [_locationManager startUpdatingLocation];
+    
 }
 
 - (IBAction)logout:(id)sender {
