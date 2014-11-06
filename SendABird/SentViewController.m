@@ -127,12 +127,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Bird"];
     [query getObjectInBackgroundWithId:bird.objectId block:^(PFObject *bird, NSError *error) {
         //
-        NSLog(@"bird.objectId :%@", bird.objectId);
-        NSLog(@"bird.updatedAt :%@", bird.updatedAt);
-        NSLog(@"bird.createdAt :%@", bird.createdAt);
-        NSLog(@"bird speed :%@", bird[@"speed"]);
-        NSLog(@"bird.name :%@", bird[@"name"]);
-        
         double birdSpeed = [bird[@"speed"] doubleValue];
         NSDate *dateSent = message[@"dateSent"];
         

@@ -10,6 +10,7 @@
 #import "BirdTableViewController.h"
 #import "SendToFriendTableViewController.h"
 
+
 @interface ComposeViewController ()
 
 @end
@@ -28,8 +29,8 @@
     self.messageTextView.delegate = self;
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
     self.navigationItem.rightBarButtonItem = sendButton;
-    
-    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
     
 }
 
@@ -58,8 +59,8 @@
                 else {
                     message[@"typeOfSender"] = bird;
                     double distance = [self calculateDistanceBetweenSenderAndReciever:reciever];
-                    
                     NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
+                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate];
                     message[@"dateRecieved"] = recievedDate;
                     message[@"message"] = self.messageTextView.text;
                     [message setObject:[PFUser currentUser] forKey:@"sender"];
@@ -84,6 +85,59 @@
     
 }
 
+-(void)schedulePushNotifcationWithUser:(PFUser *)user AndDate:(NSDate*)myDate {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+
+    NSMutableDictionary *requestParams = [[NSMutableDictionary alloc]init];
+    
+    NSString *dateStr =  [dateFormatter stringFromDate:myDate];
+    
+    NSDate *formattedDate = [dateFormatter dateFromString:dateStr];
+    
+    // June's code
+    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
+    [serializer setValue:@"DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj" forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [serializer setValue:@"mObK8jJXxchROdulj5z2Re972hYknXJIrcUGzD7u" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    
+
+    NSString *userID = [PFUser currentUser].objectId;
+    userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
+    [requestParams setObject:@{@"userId": @{@"$in" : userID }} forKey:@"where"];
+       [requestParams setObject: dateStr forKey:@"push_time"];
+    [requestParams setObject:@{@"alert":[NSString stringWithFormat:@"%@  push!",[PFUser currentUser].username]} forKey:@"data"];
+    //[req setValuesForKeysWithDictionary:requestParams];
+    manager.requestSerializer = serializer;
+    //
+    
+    [manager POST:@"https://api.parse.com/1/push" parameters:requestParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"AFHTTPRequestOperation: %@", [operation response]);
+        NSLog(@"%@", user.objectId);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"AFHTTPRequestOperation: %@", [operation response]);
+        NSLog(@"Error: %@", error);
+    }];
+    
+    
+}
+
+//POST \
+//>   -H "X-Parse-Application-Id: DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj" \
+//>   -H "X-Parse-REST-API-Key: mObK8jJXxchROdulj5z2Re972hYknXJIrcUGzD7u" \
+//>   -H "Content-Type: application/json" \
+//>   -d '{
+//>         "where": {
+//    >           "deviceType": "winrt"
+//    >         },
+//>         "data": {
+//    >           "alert": "Your suitcase has been filled with tiny glass!"
+//    >         }
+//>       }' \
+//>   https://api.parse.com/1/push
 
 -(double)calculateDistanceBetweenSenderAndReciever:(PFUser *)reciever {
     PFUser *currentUser = [PFUser currentUser];

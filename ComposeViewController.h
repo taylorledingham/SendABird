@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "BirdCarrier.h"
-#include <stdlib.h>
+#import <AFNetworking.h>
 
 @protocol SetBirdProtocol <NSObject>
 

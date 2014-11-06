@@ -72,6 +72,10 @@
 //                                                [self.navigationController popToRootViewControllerAnimated:YES];
                                                 
                                                 AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                                                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                                currentInstallation[@"userId"] = user.objectId;
+                                                [currentInstallation saveInBackground];
+
                                                 
                                                 appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
                                                 
@@ -111,6 +115,12 @@
                 [[PFUser currentUser] setUsername:name];
                 [[PFUser currentUser] setEmail:userData[@"email"]];
                 [[PFUser currentUser] saveEventually];
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                currentInstallation[@"userId"] = [PFUser currentUser].objectId;
+                [currentInstallation saveInBackground];
+
+                
+
                 
                 AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
                 
