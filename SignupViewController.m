@@ -26,14 +26,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 - (IBAction)signup:(id)sender {
@@ -50,15 +50,16 @@
         newUser.username = username;
         newUser.password = password;
         newUser.email = email;
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        currentInstallation[@"userId"] = newUser.objectId;
-        [currentInstallation saveInBackground];
+
         
         //create a new user and save it in the backend
         //in block so sign up is done asynchronously - parse background operation
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 // Hooray! Let them use the app now - go back to Inbox Page
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                currentInstallation[@"userId"] = newUser.objectId;
+                [currentInstallation saveInBackground];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 
             } else {
@@ -71,6 +72,6 @@
             }
         }];
     }
-
+    
 }
 @end

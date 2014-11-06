@@ -291,7 +291,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateRecieved" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ7-Go-d4S">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" text="dateRecieved" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ7-Go-d4S">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -306,6 +306,7 @@
                                                 <constraint firstItem="Qpu-CJ-Zb5" firstAttribute="leading" secondItem="hAy-Z4-5Oq" secondAttribute="leadingMargin" constant="10" id="JqB-FN-leQ"/>
                                                 <constraint firstItem="b6S-Ec-Qdl" firstAttribute="top" secondItem="hAy-Z4-5Oq" secondAttribute="topMargin" constant="10" id="M2W-Dh-ium"/>
                                                 <constraint firstItem="gdq-AB-P8R" firstAttribute="leading" secondItem="hAy-Z4-5Oq" secondAttribute="leadingMargin" constant="10" id="NUC-B8-eX6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NQ7-Go-d4S" secondAttribute="trailing" constant="5" id="QPe-i0-GXY"/>
                                                 <constraint firstItem="NQ7-Go-d4S" firstAttribute="top" secondItem="Au4-f6-g1f" secondAttribute="bottom" constant="5" id="SIU-S4-laz"/>
                                                 <constraint firstItem="gdq-AB-P8R" firstAttribute="top" secondItem="hAy-Z4-5Oq" secondAttribute="topMargin" constant="10" id="USg-ub-twz"/>
                                                 <constraint firstItem="Qpu-CJ-Zb5" firstAttribute="leading" secondItem="hAy-Z4-5Oq" secondAttribute="leadingMargin" constant="10" id="X7x-JF-wDc"/>
@@ -313,6 +314,7 @@
                                                 <constraint firstItem="gdq-AB-P8R" firstAttribute="leading" secondItem="hAy-Z4-5Oq" secondAttribute="leadingMargin" constant="10" id="cLx-Pm-lo5"/>
                                                 <constraint firstItem="YaL-yF-2dW" firstAttribute="leading" secondItem="hAy-Z4-5Oq" secondAttribute="leadingMargin" constant="10" id="eoO-AL-I19"/>
                                                 <constraint firstItem="2dN-20-oZR" firstAttribute="top" secondItem="gdq-AB-P8R" secondAttribute="bottom" constant="5" id="fPv-PR-ZTc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NQ7-Go-d4S" secondAttribute="trailing" constant="5" id="gje-5u-WsS"/>
                                                 <constraint firstItem="YaL-yF-2dW" firstAttribute="top" secondItem="Qpu-CJ-Zb5" secondAttribute="bottom" constant="5" id="gns-pE-lcr"/>
                                                 <constraint firstItem="yLa-xS-0X2" firstAttribute="top" secondItem="b6S-Ec-Qdl" secondAttribute="bottom" constant="5" id="hEf-o9-P2e"/>
                                                 <constraint firstItem="Qpu-CJ-Zb5" firstAttribute="top" secondItem="yLa-xS-0X2" secondAttribute="bottom" constant="5" id="iSC-S2-NAp"/>
@@ -337,7 +339,9 @@
                                                     <exclude reference="AJr-gp-ddL"/>
                                                     <exclude reference="lA7-Ew-fLH"/>
                                                     <exclude reference="EK7-xC-0Ph"/>
+                                                    <exclude reference="QPe-i0-GXY"/>
                                                     <exclude reference="SIU-S4-laz"/>
+                                                    <exclude reference="gje-5u-WsS"/>
                                                     <exclude reference="JqB-FN-leQ"/>
                                                     <exclude reference="X7x-JF-wDc"/>
                                                     <exclude reference="iSC-S2-NAp"/>
@@ -371,7 +375,9 @@
                                                     <include reference="AJr-gp-ddL"/>
                                                     <include reference="lA7-Ew-fLH"/>
                                                     <include reference="EK7-xC-0Ph"/>
+                                                    <exclude reference="QPe-i0-GXY"/>
                                                     <include reference="SIU-S4-laz"/>
+                                                    <exclude reference="gje-5u-WsS"/>
                                                     <include reference="JqB-FN-leQ"/>
                                                     <include reference="X7x-JF-wDc"/>
                                                     <include reference="iSC-S2-NAp"/>
