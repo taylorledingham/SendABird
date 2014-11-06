@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *messageArray;
 @property (strong, nonatomic) NSMutableArray *recievedMessagesArray;
-@property (strong, nonatomic) NSArray *orderedMessagesArray;
+@property (strong, nonatomic) NSMutableArray *orderedMessagesArray;
 
 @end
 
@@ -60,8 +60,6 @@
 //    [PFPush sendPushMessageToQueryInBackground:pushQuery
 //                                   withMessage:@"Hello World!"];
     
-    
-    
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser==nil) {
         //no one is logged in, go to login page
@@ -80,6 +78,44 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+# pragma mark - Delete Functions
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *message = [self.orderedMessagesArray objectAtIndex:indexPath.row];
+    NSString *objectId = message.objectId;
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    
+    [query getObjectInBackgroundWithId:objectId block:^(PFObject *object, NSError *error) {
+        if (!object) {
+            NSLog(@"The getFirstObject request failed.");
+        } else { //
+            NSLog(@"Successfully retrieved the object.");
+            
+            
+            [self.orderedMessagesArray removeObjectIdenticalTo:message];
+            [self.tableView reloadData];
+            [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded && !error) {
+                    NSLog(@"Image deleted from Parse");
+                    
+                } else {
+                    NSLog(@"error: %@", error);
+                }
+            }];
+        }
+    }];
+    
+    [self.tableView reloadData];
+
+}
+
+#pragma mark - Check New Messages
+
 
 -(void)checkForNewMessages {
     NSDate *date = [NSDate date];
@@ -102,7 +138,7 @@
             self.recievedMessagesArray = [objects mutableCopy];
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateRecieved" ascending:NO];
             NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
-            self.orderedMessagesArray = [self.recievedMessagesArray sortedArrayUsingDescriptors:sortDescriptors];
+            self.orderedMessagesArray = [[self.recievedMessagesArray sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
             [self.tableView reloadData];
             
         }
@@ -123,6 +159,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     InboxMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InboxMessageCell" forIndexPath:indexPath];
     PFObject *message = [self.orderedMessagesArray objectAtIndex:indexPath.row];
     NSDate *mySentDate = message[@"dateSent"];
