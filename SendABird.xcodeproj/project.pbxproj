@@ -21,6 +21,7 @@
 		998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18781A0AEC5300A6ED2D /* gotpic.png */; };
 		998C187C1A0AECED00A6ED2D /* GotPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */; };
 		998C187E1A0AF56E00A6ED2D /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C187D1A0AF56E00A6ED2D /* nopic.png */; };
+		998C18811A0B0DEA00A6ED2D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D9B1A0731D5001AA353 /* EditProfileViewController.m */; };
 		99986D4C1A06F16C001AA353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D4B1A06F16C001AA353 /* main.m */; };
 		99986D4F1A06F16C001AA353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D4E1A06F16C001AA353 /* AppDelegate.m */; };
 		99986D551A06F16C001AA353 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99986D531A06F16C001AA353 /* Main.storyboard */; };
@@ -45,7 +46,6 @@
 		99986D931A071D5B001AA353 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99986D921A071D5B001AA353 /* libz.dylib */; };
 		99986D961A071F56001AA353 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D951A071F56001AA353 /* LoginViewController.m */; };
 		99986D991A071F70001AA353 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D981A071F70001AA353 /* SignupViewController.m */; };
-		99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D9B1A0731D5001AA353 /* EditProfileViewController.m */; };
 		99986D9F1A07558B001AA353 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D9E1A07558B001AA353 /* AddFriendViewController.m */; };
 		99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA41A07680E001AA353 /* SearchFriendCell.m */; };
 		99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA71A07F00B001AA353 /* ComposeViewController.m */; };
@@ -207,6 +207,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		998C187F1A0B062C00A6ED2D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				99986DA31A07680E001AA353 /* SearchFriendCell.h */,
+				99986DA41A07680E001AA353 /* SearchFriendCell.m */,
+				99C5651A1A08A0B70082549E /* FriendCell.h */,
+				99C5651B1A08A0B70082549E /* FriendCell.m */,
+				99D2A81F1A09913200CC2E32 /* InboxMessageCell.h */,
+				99D2A8201A09913200CC2E32 /* InboxMessageCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		998C18801A0B064500A6ED2D /* Pics */ = {
+			isa = PBXGroup;
+			children = (
+				998C18761A0AE57F00A6ED2D /* cam.png */,
+				998C18781A0AEC5300A6ED2D /* gotpic.png */,
+				998C187D1A0AF56E00A6ED2D /* nopic.png */,
+			);
+			name = Pics;
+			sourceTree = "<group>";
+		};
 		99986D3D1A06F16C001AA353 = {
 			isa = PBXGroup;
 			children = (
@@ -231,27 +254,18 @@
 		99986D481A06F16C001AA353 /* SendABird */ = {
 			isa = PBXGroup;
 			children = (
-				998C18761A0AE57F00A6ED2D /* cam.png */,
-				998C18781A0AEC5300A6ED2D /* gotpic.png */,
-				998C187D1A0AF56E00A6ED2D /* nopic.png */,
 				99986D531A06F16C001AA353 /* Main.storyboard */,
 				99C5650C1A0872C50082549E /* Storyboards */,
 				9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */,
 				9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */,
-				9060BC4A1A08086C00935D41 /* SentViewController.h */,
-				9060BC4B1A08086C00935D41 /* SentViewController.m */,
 				90053CA61A0991610059A7BF /* MessageMapPin.h */,
 				90053CA71A0991610059A7BF /* MessageMapPin.m */,
 				99986D4D1A06F16C001AA353 /* AppDelegate.h */,
 				99986D4E1A06F16C001AA353 /* AppDelegate.m */,
 				99986D721A0707EA001AA353 /* View Controllers */,
 				99986D561A06F16C001AA353 /* Images.xcassets */,
-				99986DA31A07680E001AA353 /* SearchFriendCell.h */,
-				99986DA41A07680E001AA353 /* SearchFriendCell.m */,
-				99C5651A1A08A0B70082549E /* FriendCell.h */,
-				99C5651B1A08A0B70082549E /* FriendCell.m */,
-				99D2A81F1A09913200CC2E32 /* InboxMessageCell.h */,
-				99D2A8201A09913200CC2E32 /* InboxMessageCell.m */,
+				998C18801A0B064500A6ED2D /* Pics */,
+				998C187F1A0B062C00A6ED2D /* Cells */,
 				99986D581A06F16C001AA353 /* LaunchScreen.xib */,
 				99986D791A071C0F001AA353 /* Frameworks */,
 				99986D491A06F16C001AA353 /* Supporting Files */,
@@ -290,6 +304,8 @@
 			children = (
 				99C565001A085AFD0082549E /* SABTabBarController.m */,
 				99C564FF1A085AFD0082549E /* SABTabBarController.h */,
+				9060BC4A1A08086C00935D41 /* SentViewController.h */,
+				9060BC4B1A08086C00935D41 /* SentViewController.m */,
 				99C564FA1A08513B0082549E /* FriendsViewController.h */,
 				99C564FB1A08513B0082549E /* FriendsViewController.m */,
 				99986D9D1A07558B001AA353 /* AddFriendViewController.h */,
@@ -540,8 +556,8 @@
 				909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,
+				998C18811A0B0DEA00A6ED2D /* EditProfileViewController.m in Sources */,
 				99D2A8211A09913200CC2E32 /* InboxMessageCell.m in Sources */,
-				99986D9C1A0731D5001AA353 /* EditProfileViewController.m in Sources */,
 				99C565121A087B6C0082549E /* LoadStoryboardIndexViewController.m in Sources */,
 				99C5651C1A08A0B70082549E /* FriendCell.m in Sources */,
 				9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */,

@@ -19,6 +19,7 @@
     
     if (self.message[@"pic"]) {
         PFFile *picFile = self.message[@"pic"];
+        //for error message, later run async to get data, when return, return to main thread to load image
         NSData *picData = [picFile getData];
         UIImage *myPic = [UIImage imageWithData:picData];
         self.picView.image = myPic;

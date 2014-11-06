@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <CoreLocation/CLGeocoder.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreLocation/CLPlacemark.h>
 
-@interface EditProfileViewController : UIViewController<UITextFieldDelegate>
+@interface EditProfileViewController : UIViewController<UITextFieldDelegate,CLLocationManagerDelegate>
 
 - (IBAction)logout:(id)sender;
 - (IBAction)save:(id)sender;

@@ -12,7 +12,11 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "AppDelegate.h"
 
-@interface EditProfileViewController ()
+@interface EditProfileViewController (){
+    CLLocationManager *_locationManager;
+    CLLocation *currentLocation;
+}
+
 
 @end
 
@@ -21,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    //
+
     [self.navigationItem setHidesBackButton:YES];
     // Do any additional setup after loading the view.
 }
@@ -36,15 +43,33 @@
     self.passwordField.delegate = self;
     self.emailField.delegate = self;
     
-    PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
-    [self reverseGeocodeLocation:myGeopoint];
-    
     if (self.currentUser !=nil) {
         self.usernameField.text = self.currentUser.username;
         self.passwordField.text = self.currentUser.password;
         self.emailField.text = self.currentUser.email;
-        NSLog(@"my address: %@", self.myAddress);
     }
+    
+//    if (![self.currentUser objectForKey:@"lastLocation"]) {
+//        _locationManager = [[CLLocationManager alloc] init];
+//        [_locationManager requestWhenInUseAuthorization];
+//        _locationManager.delegate = self;
+//        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//        [_locationManager startUpdatingLocation];
+//        
+//    } else {
+//        PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+//        [self reverseGeocodeLocation:myGeopoint];
+//    }
+    
+        _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager requestWhenInUseAuthorization];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [_locationManager startUpdatingLocation];
+        
+        PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+        [self reverseGeocodeLocation:myGeopoint];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -58,6 +83,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    currentLocation = [locations firstObject];
+    CLLocationCoordinate2D coordinate = [currentLocation coordinate];
+    PFGeoPoint *setGeopoint = [[PFGeoPoint alloc] init];
+    setGeopoint.latitude = coordinate.latitude;
+    setGeopoint.longitude = coordinate.longitude;
+    NSLog(@"The coordinates are: %f, %f", setGeopoint.latitude, setGeopoint.longitude);
+    
+    [self.currentUser setObject:setGeopoint forKey:@"lastLocation"];
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            
+            NSLog(@"Your location has been updated!");
+            
+        } else {
+            NSString *errorString = [error userInfo][@"error"];
+            // Show the errorString somewhere and let the user try again.
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" message:errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            [alertView show];
+        }
+    }];
+
+    [manager stopUpdatingLocation];
+}
+
 - (void)reverseGeocodeLocation:(PFGeoPoint *)geopoint {
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:geopoint.latitude longitude:geopoint.longitude];
@@ -69,7 +121,6 @@
                 self.locationText.text = self.myAddress;
             }
         }
-
     }];
 }
     
@@ -90,8 +141,6 @@
         self.currentUser.email = email;
         [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                
-                NSLog(@"New Email: %@", self.currentUser.email);
                 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Saved" message:@"Your profile has been updated!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
