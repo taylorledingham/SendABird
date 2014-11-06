@@ -458,7 +458,7 @@
 					};
 					99986D5E1A06F16C001AA353 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = S8X486LY33;
+						DevelopmentTeam = R7PALQLS74;
 						TestTargetID = 99986D451A06F16C001AA353;
 					};
 				};
