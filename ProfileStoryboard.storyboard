@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ynK-08-rNF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -252,22 +253,22 @@
                                 <exclude reference="KPv-yz-MAU"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="kBH-eU-gil"/>
-                                <exclude reference="vUC-cU-Xtg"/>
-                                <exclude reference="F1D-Ru-VWg"/>
-                                <exclude reference="uCv-K7-iBi"/>
-                                <exclude reference="BxS-qM-SgW"/>
-                                <exclude reference="zWm-QA-qzG"/>
-                                <exclude reference="89O-0c-VZ6"/>
-                                <exclude reference="gOa-eE-k0r"/>
-                                <exclude reference="4d1-1M-4mj"/>
-                                <exclude reference="MZf-kv-YLM"/>
-                                <exclude reference="9es-eg-w6j"/>
-                                <exclude reference="RvW-9f-DTn"/>
                                 <exclude reference="1xL-Ql-Cnt"/>
                                 <exclude reference="eH6-kP-VgJ"/>
+                                <exclude reference="89O-0c-VZ6"/>
+                                <exclude reference="gOa-eE-k0r"/>
+                                <exclude reference="F1D-Ru-VWg"/>
+                                <exclude reference="uCv-K7-iBi"/>
                                 <exclude reference="4XV-y2-TBM"/>
                                 <exclude reference="LEM-Tu-nAo"/>
+                                <exclude reference="kBH-eU-gil"/>
+                                <exclude reference="vUC-cU-Xtg"/>
+                                <exclude reference="BxS-qM-SgW"/>
+                                <exclude reference="zWm-QA-qzG"/>
+                                <exclude reference="9es-eg-w6j"/>
+                                <exclude reference="RvW-9f-DTn"/>
+                                <exclude reference="4d1-1M-4mj"/>
+                                <exclude reference="MZf-kv-YLM"/>
                                 <exclude reference="Yv3-0H-YQe"/>
                                 <exclude reference="u1P-b3-doG"/>
                             </mask>
@@ -285,22 +286,22 @@
                                 <include reference="KPv-yz-MAU"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="kBH-eU-gil"/>
-                                <include reference="vUC-cU-Xtg"/>
-                                <include reference="F1D-Ru-VWg"/>
-                                <include reference="uCv-K7-iBi"/>
-                                <include reference="BxS-qM-SgW"/>
-                                <include reference="zWm-QA-qzG"/>
-                                <include reference="89O-0c-VZ6"/>
-                                <include reference="gOa-eE-k0r"/>
-                                <include reference="4d1-1M-4mj"/>
-                                <include reference="MZf-kv-YLM"/>
-                                <include reference="9es-eg-w6j"/>
-                                <include reference="RvW-9f-DTn"/>
                                 <include reference="1xL-Ql-Cnt"/>
                                 <include reference="eH6-kP-VgJ"/>
+                                <include reference="89O-0c-VZ6"/>
+                                <include reference="gOa-eE-k0r"/>
+                                <include reference="F1D-Ru-VWg"/>
+                                <include reference="uCv-K7-iBi"/>
                                 <include reference="4XV-y2-TBM"/>
                                 <include reference="LEM-Tu-nAo"/>
+                                <include reference="kBH-eU-gil"/>
+                                <include reference="vUC-cU-Xtg"/>
+                                <include reference="BxS-qM-SgW"/>
+                                <include reference="zWm-QA-qzG"/>
+                                <include reference="9es-eg-w6j"/>
+                                <include reference="RvW-9f-DTn"/>
+                                <include reference="4d1-1M-4mj"/>
+                                <include reference="MZf-kv-YLM"/>
                                 <include reference="Yv3-0H-YQe"/>
                                 <include reference="u1P-b3-doG"/>
                             </mask>
