@@ -10,6 +10,7 @@
 #import "BirdTableViewController.h"
 #import "SendToFriendTableViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import <AFNetworking.h>
 
 @interface ComposeViewController ()
 
@@ -30,7 +31,7 @@
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( doneSendMessage)];
     self.navigationItem.rightBarButtonItem = sendButton;
     
-    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'ZZZZZ'"];
     
 }
 
@@ -62,6 +63,7 @@
                     
                     NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
                     message[@"dateRecieved"] = recievedDate;
+                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate];
                     message[@"message"] = self.messageTextView.text;
                     [message setObject:[PFUser currentUser] forKey:@"sender"];
                     [message setObject: reciever forKey:@"reciever"];
@@ -85,6 +87,55 @@
         }
     }];
 }
+
+-(void)schedulePushNotifcationWithUser:(PFUser *)user AndDate:(NSDate*)myDate {
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    //[dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [myDateFormatter setLocale:enUSPOSIXLocale];
+    [myDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    
+    //NSDate *now = [NSDate date];
+    NSString *iso8601String = [myDateFormatter stringFromDate:myDate];
+    
+    NSMutableDictionary *requestParams = [[NSMutableDictionary alloc]init];
+    
+    NSString *dateStr = [[NSString alloc]init];
+    //dateStr = [dateFormatter stringFromDate:myDate];
+    dateStr = [NSString stringWithFormat:@"%@", myDate];
+    
+    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
+    [serializer setValue:@"DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj" forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [serializer setValue:@"mObK8jJXxchROdulj5z2Re972hYknXJIrcUGzD7u" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    
+    
+    NSString *userID = [PFUser currentUser].objectId;
+    userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
+    [requestParams setObject:@{@"userId": @{@"$in" : userID }} forKey:@"where"];
+    [requestParams setObject: iso8601String forKey:@"push_time"];
+    [requestParams setObject:@{@"alert":[NSString stringWithFormat:@"%@  push!",[PFUser currentUser].username]} forKey:@"data"];
+    //[req setValuesForKeysWithDictionary:requestParams];
+    manager.requestSerializer = serializer;
+    //
+    
+    [manager POST:@"https://api.parse.com/1/push" parameters:requestParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"AFHTTPRequestOperation: %@", [operation response]);
+        NSLog(@"%@", user.objectId);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"AFHTTPRequestOperation: %@", [operation response]);
+        NSLog(@"Error: %@", error);
+    }];
+    
+    
+}
+
 
 
 -(double)calculateDistanceBetweenSenderAndReciever:(PFUser *)reciever {

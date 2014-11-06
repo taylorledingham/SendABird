@@ -19,7 +19,11 @@
 
 @end
 
-@implementation SentViewController
+@implementation SentViewController {
+    
+    NSDateFormatter *messageDateFormatter;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,15 +35,8 @@
     
     self.tableView.hidden = YES;
     
-    CLLocation *toronto = [[CLLocation alloc]initWithLatitude:43.6767 longitude:-79.6306];
-    toronto = [[CLLocation alloc]initWithLatitude:49.281418 longitude:-123.126480];
-    self.locations = [[NSMutableArray alloc]init];
-    [self.locations addObject:@"toronto"];
-    
-    MKPointAnnotation *annotationStart = [[MKPointAnnotation alloc] init];
-    annotationStart.coordinate = toronto.coordinate;
-    [self.mapView addAnnotation:annotationStart];
-    
+    messageDateFormatter = [[NSDateFormatter alloc] init];
+    [messageDateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
 
 }
 
@@ -56,7 +53,16 @@
 
 -(void)loadSentMessages {
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    NSDate *date = [NSDate date];
+    NSString *dateString = [messageDateFormatter stringFromDate:date];
+    NSDate *date2 = [messageDateFormatter dateFromString:dateString];
+    
+    
+    
+    NSPredicate *messageDatePredicate = [NSPredicate predicateWithFormat:@"dateRecieved >= %@", date2];
+    PFQuery *query = [PFQuery queryWithClassName:@"Message" predicate:messageDatePredicate];
+
+    
     [query whereKey:@"sender" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
@@ -98,7 +104,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     PFObject *message = [self.sentMessagesArray objectAtIndex:indexPath.row];
-    //NSString *sender = message[@"sender"][@"username"];
     PFUser *reciever = message[@"reciever"];
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
@@ -118,37 +123,46 @@
     
 }
 
--(void)calculateMessageCurrentLocation: (PFObject *)message withCompletion:(void (^)(CLLocationCoordinate2D location))completion{
+
+-(CLLocation *)getCLLocationFromPFGeoPoint:(PFGeoPoint *)point {
+    CLLocation *location = [[CLLocation alloc]initWithLatitude:point.latitude longitude:point.longitude];
+    
+    return location;
+}
+
+-(CLLocationCoordinate2D)calculateMessageCurrentLocation: (PFObject *)message andBird:(PFObject *)bird{
+    PFGeoPoint *senderLoc = message[@"senderLocation"];
+    PFGeoPoint *recieverLoc = message[@"recieverLocation"];
+
+        
+    double birdSpeed = [bird[@"speed"] doubleValue];
+    NSDate *dateSent = message[@"dateSent"];
+    
+    double distance = [self calculateDistanceTravelledAtVelocity:birdSpeed since:dateSent];
+        
+      CLLocation *sentLoc = [self getCLLocationFromPFGeoPoint:senderLoc];
+      CLLocation *recievedLoc = [self getCLLocationFromPFGeoPoint:recieverLoc];
+        
+    double bearing = [self getHeadingForDirectionFromCoordinate:sentLoc.coordinate toCoordinate:recievedLoc.coordinate];
+    
+    return [self coordinateFromCoord:sentLoc.coordinate atDistanceKm:distance atBearingDegrees:bearing];
+        
+    
+    
+}
+
+-(double)calculateRemainingTimeToBeDeliveredWithMessage:(PFObject *)message andBird:(PFObject *)bird {
+    
+    double birdSpeed = [bird[@"speed"] doubleValue];
+    
     PFGeoPoint *senderLoc = message[@"senderLocation"];
     PFGeoPoint *recieverLoc = message[@"recieverLocation"];
     
-    PFObject *bird = message[@"typeOfSender"];
+    double distanceInKm = [[self getCLLocationFromPFGeoPoint:senderLoc] distanceFromLocation:[self getCLLocationFromPFGeoPoint:recieverLoc]]/1000;
+
+    double timeRemaining = distanceInKm / birdSpeed;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Bird"];
-    [query getObjectInBackgroundWithId:bird.objectId block:^(PFObject *bird, NSError *error) {
-        //
-        NSLog(@"bird.objectId :%@", bird.objectId);
-        NSLog(@"bird.updatedAt :%@", bird.updatedAt);
-        NSLog(@"bird.createdAt :%@", bird.createdAt);
-        NSLog(@"bird speed :%@", bird[@"speed"]);
-        NSLog(@"bird.name :%@", bird[@"name"]);
-        
-        double birdSpeed = [bird[@"speed"] doubleValue];
-        NSDate *dateSent = message[@"dateSent"];
-        
-        //double distance = 0;
-        double distance = [self calculateDistanceTravelledAtVelocity:birdSpeed since:dateSent];
-        
-        CLLocation *sentLoc = [[CLLocation alloc]initWithLatitude:senderLoc.latitude longitude:senderLoc.longitude];
-        CLLocation *recievedLoc = [[CLLocation alloc]initWithLatitude:recieverLoc.latitude longitude:recieverLoc.longitude];
-        
-        double bearing = [self getHeadingForDirectionFromCoordinate:sentLoc.coordinate toCoordinate:recievedLoc.coordinate];
-        
-        completion([self coordinateFromCoord:sentLoc.coordinate atDistanceKm:distance atBearingDegrees:bearing]);
-        
-    }];
-    
-    //double birdSpeed = bird[@"speed"];
+    return timeRemaining;
     
     
 }
@@ -159,13 +173,12 @@
     for (PFObject * message in self.sentMessagesArray) {
         
         
-        [self calculateMessageCurrentLocation:message withCompletion:^(CLLocationCoordinate2D location) {
-            CLLocationCoordinate2D birdLoc = location;
+            // birdLoc = location;
             
             PFObject *bird = message[@"typeOfSender"];
             PFUser *reciever = message[@"reciever"];
 
-            
+
             PFQuery *query = [PFQuery queryWithClassName:@"Bird"];
             PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
             [query getObjectInBackgroundWithId:bird.objectId block:^(PFObject *bird, NSError *error) {
@@ -178,11 +191,14 @@
                         NSLog(@"user error: %@", error);
 
                     }
+                    CLLocationCoordinate2D birdLoc =  [self calculateMessageCurrentLocation:message andBird:bird];
+                    
 
-                    NSString *recieverName = reciever[@"username"];
-                   PFFile *imageFile = bird[@"birdPin"];
+                    NSString *recieverName = [NSString stringWithFormat:@"Receiver: %@",reciever[@"username"]];
                     UIImage *image = [UIImage imageNamed:@"birdIcon"];
-                MessageMapPin *myAnnotation = [[MessageMapPin alloc]initWithCoordinates:birdLoc placeName:recieverName subtitle:nil andPinImage:image];
+                    NSString *timeRemaining = [NSString stringWithFormat:@"Time till delivery: %.4f hours", [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird]];
+                    
+                MessageMapPin *myAnnotation = [[MessageMapPin alloc]initWithCoordinates:birdLoc placeName:recieverName subtitle:timeRemaining andPinImage:image];
 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mapView addAnnotation:myAnnotation];
@@ -191,29 +207,9 @@
                 });
 
 
-            //PFUser *reciever = message[@"reciever"];
-   
-//            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//    
-//                if(error){
-//                    NSLog(@"%@", error);
-//                }
-//                else {
-//                    UIImage *image = [UIImage imageWithData:data];
-//                    MessageMapPin *myAnnotation = [[MessageMapPin alloc]initWithCoordinates:birdLoc placeName:recieverName subtitle:nil andPinImage:image];
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self.mapView addAnnotation:myAnnotation];
-//                        
-//                        
-//                    });
-//                }
-//            }];
-
 
                 }];
                 }
-            }];
         }];
 
     }
@@ -223,7 +219,7 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     //show direction
     
-    MessageMapPin *myAnnotation = (MessageMapPin *)view;
+    //MessageMapPin *myAnnotation = (MessageMapPin *)view;
    // MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
 
     
@@ -301,9 +297,9 @@
 -(double)calculateDistanceTravelledAtVelocity:(double)velocity since:(NSDate *)time {
     
     NSTimeInterval timeInterval = [time timeIntervalSinceNow];
-    double timeInHours = timeInterval * 60 * 60;
+    double timeInHours = (timeInterval  / 3600)*-1;
     
-    return velocity/timeInHours;
+    return velocity*timeInHours;
     
 }
 

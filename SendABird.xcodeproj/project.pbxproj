@@ -93,7 +93,7 @@
 		9082A3D21A08338B00488DE8 /* CommsLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommsLogin.h; sourceTree = "<group>"; };
 		9082A3D31A08338B00488DE8 /* CommsLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommsLogin.m; sourceTree = "<group>"; };
 		909498A41A0AA842001C6D53 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		909498A61A0AB231001C6D53 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
+		909498A61A0AB231001C6D53 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendToFriendTableViewController.h; path = ../SendToFriendTableViewController.h; sourceTree = "<group>"; };
 		909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendToFriendTableViewController.m; path = ../SendToFriendTableViewController.m; sourceTree = "<group>"; };
 		998C18761A0AE57F00A6ED2D /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 				TargetAttributes = {
 					99986D451A06F16C001AA353 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = R7PALQLS74;
+						DevelopmentTeam = S8X486LY33;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -458,7 +458,7 @@
 					};
 					99986D5E1A06F16C001AA353 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = R7PALQLS74;
+						DevelopmentTeam = S8X486LY33;
 						TestTargetID = 99986D451A06F16C001AA353;
 					};
 				};

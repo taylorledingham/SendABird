@@ -73,6 +73,10 @@
                                                 
                                                 AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
                                                 
+                                                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                                currentInstallation[@"userId"] = user.objectId;
+                                                [currentInstallation saveInBackground];
+                                                
                                                 appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
                                                 
                                             } else {
@@ -108,6 +112,9 @@
                 NSDictionary *userData = (NSDictionary *)result;
                 NSString *name = userData[@"name"];
                 name = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                currentInstallation[@"userId"] = [PFUser currentUser].objectId;
+                [currentInstallation saveInBackground];
                 [[PFUser currentUser] setUsername:name];
                 [[PFUser currentUser] setEmail:userData[@"email"]];
                 [[PFUser currentUser] saveEventually];

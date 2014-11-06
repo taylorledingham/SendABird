@@ -50,6 +50,9 @@
         newUser.username = username;
         newUser.password = password;
         newUser.email = email;
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        currentInstallation[@"userId"] = newUser.objectId;
+        [currentInstallation saveInBackground];
         
         //create a new user and save it in the backend
         //in block so sign up is done asynchronously - parse background operation
