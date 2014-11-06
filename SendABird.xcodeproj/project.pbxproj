@@ -17,6 +17,7 @@
 		909498A51A0AA842001C6D53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909498A41A0AA842001C6D53 /* MapKit.framework */; };
 		909498A71A0AB231001C6D53 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 909498A61A0AB231001C6D53 /* PodFile */; };
 		909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */; };
+		991E93981A0C162700CD5C17 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991E93971A0C162700CD5C17 /* SignupViewController.m */; };
 		998C18771A0AE57F00A6ED2D /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18761A0AE57F00A6ED2D /* cam.png */; };
 		998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18781A0AEC5300A6ED2D /* gotpic.png */; };
 		998C187C1A0AECED00A6ED2D /* GotPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */; };
@@ -45,7 +46,6 @@
 		99986D911A071CCD001AA353 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99986D901A071CCD001AA353 /* UIKit.framework */; };
 		99986D931A071D5B001AA353 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99986D921A071D5B001AA353 /* libz.dylib */; };
 		99986D961A071F56001AA353 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D951A071F56001AA353 /* LoginViewController.m */; };
-		99986D991A071F70001AA353 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D981A071F70001AA353 /* SignupViewController.m */; };
 		99986D9F1A07558B001AA353 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D9E1A07558B001AA353 /* AddFriendViewController.m */; };
 		99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA41A07680E001AA353 /* SearchFriendCell.m */; };
 		99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986DA71A07F00B001AA353 /* ComposeViewController.m */; };
@@ -96,6 +96,8 @@
 		909498A61A0AB231001C6D53 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendToFriendTableViewController.h; path = ../SendToFriendTableViewController.h; sourceTree = "<group>"; };
 		909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendToFriendTableViewController.m; path = ../SendToFriendTableViewController.m; sourceTree = "<group>"; };
+		991E93961A0C162700CD5C17 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ../SignupViewController.h; sourceTree = "<group>"; };
+		991E93971A0C162700CD5C17 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
 		998C18761A0AE57F00A6ED2D /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		998C18781A0AEC5300A6ED2D /* gotpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gotpic.png; sourceTree = "<group>"; };
 		998C187A1A0AECED00A6ED2D /* GotPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotPictureViewController.h; sourceTree = "<group>"; };
@@ -131,8 +133,6 @@
 		99986D921A071D5B001AA353 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		99986D941A071F56001AA353 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		99986D951A071F56001AA353 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
-		99986D971A071F70001AA353 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ../SignupViewController.h; sourceTree = "<group>"; };
-		99986D981A071F70001AA353 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
 		99986D9A1A0731D5001AA353 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditProfileViewController.h; path = ../EditProfileViewController.h; sourceTree = "<group>"; };
 		99986D9B1A0731D5001AA353 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditProfileViewController.m; path = ../EditProfileViewController.m; sourceTree = "<group>"; };
 		99986D9D1A07558B001AA353 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
@@ -302,6 +302,8 @@
 		99986D721A0707EA001AA353 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				991E93961A0C162700CD5C17 /* SignupViewController.h */,
+				991E93971A0C162700CD5C17 /* SignupViewController.m */,
 				99C565001A085AFD0082549E /* SABTabBarController.m */,
 				99C564FF1A085AFD0082549E /* SABTabBarController.h */,
 				9060BC4A1A08086C00935D41 /* SentViewController.h */,
@@ -322,8 +324,6 @@
 				998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */,
 				99986D941A071F56001AA353 /* LoginViewController.h */,
 				99986D951A071F56001AA353 /* LoginViewController.m */,
-				99986D971A071F70001AA353 /* SignupViewController.h */,
-				99986D981A071F70001AA353 /* SignupViewController.m */,
 				99986D9A1A0731D5001AA353 /* EditProfileViewController.h */,
 				99986D9B1A0731D5001AA353 /* EditProfileViewController.m */,
 				99986DA61A07F00B001AA353 /* ComposeViewController.h */,
@@ -551,7 +551,6 @@
 				998C187C1A0AECED00A6ED2D /* GotPictureViewController.m in Sources */,
 				901739031A09408B00741F55 /* BirdTableViewController.m in Sources */,
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
-				99986D991A071F70001AA353 /* SignupViewController.m in Sources */,
 				99C565011A085AFD0082549E /* SABTabBarController.m in Sources */,
 				909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
@@ -565,6 +564,7 @@
 				99C565181A08828C0082549E /* LoadStoryboardFriendsViewController.m in Sources */,
 				9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */,
 				99C5650F1A0873EC0082549E /* LoadStoryboardProfileViewController.m in Sources */,
+				991E93981A0C162700CD5C17 /* SignupViewController.m in Sources */,
 				99D2A8241A09AF1B00CC2E32 /* InboxDetailViewController.m in Sources */,
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
