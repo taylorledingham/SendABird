@@ -17,8 +17,10 @@
 		909498A51A0AA842001C6D53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909498A41A0AA842001C6D53 /* MapKit.framework */; };
 		909498A71A0AB231001C6D53 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 909498A61A0AB231001C6D53 /* PodFile */; };
 		909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */; };
-		998C18751A0AE49800A6ED2D /* cam2.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18741A0AE49800A6ED2D /* cam2.png */; };
 		998C18771A0AE57F00A6ED2D /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18761A0AE57F00A6ED2D /* cam.png */; };
+		998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C18781A0AEC5300A6ED2D /* gotpic.png */; };
+		998C187C1A0AECED00A6ED2D /* GotPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */; };
+		998C187E1A0AF56E00A6ED2D /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 998C187D1A0AF56E00A6ED2D /* nopic.png */; };
 		99986D4C1A06F16C001AA353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D4B1A06F16C001AA353 /* main.m */; };
 		99986D4F1A06F16C001AA353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99986D4E1A06F16C001AA353 /* AppDelegate.m */; };
 		99986D551A06F16C001AA353 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99986D531A06F16C001AA353 /* Main.storyboard */; };
@@ -94,8 +96,11 @@
 		909498A61A0AB231001C6D53 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		909CD4621A0976F5007B7A39 /* SendToFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendToFriendTableViewController.h; path = ../SendToFriendTableViewController.h; sourceTree = "<group>"; };
 		909CD4631A0976F5007B7A39 /* SendToFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendToFriendTableViewController.m; path = ../SendToFriendTableViewController.m; sourceTree = "<group>"; };
-		998C18741A0AE49800A6ED2D /* cam2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam2.png; sourceTree = "<group>"; };
 		998C18761A0AE57F00A6ED2D /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
+		998C18781A0AEC5300A6ED2D /* gotpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gotpic.png; sourceTree = "<group>"; };
+		998C187A1A0AECED00A6ED2D /* GotPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotPictureViewController.h; sourceTree = "<group>"; };
+		998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotPictureViewController.m; sourceTree = "<group>"; };
+		998C187D1A0AF56E00A6ED2D /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopic.png; sourceTree = "<group>"; };
 		99986D461A06F16C001AA353 /* SendABird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendABird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99986D4A1A06F16C001AA353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99986D4B1A06F16C001AA353 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -206,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				909498A61A0AB231001C6D53 /* PodFile */,
-				909498A41A0AA842001C6D53 /* MapKit.framework */,
 				99986D481A06F16C001AA353 /* SendABird */,
 				99986D621A06F16C001AA353 /* SendABirdTests */,
 				99986D471A06F16C001AA353 /* Products */,
@@ -228,7 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				998C18761A0AE57F00A6ED2D /* cam.png */,
-				998C18741A0AE49800A6ED2D /* cam2.png */,
+				998C18781A0AEC5300A6ED2D /* gotpic.png */,
+				998C187D1A0AF56E00A6ED2D /* nopic.png */,
 				99986D531A06F16C001AA353 /* Main.storyboard */,
 				99C5650C1A0872C50082549E /* Storyboards */,
 				9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */,
@@ -297,6 +302,8 @@
 				99986D701A0707E2001AA353 /* InboxViewController.m */,
 				99D2A8221A09AF1B00CC2E32 /* InboxDetailViewController.h */,
 				99D2A8231A09AF1B00CC2E32 /* InboxDetailViewController.m */,
+				998C187A1A0AECED00A6ED2D /* GotPictureViewController.h */,
+				998C187B1A0AECED00A6ED2D /* GotPictureViewController.m */,
 				99986D941A071F56001AA353 /* LoginViewController.h */,
 				99986D951A071F56001AA353 /* LoginViewController.m */,
 				99986D971A071F70001AA353 /* SignupViewController.h */,
@@ -320,6 +327,7 @@
 				99EA552A1A096B2A00A66769 /* AddressBookUI.framework */,
 				99986D7A1A071C43001AA353 /* AudioToolbox.framework */,
 				99986D901A071CCD001AA353 /* UIKit.framework */,
+				909498A41A0AA842001C6D53 /* MapKit.framework */,
 				99986D8E1A071CBF001AA353 /* Foundation.framework */,
 				99986D8C1A071C80001AA353 /* SystemConfiguration.framework */,
 				99986D8A1A071C78001AA353 /* StoreKit.framework */,
@@ -464,14 +472,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				99986D551A06F16C001AA353 /* Main.storyboard in Resources */,
+				998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */,
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,
 				909498A71A0AB231001C6D53 /* PodFile in Resources */,
 				99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */,
 				99C565051A08729F0082549E /* FriendsStoryboard.storyboard in Resources */,
-				998C18751A0AE49800A6ED2D /* cam2.png in Resources */,
 				99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */,
 				998C18771A0AE57F00A6ED2D /* cam.png in Resources */,
 				99C565091A0872B10082549E /* SentStoryboard.storyboard in Resources */,
+				998C187E1A0AF56E00A6ED2D /* nopic.png in Resources */,
 				99986D571A06F16C001AA353 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998C187C1A0AECED00A6ED2D /* GotPictureViewController.m in Sources */,
 				901739031A09408B00741F55 /* BirdTableViewController.m in Sources */,
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
 				99986D991A071F70001AA353 /* SignupViewController.m in Sources */,

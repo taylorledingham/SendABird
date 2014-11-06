@@ -7,6 +7,7 @@
 //
 
 #import "InboxDetailViewController.h"
+#import "GotPictureViewController.h"
 
 @interface InboxDetailViewController ()
 
@@ -46,6 +47,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([[segue identifier] isEqualToString:@"SeePic"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        GotPictureViewController *gotPicViewController = (GotPictureViewController *)[navigationController topViewController];
+        gotPicViewController.message = self.message;
+    }
+}
+
+
 
 //#pragma mark - Table view data source
 //
