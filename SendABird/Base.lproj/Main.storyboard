@@ -211,6 +211,9 @@
                                         <include reference="cle-5s-YwW"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="N7A-uh-6eY" id="hQD-Ya-xae"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lzq-Mc-AXb">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -232,6 +235,9 @@
                                         <include reference="hAf-Q7-KaM"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="N7A-uh-6eY" id="etr-dc-KAm"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p36-Db-546">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -528,6 +534,9 @@
                                         <include reference="o0a-gN-kin"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="R9c-XF-rpq" id="hxc-HR-7NZ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHV-ax-YSU">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -549,6 +558,9 @@
                                         <include reference="qw2-uK-RdR"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="R9c-XF-rpq" id="Tyu-zP-mQN"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08z-Er-j0J">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -597,8 +609,7 @@
                                         <exclude reference="pt7-hz-EAj"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="104" y="70" width="205" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="3aK-g2-EsW"/>
                                         <include reference="pt7-hz-EAj"/>
@@ -619,13 +630,15 @@
                                         <exclude reference="eGA-x5-YlV"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="76" y="205" width="248" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="ELo-35-RTz"/>
                                         <include reference="eGA-x5-YlV"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="R9c-XF-rpq" id="GqO-qc-Nxr"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

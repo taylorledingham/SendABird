@@ -32,7 +32,7 @@
     self.messageArray = [[NSMutableArray alloc]init];
     self.recievedMessagesArray = [[NSMutableArray alloc]init];
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     //    PFUser *currentUser = [PFUser currentUser];
 }

@@ -12,7 +12,7 @@
 #import "CommsLogin.h"
 
 
-@interface LoginViewController : UIViewController <FBLoginViewDelegate, CommsDelegate >
+@interface LoginViewController : UIViewController <FBLoginViewDelegate, CommsDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) CommsLogin *commsLogin;
