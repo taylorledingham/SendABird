@@ -58,11 +58,11 @@
 -(void)loadBirdImageDictionary {
     
     self.birdIconDictionary = [[NSDictionary alloc]init];
-    UIImage *gooseImage = [UIImage imageNamed:@"gooseIcon"];
-    UIImage *falconImage = [UIImage imageNamed:@"falconIcon"];
-    UIImage *owlImage = [UIImage imageNamed:@"owlIcon"];
-    UIImage *pigeonImage = [UIImage imageNamed:@"pigeonIcon"];
-    UIImage *ravenImage = [UIImage imageNamed:@"ravenIcon"];
+    UIImage *gooseImage = [UIImage imageNamed:@"GooseIcon1"];
+    UIImage *falconImage = [UIImage imageNamed:@"falconIcon1"];
+    UIImage *owlImage = [UIImage imageNamed:@"owlIcon1"];
+    UIImage *pigeonImage = [UIImage imageNamed:@"pigeonIcon1"];
+    UIImage *ravenImage = [UIImage imageNamed:@"ravenIcon1"];
     self.birdIconDictionary = @{@"bCLOH6DO6h" : gooseImage, @"9gpFa5bhyD" : falconImage, @"sZVXw55X0V" : owlImage, @"sdhHT1Wq8M" : pigeonImage , @"sZ55OUsVQB" : ravenImage};
     
 }
@@ -106,6 +106,8 @@
     
 }
 
+#pragma mark - table view methods
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -138,11 +140,11 @@
 
             NSString *birdName = bird[@"name"];
             UIImage *birdImage = [self.birdIconDictionary objectForKey:birdID.objectId];
-            double timeRemaining = [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird];
+            NSString * timeRemaining = [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 cell.receiverLabel.text = [NSString stringWithFormat:@"To: %@", object[@"username"]];
-                cell.receivedTimeLabel.text =  [NSString stringWithFormat:@"Time till delivered: %.04f", timeRemaining];
+                cell.receivedTimeLabel.text =  timeRemaining;
                 [cell.birdImageView setImage:birdImage];
                 
             });
@@ -154,6 +156,14 @@
     
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return 70;
+}
+
+
+#pragma mark - location methods
 
 -(CLLocation *)getCLLocationFromPFGeoPoint:(PFGeoPoint *)point {
     CLLocation *location = [[CLLocation alloc]initWithLatitude:point.latitude longitude:point.longitude];
@@ -182,7 +192,7 @@
     
 }
 
--(double)calculateRemainingTimeToBeDeliveredWithMessage:(PFObject *)message andBird:(PFObject *)bird {
+-(NSString *)calculateRemainingTimeToBeDeliveredWithMessage:(PFObject *)message andBird:(PFObject *)bird {
     
     double birdSpeed = [bird[@"speed"] doubleValue];
     
@@ -193,7 +203,26 @@
 
     double timeRemaining = distanceInKm / birdSpeed;
     
-    return timeRemaining;
+    NSNumber *valueForDisplay = [NSNumber numberWithDouble:timeRemaining*3600];
+    
+    NSNumber *totalDays = [NSNumber numberWithDouble:
+                           ([valueForDisplay doubleValue] / 86400)];
+    NSNumber *totalHours = [NSNumber numberWithDouble:
+                            (([valueForDisplay doubleValue] / 3600) -
+                             ([totalDays intValue] * 24))];
+    NSNumber *totalMinutes = [NSNumber numberWithDouble:
+                              (([valueForDisplay doubleValue] / 60) -
+                               ([totalDays intValue] * 24 * 60) -
+                               ([totalHours intValue] * 60))];
+    NSNumber *totalSeconds = [NSNumber numberWithInt:
+                              ([valueForDisplay intValue] % 60)];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+
+    [formatter setMaximumFractionDigits:0];
+
+    return [NSString stringWithFormat:@"Delivery time: %@ days %@ hrs, %@ mins", [formatter stringFromNumber: totalDays],[formatter stringFromNumber:  totalHours], [formatter stringFromNumber: totalMinutes]];
+    
     
     
 }
@@ -227,7 +256,7 @@
 
                     NSString *recieverName = [NSString stringWithFormat:@"Receiver: %@",reciever[@"username"]];
                     UIImage *image = [UIImage imageNamed:@"birdIcon"];
-                    NSString *timeRemaining = [NSString stringWithFormat:@"Time till delivery: %.4f hours", [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird]];
+                    NSString *timeRemaining = [self calculateRemainingTimeToBeDeliveredWithMessage:message andBird:bird];
                     NSLog(@" message id : %@", message.objectId);
                     NSLog(@" bird name : %@", bird[@"name"]);
                 MessageMapPin *myAnnotation = [[MessageMapPin alloc]initWithCoordinates:birdLoc placeName:recieverName subtitle:timeRemaining andPinImage:image];
@@ -246,6 +275,8 @@
 
     }
 }
+
+#pragma mark - map view methods
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
@@ -288,6 +319,8 @@
     
     
 }
+
+#pragma mark  - calculation methods
 
 - (double)radiansFromDegrees:(double)degrees
 {
@@ -354,19 +387,7 @@
 }
 
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
+#pragma mark - IBActions
 
 - (IBAction)segmentViewChanged:(UISegmentedControl *)sender {
     if(sender.selectedSegmentIndex == 0){
