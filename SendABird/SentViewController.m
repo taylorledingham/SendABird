@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, strong) NSMutableArray *sentMessagesArray;
 @property (nonatomic, strong) NSDictionary *birdIconDictionary;
+@property (nonatomic, strong) NSMutableArray *friendArray;
 
 @end
 
@@ -91,16 +92,37 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
+                [self.mapView removeAnnotations:self.mapView.annotations];
+                
+                [self addBirdAnnoations];
 
                 
             });
-            [self.mapView removeAnnotations:self.mapView.annotations];
 
-            [self addBirdAnnoations];
 
             
         }
     }];
+    
+    PFRelation *friendRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
+    
+    //need to make a call to the backend to get the data for the relation
+    PFQuery *friendQuery = [friendRelation query];
+    friendQuery.cachePolicy = kPFCachePolicyNetworkOnly;
+    [friendQuery orderByAscending:@"username"];
+    [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        }
+        else {
+            self.friendArray = [objects mutableCopy];
+            //don't you have to put this back in the main queue???????
+            
+            [self addFriendPins];
+            
+        }
+    }];
+
 
     
     
@@ -225,6 +247,23 @@
 
     return [NSString stringWithFormat:@"%@ days %@ hrs, %@ mins, %@ secs ", [formatter stringFromNumber: totalDays],[formatter stringFromNumber:  totalHours], [formatter stringFromNumber: totalMinutes], [formatter stringFromNumber: totalSeconds]];
     
+    
+    
+}
+
+-(void)addFriendPins {
+    
+    for (PFUser * friend in self.friendArray) {
+        
+        PFGeoPoint *locationPoint = friend[@"lastLocation"];
+        
+        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc]init];
+        myAnnotation.title = friend[@"username"];
+        myAnnotation.coordinate = CLLocationCoordinate2DMake(locationPoint.latitude, locationPoint.longitude);
+        
+         [self.mapView addAnnotation:myAnnotation];
+        
+    }
     
     
 }
