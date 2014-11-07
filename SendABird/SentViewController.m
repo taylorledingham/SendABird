@@ -195,11 +195,13 @@
 -(NSString *)calculateRemainingTimeToBeDeliveredWithMessage:(PFObject *)message andBird:(PFObject *)bird {
     
     double birdSpeed = [bird[@"speed"] doubleValue];
-    
-    PFGeoPoint *senderLoc = message[@"senderLocation"];
     PFGeoPoint *recieverLoc = message[@"recieverLocation"];
     
-    double distanceInKm = [[self getCLLocationFromPFGeoPoint:senderLoc] distanceFromLocation:[self getCLLocationFromPFGeoPoint:recieverLoc]]/1000;
+    CLLocationCoordinate2D currLoc = [self calculateMessageCurrentLocation:message andBird:bird];
+    CLLocation *loc = [[CLLocation alloc]initWithLatitude:currLoc.latitude longitude:currLoc.longitude];
+    
+    
+    double distanceInKm = [loc distanceFromLocation:[self getCLLocationFromPFGeoPoint:recieverLoc]]/1000;
 
     double timeRemaining = distanceInKm / birdSpeed;
     
@@ -221,7 +223,7 @@
 
     [formatter setMaximumFractionDigits:0];
 
-    return [NSString stringWithFormat:@"Delivery time: %@ days %@ hrs, %@ mins", [formatter stringFromNumber: totalDays],[formatter stringFromNumber:  totalHours], [formatter stringFromNumber: totalMinutes]];
+    return [NSString stringWithFormat:@"%@ days %@ hrs, %@ mins, %@ secs ", [formatter stringFromNumber: totalDays],[formatter stringFromNumber:  totalHours], [formatter stringFromNumber: totalMinutes], [formatter stringFromNumber: totalSeconds]];
     
     
     
@@ -384,6 +386,14 @@
     } else {
         return 360+degree;
     }
+}
+
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    [self loadSentMessages];
+    
+    
 }
 
 

@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "SentMessageTableViewCell.h"
 
-@interface SentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate>
+@interface SentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
