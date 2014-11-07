@@ -166,6 +166,9 @@
 }
 
 - (IBAction)logout:(id)sender {
+    
+    FBSession *session =  [PFFacebookUtils session];
+    [session closeAndClearTokenInformation];
     [PFUser logOut];
     PFUser *currentUser = [PFUser currentUser]; // this will now be nil
     NSLog(@"Current logged out user: %@", currentUser.username);

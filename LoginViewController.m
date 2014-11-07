@@ -35,7 +35,9 @@
     if ([PFUser currentUser] && // Check if user is cached
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) { // Check if user is linked to Facebook
         // Present the next view controller without animation
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        //[self.navigationController popToRootViewControllerAnimated:NO];
+         AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+        appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
     }
 }
 
@@ -144,7 +146,6 @@
 - (IBAction)facbebookLogin:(id)sender {
     
     [self.facebookLoginButton setEnabled:NO];
-    
     [CommsLogin login:self];
     
 }

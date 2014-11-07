@@ -11,6 +11,7 @@
 #import <CoreLocation/CLGeocoder.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreLocation/CLPlacemark.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface EditProfileViewController : UIViewController<UITextFieldDelegate,CLLocationManagerDelegate, UIScrollViewDelegate>
 
