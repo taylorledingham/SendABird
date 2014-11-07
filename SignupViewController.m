@@ -60,7 +60,8 @@
                 PFInstallation *currentInstallation = [PFInstallation currentInstallation];
                 currentInstallation[@"userId"] = newUser.objectId;
                 [currentInstallation saveInBackground];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+//                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self dismissSelf];
                 
             } else {
                 NSString *errorString = [error userInfo][@"error"];
@@ -74,4 +75,16 @@
     }
     
 }
+
+- (void)dismissSelf {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end

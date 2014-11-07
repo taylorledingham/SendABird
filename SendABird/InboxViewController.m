@@ -28,11 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if ([PFUser currentUser][@"lastLocation"]==nil) {
+        self.tabBarController.selectedIndex = 3;
+    }
+    
     [self.navigationItem setHidesBackButton:YES];
     self.messageArray = [[NSMutableArray alloc]init];
     self.recievedMessagesArray = [[NSMutableArray alloc]init];
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     //    PFUser *currentUser = [PFUser currentUser];
 }
@@ -96,9 +100,10 @@
         } else { //
             NSLog(@"Successfully retrieved the object.");
             
-            
             [self.orderedMessagesArray removeObjectIdenticalTo:message];
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded && !error) {
                     NSLog(@"Image deleted from Parse");
@@ -110,7 +115,7 @@
         }
     }];
     
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 
 }
 
