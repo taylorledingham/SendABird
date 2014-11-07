@@ -12,7 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreLocation/CLPlacemark.h>
 
-@interface EditProfileViewController : UIViewController<UITextFieldDelegate,CLLocationManagerDelegate>
+@interface EditProfileViewController : UIViewController<UITextFieldDelegate,CLLocationManagerDelegate, UIScrollViewDelegate>
 
 - (IBAction)logout:(id)sender;
 - (IBAction)save:(id)sender;

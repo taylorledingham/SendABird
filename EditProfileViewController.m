@@ -15,6 +15,7 @@
 @interface EditProfileViewController (){
     CLLocationManager *_locationManager;
     CLLocation *currentLocation;
+    float oldX;
 }
 
 
@@ -162,6 +163,11 @@
 }
 - (void)dismissSelf {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)aScrollView
+{
+    [aScrollView setContentOffset: CGPointMake(oldX, aScrollView.contentOffset.y)];
 }
     
 @end
