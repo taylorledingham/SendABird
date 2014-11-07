@@ -717,7 +717,7 @@
 				INFOPLIST_FILE = SendABird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "208345a8-b711-4a90-b3e1-7153dc95cde5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -736,7 +736,7 @@
 				INFOPLIST_FILE = SendABird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "208345a8-b711-4a90-b3e1-7153dc95cde5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
