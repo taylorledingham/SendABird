@@ -107,7 +107,7 @@
         <scene sceneID="wvl-Eb-52a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rIr-7f-3Vy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="HKK-Yn-3sX"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileTabBarIcon" id="HKK-Yn-3sX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1rA-0s-Kra">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -126,7 +126,7 @@
         <scene sceneID="lcu-yA-Iuo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aC1-9O-FWA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Inbox" id="EhE-Ba-Ogd"/>
+                    <tabBarItem key="tabBarItem" title="Inbox" image="inboxTabBarIcon" id="EhE-Ba-Ogd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZNg-jA-Kx6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -145,7 +145,7 @@
         <scene sceneID="RZs-SJ-8U3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EmV-0s-Hpm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sent" id="R1Q-0c-96G"/>
+                    <tabBarItem key="tabBarItem" title="Sent" image="sentTabBarIcon" id="R1Q-0c-96G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I82-f3-3D2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -164,7 +164,7 @@
         <scene sceneID="Kda-lC-qmc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kJQ-vk-bEa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="DvI-EC-ItA"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="friendTabBarIcon" id="DvI-EC-ItA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FjW-gl-3cs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -685,4 +685,10 @@
             <point key="canvasLocation" x="-4204.5" y="-1091.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="friendTabBarIcon" width="40" height="40"/>
+        <image name="inboxTabBarIcon" width="40" height="40"/>
+        <image name="profileTabBarIcon" width="40" height="40"/>
+        <image name="sentTabBarIcon" width="40" height="40"/>
+    </resources>
 </document>

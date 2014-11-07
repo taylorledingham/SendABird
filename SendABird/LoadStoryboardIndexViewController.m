@@ -27,7 +27,9 @@
     
     // push the scene onto the navigation stack or wherever you want it on the stack
     [self.navigationController setViewControllers:@[defaultScene]];
-
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    navBar.barTintColor = [UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f];
+    navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil];
     // Do any additional setup after loading the view.
 }
 

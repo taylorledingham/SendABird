@@ -32,16 +32,27 @@
     [FBAppEvents activateApp];
     
     PFUser *user = [PFUser currentUser];
-    
-    
+
     if (user)
     {
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+
+        
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
+        
+        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
     }
     else
     {
         UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
         UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+        
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
+        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
         
         self.window.rootViewController = navigation;
     }

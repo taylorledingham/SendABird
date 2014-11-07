@@ -465,6 +465,7 @@
                                     <segment title="View List"/>
                                     <segment title="View Map"/>
                                 </segments>
+                                <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentViewChanged:" destination="J5K-FK-3ec" eventType="valueChanged" id="igL-UB-d86"/>
                                 </connections>

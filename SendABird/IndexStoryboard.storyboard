@@ -226,9 +226,16 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g9Y-5c-vRL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Inbox" id="m4r-MH-4HP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DMu-12-A6k">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DMu-12-A6k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.12941176470588237" green="0.72156862745098038" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
