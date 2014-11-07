@@ -322,12 +322,18 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="74" y="8" width="245" height="21"/>
+                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Time till received: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jz1-VT-N0t">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="74" y="36" width="222" height="41"/>
+                                                            </variation>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1KO-Sg-lGm">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -368,16 +374,16 @@
                                                             <exclude reference="1KO-Sg-lGm"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <exclude reference="Xe9-wO-H6v"/>
-                                                            <exclude reference="YvK-i5-mch"/>
-                                                            <exclude reference="evr-5Y-keq"/>
-                                                            <exclude reference="QN3-mL-ErI"/>
-                                                            <exclude reference="SIG-Tz-nko"/>
-                                                            <exclude reference="ss4-0P-Jik"/>
                                                             <exclude reference="1d2-rF-RqE"/>
                                                             <exclude reference="isR-rK-G14"/>
                                                             <exclude reference="keY-FI-1Fw"/>
                                                             <exclude reference="pbc-nf-E8t"/>
+                                                            <exclude reference="QN3-mL-ErI"/>
+                                                            <exclude reference="SIG-Tz-nko"/>
+                                                            <exclude reference="ss4-0P-Jik"/>
+                                                            <exclude reference="Xe9-wO-H6v"/>
+                                                            <exclude reference="YvK-i5-mch"/>
+                                                            <exclude reference="evr-5Y-keq"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
@@ -387,16 +393,16 @@
                                                             <include reference="1KO-Sg-lGm"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <include reference="Xe9-wO-H6v"/>
-                                                            <include reference="YvK-i5-mch"/>
-                                                            <include reference="evr-5Y-keq"/>
-                                                            <include reference="QN3-mL-ErI"/>
-                                                            <include reference="SIG-Tz-nko"/>
-                                                            <include reference="ss4-0P-Jik"/>
                                                             <include reference="1d2-rF-RqE"/>
                                                             <include reference="isR-rK-G14"/>
                                                             <include reference="keY-FI-1Fw"/>
                                                             <include reference="pbc-nf-E8t"/>
+                                                            <include reference="QN3-mL-ErI"/>
+                                                            <include reference="SIG-Tz-nko"/>
+                                                            <include reference="ss4-0P-Jik"/>
+                                                            <include reference="Xe9-wO-H6v"/>
+                                                            <include reference="YvK-i5-mch"/>
+                                                            <include reference="evr-5Y-keq"/>
                                                         </mask>
                                                     </variation>
                                                 </tableViewCellContentView>
@@ -459,6 +465,7 @@
                                     <segment title="View List"/>
                                     <segment title="View Map"/>
                                 </segments>
+                                <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentViewChanged:" destination="J5K-FK-3ec" eventType="valueChanged" id="igL-UB-d86"/>
                                 </connections>

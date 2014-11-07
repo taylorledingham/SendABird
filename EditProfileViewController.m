@@ -24,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [self.navigationItem setHidesBackButton:YES];
     // Do any additional setup after loading the view.
 }
@@ -44,6 +43,8 @@
         self.usernameField.text = self.currentUser.username;
         self.passwordField.text = self.currentUser.password;
         self.emailField.text = self.currentUser.email;
+        
+        [self getLocation];
     }
     
 }
@@ -69,8 +70,9 @@
         if (!error) {
             
             NSLog(@"Your location has been updated!");
-            PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
-            [self reverseGeocodeLocation:myGeopoint];
+//            PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+//            [self reverseGeocodeLocation:myGeopoint];
+            [self getLocation];
             
         } else {
             NSString *errorString = [error userInfo][@"error"];
@@ -132,6 +134,11 @@
             }
         }];
     }
+}
+
+- (void)getLocation {
+    PFGeoPoint *myGeopoint = [self.currentUser objectForKey:@"lastLocation"];
+    [self reverseGeocodeLocation:myGeopoint];
 }
 
 - (IBAction)updateLocation:(id)sender {
