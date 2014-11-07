@@ -45,8 +45,20 @@
         self.passwordField.text = self.currentUser.password;
         self.emailField.text = self.currentUser.email;
         
-        [self getLocation];
+        _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager requestWhenInUseAuthorization];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        if (self.currentUser[@"lastLocation"]==nil) {
+            [_locationManager startUpdatingLocation];
+            [self getLocation];
+        } else {
+            [self getLocation];
+        }
+        
     }
+    
     
 }
 
@@ -143,11 +155,13 @@
 }
 
 - (IBAction)updateLocation:(id)sender {
-    _locationManager = [[CLLocationManager alloc] init];
-    [_locationManager requestWhenInUseAuthorization];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    _locationManager = [[CLLocationManager alloc] init];
+//    [_locationManager requestWhenInUseAuthorization];
+//    _locationManager.delegate = self;
+//    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    [_locationManager startUpdatingLocation];
     [_locationManager startUpdatingLocation];
+    [self getLocation];
     
 }
 

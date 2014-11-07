@@ -313,7 +313,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="R9c-XF-rpq" kind="show" id="QA0-40-v4b"/>
+                                    <segue destination="R9c-XF-rpq" kind="presentation" id="QA0-40-v4b"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-WK-O3L" customClass="FBLoginView">

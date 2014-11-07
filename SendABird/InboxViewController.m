@@ -28,6 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if ([PFUser currentUser][@"lastLocation"]==nil) {
+        self.tabBarController.selectedIndex = 3;
+    }
+    
     [self.navigationItem setHidesBackButton:YES];
     self.messageArray = [[NSMutableArray alloc]init];
     self.recievedMessagesArray = [[NSMutableArray alloc]init];
