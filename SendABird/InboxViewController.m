@@ -100,9 +100,10 @@
         } else { //
             NSLog(@"Successfully retrieved the object.");
             
-            
             [self.orderedMessagesArray removeObjectIdenticalTo:message];
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded && !error) {
                     NSLog(@"Image deleted from Parse");
@@ -114,7 +115,7 @@
         }
     }];
     
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 
 }
 
