@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateSentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateRecievedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *envelopeImageView;
 
 @end

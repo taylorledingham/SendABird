@@ -167,8 +167,8 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM.dd.yyyy (HH:mm:ss ZZZZZZ)"];
     [formatter setTimeZone:[NSTimeZone systemTimeZone]];
-    NSString *stringFromSentDate = [formatter stringFromDate:mySentDate];
-    NSString *stringFromRecDate = [formatter stringFromDate:myRecDate];
+    NSString *stringFromSentDate = [dateFormatter stringFromDate:mySentDate];
+    NSString *stringFromRecDate = [dateFormatter stringFromDate:myRecDate];
     
     PFUser *sender = message[@"sender"];
     NSString *senderName = sender[@"username"];
@@ -177,14 +177,15 @@
     
     cell.senderLabel.text = senderName;
     cell.typeOfSenderLabel.text = birdName;
-    cell.messageLabel.text = message[@"message"];
+    //cell.messageLabel.text = message[@"message"];
     cell.dateSentLabel.text = stringFromSentDate;
     cell.dateRecievedLabel.text = stringFromRecDate;
     
+    
     if (message[@"isRead"]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell.envelopeImageView setImage:[UIImage imageNamed:@"openLetter"]];
     } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell.envelopeImageView setImage:[UIImage imageNamed:@"closedLetter"]];
     }
     
     
