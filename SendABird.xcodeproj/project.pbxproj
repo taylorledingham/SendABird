@@ -10,6 +10,8 @@
 		55050A8F662C47629541D5EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE4F4D75D23F321C268B6AF /* libPods.a */; };
 		90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 90053CA71A0991610059A7BF /* MessageMapPin.m */; };
 		901739031A09408B00741F55 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901739021A09408B00741F55 /* BirdTableViewController.m */; };
+		90341E471A12E0EF005EBC0F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90341E461A12E0EF005EBC0F /* AVFoundation.framework */; };
+		90341E481A12E61F005EBC0F /* raven.caf in Resources */ = {isa = PBXBuildFile; fileRef = 90341E441A12D39D005EBC0F /* raven.caf */; };
 		90549CB31A0C04B400FCFB53 /* SentMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */; };
 		9060BC4C1A08086C00935D41 /* SentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4B1A08086C00935D41 /* SentViewController.m */; };
 		9060BC4F1A0808E200935D41 /* MapAndListMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060BC4E1A0808E200935D41 /* MapAndListMessageView.m */; };
@@ -85,6 +87,8 @@
 		90053CA71A0991610059A7BF /* MessageMapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageMapPin.m; sourceTree = "<group>"; };
 		901739011A09408B00741F55 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
 		901739021A09408B00741F55 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
+		90341E441A12D39D005EBC0F /* raven.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = raven.caf; path = SendABird/raven.caf; sourceTree = "<group>"; };
+		90341E461A12E0EF005EBC0F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		90549CB11A0C04B400FCFB53 /* SentMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentMessageTableViewCell.h; sourceTree = "<group>"; };
 		90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentMessageTableViewCell.m; sourceTree = "<group>"; };
 		9060BC4A1A08086C00935D41 /* SentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentViewController.h; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90341E471A12E0EF005EBC0F /* AVFoundation.framework in Frameworks */,
 				99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */,
 				99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */,
 				909498A51A0AA842001C6D53 /* MapKit.framework in Frameworks */,
@@ -210,6 +215,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90341E431A12CB4F005EBC0F /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				90341E441A12D39D005EBC0F /* raven.caf */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
 		998C187F1A0B062C00A6ED2D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +249,7 @@
 		99986D3D1A06F16C001AA353 = {
 			isa = PBXGroup;
 			children = (
+				90341E431A12CB4F005EBC0F /* sounds */,
 				909498A61A0AB231001C6D53 /* PodFile */,
 				99986D481A06F16C001AA353 /* SendABird */,
 				99986D621A06F16C001AA353 /* SendABirdTests */,
@@ -398,6 +412,7 @@
 		E7C567E3E8ACDA3530CCCD5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90341E461A12E0EF005EBC0F /* AVFoundation.framework */,
 				1EE4F4D75D23F321C268B6AF /* libPods.a */,
 			);
 			name = Frameworks;
@@ -492,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90341E481A12E61F005EBC0F /* raven.caf in Resources */,
 				99986D551A06F16C001AA353 /* Main.storyboard in Resources */,
 				998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */,
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,

@@ -10,13 +10,18 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -76,6 +81,12 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -104,6 +115,15 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
+    
+    NSString *urlString = userInfo[@"aps"][@"sound"];
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:urlString withExtension:@"caf"];
+    self.audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:soundURL error:nil];
+    self.audioPlayer.numberOfLoops = 1;
+    [self.audioPlayer prepareToPlay] ;
+    [self.audioPlayer play];
+    NSLog(@"%@", userInfo);
+    
 }
 
 //- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

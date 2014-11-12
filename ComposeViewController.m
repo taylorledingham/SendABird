@@ -19,6 +19,7 @@
 @implementation ComposeViewController {
     UITapGestureRecognizer *tapRecognizer;
     NSDateFormatter *dateFormatter;
+    
 }
 
 - (void)viewDidLoad {
@@ -64,7 +65,7 @@
                     NSDate *recievedDate = [self calculateRecievedDate:[bird[@"speed"] doubleValue]andDistance:distance];
                     message[@"dateRecieved"] = recievedDate;
                     message[@"message"] = self.messageTextView.text;
-                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate andMessage:message];
+                    
                     [message setObject:[PFUser currentUser] forKey:@"sender"];
                     [message setObject: reciever forKey:@"reciever"];
                     message[@"senderLocation"] = [PFUser currentUser][@"lastLocation"];
@@ -78,7 +79,11 @@
                         PFFile *fileImage = [PFFile fileWithName:imageName data:imageData];
                         message[@"pic"] = fileImage;
                     }
-                    [message saveInBackground];
+                    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        
+                    [self schedulePushNotifcationWithUser:reciever AndDate:recievedDate andMessage:message];
+                        
+                    }];
                     [self.navigationController popViewControllerAnimated:YES];
                     
                 }
@@ -127,9 +132,17 @@
     userID = user.objectId;
    // userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
     //[requestParams setObject:@{@"userId": @{@"$in" : @[userID] }} forKey:@"where"];
+   // "sound": "homerun.caf",
+    
+    NSString *soundString = @"default";
+
     [requestParams setObject:@{@"userId": userID} forKey:@"where"];
     [requestParams setObject: iso8601String forKey:@"push_time"];
-    [requestParams setObject:@{@"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] } forKey:@"data"];
+    [requestParams setObject: soundString forKey:@"sound"];
+    [requestParams setObject:@{@"sound": @"raven.caf", @"messageID":message.objectId, @"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] } forKey:@"data"];
+                               
+    //[requestParams setObject:@{@"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] }, sound } forKey:@"data"];
+    
     //[req setValuesForKeysWithDictionary:requestParams];
     manager.requestSerializer = serializer;
     //
