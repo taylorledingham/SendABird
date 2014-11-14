@@ -383,6 +383,10 @@
                                     <mask key="constraints">
                                         <exclude reference="lur-HR-GzJ"/>
                                         <exclude reference="s9j-3l-zWg"/>
+                                        <exclude reference="Ikz-7R-PWF"/>
+                                        <exclude reference="V9A-yM-kkC"/>
+                                        <exclude reference="pX2-zB-U4j"/>
+                                        <exclude reference="rMr-3t-tyc"/>
                                         <exclude reference="ANX-tg-aD1"/>
                                         <exclude reference="Elx-Ck-xxx"/>
                                         <exclude reference="Via-3a-Tlq"/>
@@ -393,10 +397,6 @@
                                         <exclude reference="BHT-do-GBT"/>
                                         <exclude reference="Nko-4Z-jmp"/>
                                         <exclude reference="T5B-hl-alT"/>
-                                        <exclude reference="Ikz-7R-PWF"/>
-                                        <exclude reference="V9A-yM-kkC"/>
-                                        <exclude reference="pX2-zB-U4j"/>
-                                        <exclude reference="rMr-3t-tyc"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -408,6 +408,10 @@
                                     <mask key="constraints">
                                         <include reference="lur-HR-GzJ"/>
                                         <include reference="s9j-3l-zWg"/>
+                                        <include reference="Ikz-7R-PWF"/>
+                                        <include reference="V9A-yM-kkC"/>
+                                        <include reference="pX2-zB-U4j"/>
+                                        <include reference="rMr-3t-tyc"/>
                                         <include reference="ANX-tg-aD1"/>
                                         <exclude reference="Elx-Ck-xxx"/>
                                         <include reference="Via-3a-Tlq"/>
@@ -418,10 +422,6 @@
                                         <include reference="BHT-do-GBT"/>
                                         <include reference="Nko-4Z-jmp"/>
                                         <include reference="T5B-hl-alT"/>
-                                        <include reference="Ikz-7R-PWF"/>
-                                        <include reference="V9A-yM-kkC"/>
-                                        <include reference="pX2-zB-U4j"/>
-                                        <include reference="rMr-3t-tyc"/>
                                     </mask>
                                 </variation>
                             </view>
