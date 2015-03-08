@@ -47,6 +47,8 @@
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
         
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+      
         [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
     }
     else
@@ -58,6 +60,7 @@
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
         [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
         
         self.window.rootViewController = navigation;
     }
@@ -99,11 +102,14 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    
     
 }
 
