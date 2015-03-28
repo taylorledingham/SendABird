@@ -36,6 +36,40 @@
     
 }
 
+-(UIMutableUserNotificationCategory *)createNotificationCategory {
+    UIMutableUserNotificationAction *dismissAction =
+    [[UIMutableUserNotificationAction alloc] init];
+    dismissAction.identifier = @"DISMISS_IDENTIFIER";
+    dismissAction.title = @"Dismiss";
+    dismissAction.activationMode = UIUserNotificationActivationModeBackground;
+    dismissAction.destructive = YES;
+    dismissAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationAction *viewAction =
+    [[UIMutableUserNotificationAction alloc] init];
+    viewAction.identifier = @"VIEW_IDENTIFIER";
+    viewAction.title = @"View";
+    viewAction.activationMode = UIUserNotificationActivationModeBackground;
+    viewAction.destructive = NO;
+    viewAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationCategory *newMessageCategory =
+    [[UIMutableUserNotificationCategory alloc] init];
+    
+    // Identifier to include in your push payload and local notification
+    newMessageCategory.identifier = @"MESSAGE_CATEGORY";
+    
+    // Add the actions to the category and set the action context
+    [newMessageCategory setActions:@[dismissAction, viewAction]
+                    forContext:UIUserNotificationActionContextDefault];
+    
+    // Set the actions to present in a minimal context
+    [newMessageCategory setActions:@[dismissAction, viewAction]
+                    forContext:UIUserNotificationActionContextMinimal];
+    
+    return newMessageCategory;
+}
+
 -(void)doneSendMessage {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
@@ -119,33 +153,24 @@
     AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
     [serializer setValue:@"DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj" forHTTPHeaderField:@"X-Parse-Application-Id"];
     [serializer setValue:@"mObK8jJXxchROdulj5z2Re972hYknXJIrcUGzD7u" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
-    
     NSString *fullString = message[@"message"];
     NSString *shoretenedString = [[NSString alloc]init];
-    
     if ([fullString length] >= 20)
+    {
         shoretenedString = [fullString substringToIndex:20];
-    else
+    } else {
         shoretenedString = fullString;
-    
+    }
     NSString *userID = [PFUser currentUser].objectId;
     userID = user.objectId;
-   // userID = [NSString stringWithFormat:@"%@%@%@", @"[", userID,@"]"];
-    //[requestParams setObject:@{@"userId": @{@"$in" : @[userID] }} forKey:@"where"];
-   // "sound": "homerun.caf",
-    
     NSString *soundString = @"default";
-
+    UIUserNotificationCategory *messageCategory = [self createNotificationCategory];
+    
     [requestParams setObject:@{@"userId": userID} forKey:@"where"];
     [requestParams setObject: iso8601String forKey:@"push_time"];
     [requestParams setObject: soundString forKey:@"sound"];
-    [requestParams setObject:@{@"sound": @"raven.caf", @"messageID":message.objectId, @"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] } forKey:@"data"];
-                               
-    //[requestParams setObject:@{@"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString] }, sound } forKey:@"data"];
-    
-    //[req setValuesForKeysWithDictionary:requestParams];
+    [requestParams setObject:@{@"sound": @"raven.caf", @"messageID":message.objectId, @"alert":[NSString stringWithFormat:@"From: %@ \n %@  !",[PFUser currentUser].username, shoretenedString], @"category":@"MESSAGE_CATEGORY" } forKey:@"data"];
     manager.requestSerializer = serializer;
-    //
     
     [manager POST:@"https://api.parse.com/1/push" parameters:requestParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

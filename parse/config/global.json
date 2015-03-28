@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "SendABird": {
+            "applicationId": "DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj", 
+            "masterKey": "WXS7qfMUotfVx2pClZrwu8dgdfr11Bown7C54aZ5"
+        }, 
+        "_default": {
+            "link": "SendABird"
+        }
+    }
+}
