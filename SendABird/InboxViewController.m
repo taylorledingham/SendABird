@@ -236,11 +236,18 @@
     //    }
     
     if ([[segue identifier] isEqualToString:@"messageDetail"]) {
+        if([sender isKindOfClass:[UITableViewCell class]]){
         UITableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         UINavigationController *navigationController = segue.destinationViewController;
         InboxDetailViewController *tableViewController = (InboxDetailViewController *)[navigationController topViewController];
         tableViewController.message = [self.orderedMessagesArray objectAtIndex:indexPath.row];
+        }
+        else {
+            UINavigationController *navigationController = segue.destinationViewController;
+            InboxDetailViewController *tableViewController = (InboxDetailViewController *)[navigationController topViewController];
+            tableViewController.message = (PFObject *)sender;
+        }
     }
 }
 

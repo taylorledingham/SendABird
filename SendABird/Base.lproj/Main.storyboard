@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qSn-FA-8uk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qSn-FA-8uk">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -103,11 +103,11 @@
             </objects>
             <point key="canvasLocation" x="-1741.5" y="831.75"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="wvl-Eb-52a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rIr-7f-3Vy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profileTabBarIcon" id="HKK-Yn-3sX"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsTabBarIcon" id="HKK-Yn-3sX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1rA-0s-Kra">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -241,13 +241,12 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p36-Db-546">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Wd2-Tt-qDQ"/>
                                     <constraint firstAttribute="width" constant="247" id="gxF-JC-7xk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Log In">
+                                <state key="normal" title="Log In" backgroundImage="onboardBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -296,7 +295,7 @@
                                     <constraint firstAttribute="width" constant="64" id="HBS-IH-VWR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.20784313730000001" green="0.64705882349999999" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign Up!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -543,7 +542,7 @@
         <!--Signup View Controller-->
         <scene sceneID="ZY3-Cd-kLw">
             <objects>
-                <viewController id="R9c-XF-rpq" customClass="SignupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R9c-XF-rpq" customClass="SignupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0r5-39-WJE"/>
                         <viewControllerLayoutGuide type="bottom" id="xYJ-CK-jNL"/>
@@ -602,14 +601,13 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08z-Er-j0J">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="248" id="cWr-wl-vbN"/>
                                     <constraint firstAttribute="height" constant="32" id="wWO-0q-TTx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.12941176469999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Sign Up" backgroundImage="onboardBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -678,6 +676,37 @@
                                     <outlet property="delegate" destination="R9c-XF-rpq" id="GqO-qc-Nxr"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHX-0R-PZC">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="CNH-yw-z1h">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="56"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="30" id="c75-Yg-nuE">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="26"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.20784313730000001" green="0.64705882349999999" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CNH-yw-z1h"/>
+                                        <exclude reference="c75-Yg-nuE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="CNH-yw-z1h"/>
+                                        <include reference="c75-Yg-nuE"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="dismissView:" destination="R9c-XF-rpq" eventType="touchUpInside" id="GS1-HG-wgX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -687,7 +716,9 @@
                             <constraint firstAttribute="centerX" secondItem="EGY-Ns-LOx" secondAttribute="centerX" id="G78-aU-IJN"/>
                             <constraint firstItem="H7Z-gv-4CE" firstAttribute="top" secondItem="MHV-ax-YSU" secondAttribute="bottom" constant="10" id="L0a-OS-lUH"/>
                             <constraint firstAttribute="centerX" secondItem="Co6-88-jdV" secondAttribute="centerX" id="Ocl-N0-gcF"/>
+                            <constraint firstItem="LHX-0R-PZC" firstAttribute="trailing" secondItem="b2N-XK-yUo" secondAttribute="trailingMargin" id="PCS-vP-ZvK"/>
                             <constraint firstItem="EGY-Ns-LOx" firstAttribute="top" secondItem="0r5-39-WJE" secondAttribute="bottom" constant="50" id="RfN-lk-ID7"/>
+                            <constraint firstItem="LHX-0R-PZC" firstAttribute="top" secondItem="0r5-39-WJE" secondAttribute="bottom" id="fzL-FL-juf"/>
                             <constraint firstItem="MHV-ax-YSU" firstAttribute="top" secondItem="Co6-88-jdV" secondAttribute="bottom" constant="6" id="gKr-mT-WLg"/>
                             <constraint firstAttribute="centerX" secondItem="08z-Er-j0J" secondAttribute="centerX" id="ltH-sG-da0"/>
                             <constraint firstAttribute="centerX" secondItem="MHV-ax-YSU" secondAttribute="centerX" id="zZY-Hy-QGF"/>
@@ -699,18 +730,21 @@
                                 <exclude reference="08z-Er-j0J"/>
                                 <exclude reference="EGY-Ns-LOx"/>
                                 <exclude reference="H7Z-gv-4CE"/>
+                                <exclude reference="LHX-0R-PZC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2Yj-aO-ZzD"/>
-                                <exclude reference="Ocl-N0-gcF"/>
                                 <exclude reference="G78-aU-IJN"/>
                                 <exclude reference="RfN-lk-ID7"/>
-                                <exclude reference="8Ul-Tq-yPk"/>
-                                <exclude reference="L0a-OS-lUH"/>
+                                <exclude reference="2Yj-aO-ZzD"/>
+                                <exclude reference="Ocl-N0-gcF"/>
                                 <exclude reference="gKr-mT-WLg"/>
                                 <exclude reference="zZY-Hy-QGF"/>
+                                <exclude reference="8Ul-Tq-yPk"/>
+                                <exclude reference="L0a-OS-lUH"/>
                                 <exclude reference="6Kc-N5-yjx"/>
                                 <exclude reference="ltH-sG-da0"/>
+                                <exclude reference="PCS-vP-ZvK"/>
+                                <exclude reference="fzL-FL-juf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -720,18 +754,21 @@
                                 <include reference="08z-Er-j0J"/>
                                 <include reference="EGY-Ns-LOx"/>
                                 <include reference="H7Z-gv-4CE"/>
+                                <include reference="LHX-0R-PZC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2Yj-aO-ZzD"/>
-                                <include reference="Ocl-N0-gcF"/>
                                 <include reference="G78-aU-IJN"/>
                                 <include reference="RfN-lk-ID7"/>
-                                <include reference="8Ul-Tq-yPk"/>
-                                <include reference="L0a-OS-lUH"/>
+                                <include reference="2Yj-aO-ZzD"/>
+                                <include reference="Ocl-N0-gcF"/>
                                 <include reference="gKr-mT-WLg"/>
                                 <include reference="zZY-Hy-QGF"/>
+                                <include reference="8Ul-Tq-yPk"/>
+                                <include reference="L0a-OS-lUH"/>
                                 <include reference="6Kc-N5-yjx"/>
                                 <include reference="ltH-sG-da0"/>
+                                <include reference="PCS-vP-ZvK"/>
+                                <include reference="fzL-FL-juf"/>
                             </mask>
                         </variation>
                     </view>
@@ -750,7 +787,8 @@
         <image name="fbicon" width="126" height="126"/>
         <image name="friendTabBarIcon" width="40" height="40"/>
         <image name="inboxTabBarIcon" width="40" height="40"/>
-        <image name="profileTabBarIcon" width="40" height="40"/>
+        <image name="onboardBackground" width="46" height="46"/>
         <image name="sentTabBarIcon" width="40" height="40"/>
+        <image name="settingsTabBarIcon" width="40" height="40"/>
     </resources>
 </document>

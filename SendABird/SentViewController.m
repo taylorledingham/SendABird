@@ -81,26 +81,17 @@
     
     [query whereKey:@"sender" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         if (error){
             
             NSLog(@"%@", error);
         }
         else {
-            
             self.sentMessagesArray = [objects mutableCopy];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
                 [self.mapView removeAnnotations:self.mapView.annotations];
-                
                 [self addBirdAnnoations];
-
-                
             });
-
-
-            
         }
     }];
     

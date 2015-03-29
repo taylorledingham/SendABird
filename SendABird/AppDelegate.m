@@ -11,6 +11,13 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <AVFoundation/AVFoundation.h>
+#import "InboxViewController.h"
+#import "InboxDetailViewController.h"
+#import <OnboardingContentViewController.h>
+#import <OnboardingViewController.h>
+#import "UIColor+SAB_Color.h"
+
+//#import <ParseCrashReporting/ParseCrashReporting.h>
 
 
 @interface AppDelegate ()
@@ -27,6 +34,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+   // [ParseCrashReporting enable];
+    
     [Parse setApplicationId:@"DDXGlvgKOTm6LVrkQseHgKTpnRJLUOex2ZcOB4gj"
                   clientKey:@"6uqg2oun5sTctp1y1Igm1Q8q0hRDPfK2zk8rME5X"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -42,47 +51,58 @@
     {
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
 
-        
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
-        
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
-      
-        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
+        [self setUpNavAndTabBar];
     }
     else
     {
+
         UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
         UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
         
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
-        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+        [self setUpNavAndTabBar];
         
         self.window.rootViewController = navigation;
+        
+        [self displayOnboarding];
     }
     
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
                                                         UIUserNotificationTypeSound);
+        UIUserNotificationCategory *messageCategory = [self createNotificationCategory];
+        NSSet *categorySet = [NSSet setWithObject:messageCategory];
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                 categories:nil];
+                                                                                 categories:categorySet];
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    } else {
-        // Register for Push Notifications before iOS 8
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
+    }
+    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(notificationPayload) {
+        // figure out what's in the notificationPayload dictionary
     }
     
     
     return YES;
 }
+
+- (void)displayOnboarding
+{
+    UIViewController* onBoardingVC = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OnboardingVC"];
+    
+    self.window.rootViewController = onBoardingVC;
+}
+
+- (void)setUpNavAndTabBar
+{
+    [[UINavigationBar appearance] setBarTintColor: [UIColor SAB_mainColor]];
+     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
+    [[UITabBar appearance] setTintColor:[UIColor SAB_mainColor]];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    
+}
+
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
@@ -109,6 +129,11 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
     
     
 }
@@ -130,15 +155,9 @@
     [self.audioPlayer play];
     NSLog(@"%@", userInfo);
     
+    
 }
 
-//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//    // Store the deviceToken in the current installation and save it to Parse.
-//    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-//    [currentInstallation setDeviceTokenFromData:deviceToken];
-//    currentInstallation.channels = @[ @"global" ];
-//    [currentInstallation saveInBackground];
-//}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
@@ -149,6 +168,38 @@
     [currentInstallation saveInBackground];
 }
 
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+
+    if ([identifier isEqualToString: @"MESSAGE_CATEGORY"]) {
+        [self handleViewMessageActionWithNotification:userInfo];
+    }
+    
+    completionHandler();
+}
+
+-(void)handleViewMessageActionWithNotification:(NSDictionary *)userInfo {
+    NSString *messageID = userInfo[@"messageID"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"objectId" equalTo:messageID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            PFObject *message = objects.firstObject;
+            //UINavigationController *navController = [[UIStoryboard storyboardWithName:@"IndexStoryboard" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            //self.window.rootViewController = navController;//[[UIStoryboard storyboardWithName:@"IndexStoryboard" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            UINavigationController *navController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            self.window.rootViewController = navController;
+            
+            InboxViewController *inboxVC = (InboxViewController *)navController.childViewControllers.firstObject;
+            [inboxVC performSegueWithIdentifier:@"messageDetail" sender:message];
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+}
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -159,5 +210,40 @@
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
 }
+
+-(UIMutableUserNotificationCategory *)createNotificationCategory {
+    UIMutableUserNotificationAction *dismissAction =
+    [[UIMutableUserNotificationAction alloc] init];
+    dismissAction.identifier = @"DISMISS_IDENTIFIER";
+    dismissAction.title = @"Dismiss";
+    dismissAction.activationMode = UIUserNotificationActivationModeBackground;
+    dismissAction.destructive = YES;
+    dismissAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationAction *viewAction =
+    [[UIMutableUserNotificationAction alloc] init];
+    viewAction.identifier = @"VIEW_IDENTIFIER";
+    viewAction.title = @"View";
+    viewAction.activationMode = UIUserNotificationActivationModeBackground;
+    viewAction.destructive = NO;
+    viewAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationCategory *newMessageCategory =
+    [[UIMutableUserNotificationCategory alloc] init];
+    
+    // Identifier to include in your push payload and local notification
+    newMessageCategory.identifier = @"MESSAGE_CATEGORY";
+    
+    // Add the actions to the category and set the action context
+    [newMessageCategory setActions:@[dismissAction, viewAction]
+                        forContext:UIUserNotificationActionContextDefault];
+    
+    // Set the actions to present in a minimal context
+    [newMessageCategory setActions:@[dismissAction, viewAction]
+                        forContext:UIUserNotificationActionContextMinimal];
+    
+    return newMessageCategory;
+}
+
 
 @end
