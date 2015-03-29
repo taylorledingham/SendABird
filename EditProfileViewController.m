@@ -175,7 +175,7 @@
     
     AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
     
-    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OnboardingVC"];
     
 }
 - (void)dismissSelf {

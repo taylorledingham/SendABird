@@ -13,6 +13,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "InboxViewController.h"
 #import "InboxDetailViewController.h"
+#import <OnboardingContentViewController.h>
+#import <OnboardingViewController.h>
+#import "UIColor+SAB_Color.h"
+
 //#import <ParseCrashReporting/ParseCrashReporting.h>
 
 
@@ -47,27 +51,19 @@
     {
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
 
-        
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
-        
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
-      
-        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
+        [self setUpNavAndTabBar];
     }
     else
     {
+
         UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
         UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
         
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
-        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.173f green:0.788f blue:0.910f alpha:1.00f]];
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+        [self setUpNavAndTabBar];
         
         self.window.rootViewController = navigation;
+        
+        [self displayOnboarding];
     }
     
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -89,6 +85,24 @@
     
     return YES;
 }
+
+- (void)displayOnboarding
+{
+    UIViewController* onBoardingVC = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OnboardingVC"];
+    
+    self.window.rootViewController = onBoardingVC;
+}
+
+- (void)setUpNavAndTabBar
+{
+    [[UINavigationBar appearance] setBarTintColor: [UIColor SAB_mainColor]];
+     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"System" size:15], NSFontAttributeName, nil]];
+    [[UITabBar appearance] setTintColor:[UIColor SAB_mainColor]];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    
+}
+
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
@@ -143,6 +157,7 @@
     
     
 }
+
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {

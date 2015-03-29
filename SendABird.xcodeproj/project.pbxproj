@@ -12,6 +12,9 @@
 		901739031A09408B00741F55 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901739021A09408B00741F55 /* BirdTableViewController.m */; };
 		90341E471A12E0EF005EBC0F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90341E461A12E0EF005EBC0F /* AVFoundation.framework */; };
 		90341E481A12E61F005EBC0F /* raven.caf in Resources */ = {isa = PBXBuildFile; fileRef = 90341E441A12D39D005EBC0F /* raven.caf */; };
+		903B42711AC897510052C998 /* UIColor+SAB_Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B42701AC897510052C998 /* UIColor+SAB_Color.m */; };
+		903B42731AC89CC50052C998 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903B42721AC89CC50052C998 /* Onboarding.storyboard */; };
+		903B42761AC89EE80052C998 /* SABOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903B42751AC89EE80052C998 /* SABOnboardingViewController.m */; };
 		90549CB31A0C04B400FCFB53 /* SentMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */; };
 		90572FFD1AABD99700B5C744 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90572FFB1AABD99600B5C744 /* FBAudienceNetwork.framework */; };
 		90572FFF1AABDAE900B5C744 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90572FFE1AABDAE900B5C744 /* Accounts.framework */; };
@@ -93,6 +96,11 @@
 		901739021A09408B00741F55 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
 		90341E441A12D39D005EBC0F /* raven.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = raven.caf; path = SendABird/raven.caf; sourceTree = "<group>"; };
 		90341E461A12E0EF005EBC0F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		903B426F1AC897510052C998 /* UIColor+SAB_Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SAB_Color.h"; sourceTree = "<group>"; };
+		903B42701AC897510052C998 /* UIColor+SAB_Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SAB_Color.m"; sourceTree = "<group>"; };
+		903B42721AC89CC50052C998 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		903B42741AC89EE80052C998 /* SABOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SABOnboardingViewController.h; sourceTree = "<group>"; };
+		903B42751AC89EE80052C998 /* SABOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABOnboardingViewController.m; sourceTree = "<group>"; };
 		90549CB11A0C04B400FCFB53 /* SentMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SentMessageTableViewCell.h; sourceTree = "<group>"; };
 		90549CB21A0C04B400FCFB53 /* SentMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentMessageTableViewCell.m; sourceTree = "<group>"; };
 		90572FFB1AABD99600B5C744 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = ../../../Documents/FacebookSDK/FBAudienceNetwork.framework; sourceTree = "<group>"; };
@@ -283,6 +291,8 @@
 		99986D481A06F16C001AA353 /* SendABird */ = {
 			isa = PBXGroup;
 			children = (
+				903B426F1AC897510052C998 /* UIColor+SAB_Color.h */,
+				903B42701AC897510052C998 /* UIColor+SAB_Color.m */,
 				99986D531A06F16C001AA353 /* Main.storyboard */,
 				99C5650C1A0872C50082549E /* Storyboards */,
 				9060BC4D1A0808E200935D41 /* MapAndListMessageView.h */,
@@ -291,6 +301,9 @@
 				90053CA71A0991610059A7BF /* MessageMapPin.m */,
 				99986D4D1A06F16C001AA353 /* AppDelegate.h */,
 				99986D4E1A06F16C001AA353 /* AppDelegate.m */,
+				903B42741AC89EE80052C998 /* SABOnboardingViewController.h */,
+				903B42751AC89EE80052C998 /* SABOnboardingViewController.m */,
+				903B42721AC89CC50052C998 /* Onboarding.storyboard */,
 				99986D721A0707EA001AA353 /* View Controllers */,
 				99986D561A06F16C001AA353 /* Images.xcassets */,
 				998C18801A0B064500A6ED2D /* Pics */,
@@ -525,6 +538,7 @@
 				90341E481A12E61F005EBC0F /* raven.caf in Resources */,
 				99986D551A06F16C001AA353 /* Main.storyboard in Resources */,
 				998C18791A0AEC5300A6ED2D /* gotpic.png in Resources */,
+				903B42731AC89CC50052C998 /* Onboarding.storyboard in Resources */,
 				99986D5A1A06F16C001AA353 /* LaunchScreen.xib in Resources */,
 				909498A71A0AB231001C6D53 /* PodFile in Resources */,
 				99C5650B1A0872B90082549E /* ProfileStoryboard.storyboard in Resources */,
@@ -591,10 +605,12 @@
 				99986DA81A07F00B001AA353 /* ComposeViewController.m in Sources */,
 				99986DA51A07680E001AA353 /* SearchFriendCell.m in Sources */,
 				90053CA81A0991610059A7BF /* MessageMapPin.m in Sources */,
+				903B42761AC89EE80052C998 /* SABOnboardingViewController.m in Sources */,
 				99C565151A08814F0082549E /* LoadStoryboardSentViewController.m in Sources */,
 				99986D4F1A06F16C001AA353 /* AppDelegate.m in Sources */,
 				99986D4C1A06F16C001AA353 /* main.m in Sources */,
 				99986D711A0707E2001AA353 /* InboxViewController.m in Sources */,
+				903B42711AC897510052C998 /* UIColor+SAB_Color.m in Sources */,
 				99986D961A071F56001AA353 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

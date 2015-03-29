@@ -79,6 +79,9 @@
 - (void)dismissSelf {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)dismissView:(id)sender {
+    [self dismissSelf];
+}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
