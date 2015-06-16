@@ -75,6 +75,7 @@
 		99EA552B1A096B2A00A66769 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA55291A096B2A00A66769 /* AddressBook.framework */; };
 		99EA552C1A096B2A00A66769 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EA552A1A096B2A00A66769 /* AddressBookUI.framework */; };
 		99EA552E1A097CF000A66769 /* IndexStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */; };
+		F61C8C881B2FC1FB0097B144 /* SABOnboardingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F61C8C871B2FC1FB0097B144 /* SABOnboardingPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		99EA552A1A096B2A00A66769 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		99EA552D1A097CF000A66769 /* IndexStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IndexStoryboard.storyboard; sourceTree = "<group>"; };
 		D14E0F6D3353F44DF9710EC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F61C8C861B2FC1FB0097B144 /* SABOnboardingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SABOnboardingPageViewController.h; sourceTree = "<group>"; };
+		F61C8C871B2FC1FB0097B144 /* SABOnboardingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABOnboardingPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +314,8 @@
 				99986D581A06F16C001AA353 /* LaunchScreen.xib */,
 				99986D791A071C0F001AA353 /* Frameworks */,
 				99986D491A06F16C001AA353 /* Supporting Files */,
+				F61C8C861B2FC1FB0097B144 /* SABOnboardingPageViewController.h */,
+				F61C8C871B2FC1FB0097B144 /* SABOnboardingPageViewController.m */,
 			);
 			path = SendABird;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				9082A3D51A08338B00488DE8 /* CommsLogin.m in Sources */,
 				99C565011A085AFD0082549E /* SABTabBarController.m in Sources */,
 				909CD4641A0976F5007B7A39 /* SendToFriendTableViewController.m in Sources */,
+				F61C8C881B2FC1FB0097B144 /* SABOnboardingPageViewController.m in Sources */,
 				99C564FC1A08513B0082549E /* FriendsViewController.m in Sources */,
 				90549CB31A0C04B400FCFB53 /* SentMessageTableViewCell.m in Sources */,
 				9082A3D41A08338B00488DE8 /* BirdCarrier.m in Sources */,

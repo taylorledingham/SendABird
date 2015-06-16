@@ -13,8 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "InboxViewController.h"
 #import "InboxDetailViewController.h"
-#import <OnboardingContentViewController.h>
-#import <OnboardingViewController.h>
+#import "SABOnboardingViewController.h"
 #import "UIColor+SAB_Color.h"
 
 //#import <ParseCrashReporting/ParseCrashReporting.h>

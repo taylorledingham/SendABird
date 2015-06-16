@@ -7,13 +7,12 @@
 //
 
 #import "SABOnboardingViewController.h"
-#import <OnboardingViewController.h>
-#import <OnboardingContentViewController.h>
+#import "SABOnboardingPageViewController.h"
+
 
 @interface SABOnboardingViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *presentLoginView;
 @property (strong, nonatomic) IBOutlet UIButton *presentSignUp;
-@property (strong, nonatomic) OnboardingViewController *onboardingVC;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSArray *onBoardingContentVCs;
 
@@ -41,29 +40,13 @@
 }
 
 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if([identifier isEqualToString:@"OnboardingVC"]) {
-        self.onboardingVC = (OnboardingViewController*)sender;
-    }
-}
 
--(void)createOnboardingContentViewController
-{
-    OnboardingContentViewController *firstPage = [OnboardingContentViewController contentWithTitle:@"Page Title" body:@"Page body goes here." image:[UIImage imageNamed:@"ravenIcon1"] buttonText:@"Text For Button" action:^{
-        // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
-    }];
-    
-    OnboardingContentViewController *secondPage = [OnboardingContentViewController contentWithTitle:@"Page Title 2 " body:@"Page body goes here 2." image:[UIImage imageNamed:@"owlIcon1"] buttonText:@"Text For Button" action:^{
-        // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
-    }];
-    
-    self.onBoardingContentVCs = @[firstPage, secondPage];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"OnboardingVC"]) {
-        self.onboardingVC = (OnboardingViewController*)sender;
     }
 }
 - (IBAction)displayLoginView:(id)sender
